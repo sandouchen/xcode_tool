@@ -1,10 +1,10 @@
-####1. Code snippets management.
+####更新方法
 
-It is used for managing the snippets in xcode.
+git add . (添加更新)
 
-The default snippets are stored in the ~/Library/Developer/Xcode/UserData/CodeSnippets/
+git commit -m "" (创建更新提示)
 
-We can check out this git project and use a soft link to the target directory.
+git push origin master (上传到github工程目录下)
 
 使用方法:
 
