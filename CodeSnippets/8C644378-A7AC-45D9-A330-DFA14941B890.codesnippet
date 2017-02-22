@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>HuoQuLuJing</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>- (NSString *)getDocumentsPath {
+    //1.获取文档目录(正常)创建文件管理对象
+    NSFileManager *fileManger = [NSFileManager defaultManager];
+    //参数1 目录类型 参数2 标记对文件夹路径的搜索在当前用户文件夹下
+    NSArray *urls = [fileManger URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
+    //虽然可以得到多个路径结果 Document路径只有一个
+    NSURL *url = urls[0];
+    //将路径对象 转换成相应的字符串对象
+    NSString *documentPath = [url path];
+    NSLog(@"documentPath:%@",documentPath);
+    
+    return documentPath;
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>8C644378-A7AC-45D9-A330-DFA14941B890</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>HuoQuLuJing</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>获取文件路径</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

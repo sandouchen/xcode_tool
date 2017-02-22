@@ -3,33 +3,29 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>SDOnce</string>
+	<string>SDRegisterCell</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
-		<string>ClassImplementation</string>
+		<string>CodeBlock</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>+ (instancetype)sharedInstance
-{
-    static id sharedInstance = nil;
-    static dispatch_once_t onceToken;
+	<string>// xib自定义cell-注册
+UINib *nib = [UINib nibWithNibName:NSStringFromClass([&lt;#cellName#&gt; class]) bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"deal"];
     
-    dispatch_once(&amp;onceToken, ^{
-        sharedInstance = [[self alloc] init];
-    });    
-    return sharedInstance;
-}</string>
+    // 代码自定义cell-注册
+    [self.tableView registerClass:[&lt;#cellName#&gt; class] forCellReuseIdentifier:@"deal"];</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>45D5535E-44FA-491F-8E4B-3251A46D5372</string>
+	<string>498F3881-5531-4CD4-8E49-CF1222A90603</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Objective-C</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>SDOnce</string>
+	<string>SDRegisterCell</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>一次性单例</string>
+	<string>代码&amp;xib自定义Cell注册</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
-	<integer>2</integer>
+	<integer>0</integer>
 </dict>
 </plist>

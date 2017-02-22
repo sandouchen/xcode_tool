@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>LanJiaZhaiPlist</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>if (!_&lt;#name#&gt;) {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"deals.plist" ofType:nil];
+        NSArray *dicArray = [NSArray arrayWithContentsOfFile:path];
+        
+        NSMutableArray *dealArray = [NSMutableArray array];
+        
+        for (NSDictionary *dic in dicArray) {
+            // 创建模型
+            SDDeal *deal = [SDDeal dealWithDic:dic];
+            [dealArray addObject:deal];
+        }
+        &lt;#name#&gt; = dealArray;
+    }
+    
+    return &lt;#name#&gt;;</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>989B95AD-F0D6-426A-A6FD-1033C46CCF62</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>LanJiaZhaiPlist</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>懒加载WithPlist</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

@@ -3,33 +3,37 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>SDOnce</string>
+	<string>SDCell</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>ClassImplementation</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>+ (instancetype)sharedInstance
-{
-    static id sharedInstance = nil;
-    static dispatch_once_t onceToken;
+	<string>+ (instancetype)cellWithTableView:(UITableView *)tableView {
+    static NSString *ID = @"cell";
     
-    dispatch_once(&amp;onceToken, ^{
-        sharedInstance = [[self alloc] init];
-    });    
-    return sharedInstance;
+    &lt;#cellNmae#&gt; *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    
+    if (!cell) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil] lastObject];
+    }
+    
+    NSLog(@"---%@---", NSStringFromClass(self));
+    NSLog(@"~~~%@~~~", NSStringFromClass([&lt;#cellNmae#&gt; class]));
+    
+    return cell;
 }</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>45D5535E-44FA-491F-8E4B-3251A46D5372</string>
+	<string>3A18159F-8D3D-44AB-8CE7-BFCCC6DD15AA</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Objective-C</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>SDOnce</string>
+	<string>SDCell</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>一次性单例</string>
+	<string>XIB自定义Cell</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
-	<integer>2</integer>
+	<integer>0</integer>
 </dict>
 </plist>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>ShouCiShiYong</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+
+//欢迎界面时间控制
+//[NSThread sleepForTimeInterval:2.0];
+
+//CF类型强转为字符串类型
+NSString *key = (NSString *) kCFBundleVersionKey;
+
+//1.从Info.plist中取出版本号
+NSString *version = [NSBundle mainBundle].infoDictionary[key];
+
+//2.从沙盒中取出上次储存的版本号(存储简单的只有一对键值对的使用NSUserDefaults)
+NSString *saveVersion = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+
+//判断是否第一次使用新版本号
+if ([version isEqualToString:saveVersion]) {
+    //显示状态栏
+    application.statusBarHidden = NO;
+    //不是第一次使用该版本,转入主界面
+    self.window.rootViewController = [[&lt;#ViewController#&gt; alloc] init];
+    
+} else {
+    //版本号不一样(第一次使用新的的版本),将新版本号写入沙盒
+    [[NSUserDefaults standardUserDefaults] setObject:version forKey:key];
+    
+    //调用synchronize会马上写入沙盒
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    //显示新版本新特性
+    self.window.rootViewController = [[&lt;#ViewController#&gt; alloc] init];
+}
+
+[self.window makeKeyAndVisible];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>955C5E30-0823-40E2-A0C8-1828EDF0BE83</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>ShouCiShiYong</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>判断是否首次使用</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

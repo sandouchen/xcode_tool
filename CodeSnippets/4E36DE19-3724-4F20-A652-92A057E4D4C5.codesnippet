@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>GuiDangFangFA</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>#define SDFilePath  [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:@"contacts.data"]
+
+// 保存联系人,注意：如果归档数组，底层会遍历数组元素一个一个归档
+[NSKeyedArchiver archiveRootObject:self.contacts toFile:SDFilePath];
+
+// 读取数据
+_contacts = [NSKeyedUnarchiver unarchiveObjectWithFile:SDFilePath];
+
+// 实现Coding协议（模型层）
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:_phone forKey:phoneKey];
+    
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super init]) {
+        _phone = [aDecoder decodeObjectForKey:phoneKey];
+        
+    }
+    
+    return self;
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>4E36DE19-3724-4F20-A652-92A057E4D4C5</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>GuiDangFangFA</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>归档方法</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

@@ -2,18 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>SDColorAlpha</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
-		<string>ClassImplementation</string>
+		<string>CodeExpression</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>@synthesize &lt;#property#&gt; = _&lt;#propertyIvar#&gt;;</string>
+	<string>[UIColor &lt;#color#&gt;] colorWithAlphaComponent:&lt;#(CGFloat)#&gt;];</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>764FBA7E-5782-45E8-AB28-C46EEDE39879</string>
+	<string>0346A510-0C14-407B-BD52-DDDDC35E67D3</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>SDColorAlpha</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>Synthesize</string>
+	<string>设置颜色&amp;背景透明</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

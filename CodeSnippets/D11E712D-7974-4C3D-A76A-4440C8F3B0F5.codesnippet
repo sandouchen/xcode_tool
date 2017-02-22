@@ -3,24 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>tq_init</string>
+	<string>@assign</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
-		<string>CodeBlock</string>
+		<string>ClassInterfaceMethods</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>    self = [super init];
-    if (self) {
-    }
-    return self;</string>
+	<string>@property (nonatomic, assign) &lt;#Class#&gt; &lt;#property#&gt;;</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>93934053-BDF5-48C3-8B7F-08EB04D69442</string>
+	<string>D11E712D-7974-4C3D-A76A-4440C8F3B0F5</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Objective-C</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>tq init code</string>
+	<string>@assign</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>tq init code</string>
+	<string>属性assign</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

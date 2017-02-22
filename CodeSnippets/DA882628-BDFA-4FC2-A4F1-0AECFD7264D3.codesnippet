@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>SDAlertController</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"&lt;#title#&gt;" message:@"&lt;#message#&gt;" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"&lt;#title#&gt;" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        &lt;#code#&gt;
+    }]];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"&lt;#title#&gt;" style:UIAlertActionStyleCancel handler:nil]];
+    
+    [alertController addTextFieldWithConfigurationHandler:&lt;#^(UITextField * _Nonnull textField)configurationHandler#&gt;];
+    
+    [alertController addTextFieldWithConfigurationHandler:&lt;#^(UITextField * _Nonnull textField)configurationHandler#&gt;];
+    
+    [self presentViewController:alertController animated:YES completion:nil];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>DA882628-BDFA-4FC2-A4F1-0AECFD7264D3</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>SDAlertController</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>创建UIAlertController</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

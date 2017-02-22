@@ -3,23 +3,31 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>tq_register_nib</string>
+	<string>SDWindow</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>CodeBlock</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>#define ReuseIdentifier @""
-    UINib * nib = [UINib nibWithNibName:@"" bundle:nil];
-    [_tableView registerNib:nib forCellReuseIdentifier:ReuseIdentifier];</string>
+	<string>[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:(UIStatusBarAnimationSlide)];
+[[UIApplication sharedApplication] setStatusBarStyle:(UIStatusBarStyleDefault)];
+
+self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+
+ViewController *vc = [[ViewController alloc] init];
+UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+
+self.window.rootViewController = nav;
+
+[self.window makeKeyAndVisible];</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>524E7A76-9BBC-4442-86F2-37DB97C7AC37</string>
+	<string>81AA8C9A-6657-4CC9-B5CC-47D0976FC913</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Objective-C</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>tq register nib</string>
+	<string>SDWindow</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>tq register nib</string>
+	<string>手动创建窗口</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
