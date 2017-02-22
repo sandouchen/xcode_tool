@@ -6,8 +6,10 @@ git commit -m "" (创建更新提示)
 
 git push origin master (上传到github工程目录下)
 
+git pull origin master(更新)
+
 使用方法:
 
-	1. check out the project using: git clone https://github.com/sandouchen/xcode_tool
+	1. git clone https://github.com/sandouchen/xcode_tool
 	2. cd xcode_tool
 	3. ./setup_snippets.sh
