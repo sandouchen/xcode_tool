@@ -3,27 +3,24 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>HideKeyBoard</string>
+	<string>SDPlaceholder</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
-		<string>ClassImplementation</string>
+		<string>CodeBlock</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>- (void)touchesBegan:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event {
-    [super touchesBegan:touches withEvent:event];
-    [self.view endEditing:YES];
-}</string>
+	<string>[&lt;#textFieldName#&gt; setValue:&lt;#color#&gt; forKeyPath:@"_placeholderLabel.textColor"];</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>D33B7D68-560D-430E-9E30-EC13844CBB56</string>
+	<string>A446B99D-E425-4398-BC8B-171112AD624C</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Objective-C</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>Hide KeyBoard</string>
+	<string>SDPlaceholder</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>点击背景隐藏键盘</string>
+	<string>修改Placeholder颜色</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
-	<integer>2</integer>
+	<integer>0</integer>
 </dict>
 </plist>
