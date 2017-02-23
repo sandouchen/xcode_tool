@@ -3,29 +3,27 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>SDRegisterCell</string>
+	<string>HideKeyBoard</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
-		<string>CodeBlock</string>
+		<string>ClassImplementation</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>// xib自定义cell-注册
-UINib *nib = [UINib nibWithNibName:NSStringFromClass([&lt;#cellName#&gt; class]) bundle:nil];
-    [self.tableView registerNib:nib forCellReuseIdentifier:@"deal"];
-    
-    // 代码自定义cell-注册
-    [self.tableView registerClass:[&lt;#cellName#&gt; class] forCellReuseIdentifier:@"deal"];</string>
+	<string>- (void)touchesBegan:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event {
+    [super touchesBegan:touches withEvent:event];
+    [self.view endEditing:YES];
+}</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>498F3881-5531-4CD4-8E49-CF1222A90603</string>
+	<string>D33B7D68-560D-430E-9E30-EC13844CBB56</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Objective-C</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>SDRegisterCell</string>
+	<string>Hide KeyBoard</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>代码&amp;xib自定义Cell注册</string>
+	<string>点击背景隐藏键盘</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
-	<integer>2</integer>
+	<integer>0</integer>
 </dict>
 </plist>

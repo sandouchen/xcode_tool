@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>ttt</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>// MARK: 滑动代理
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat contentSet = scrollView.contentOffset.y + _tableView.contentInset.top;
+
+    if (contentSet &gt;= 0 &amp;&amp; contentSet &lt;= 30)
+    {
+        _navTitleView.transform = CGAffineTransformMakeScale(1 - contentSet/60.f, 1-contentSet/60.f);
+        _navTitleView.mj_y = 0;
+    }
+    else if (contentSet &gt; 30)
+    {
+        _navTitleView.transform = CGAffineTransformMakeScale(0.5, 0.5);
+        _navTitleView.mj_y = 0;
+    }
+    else if (contentSet &lt; 0 )
+    {
+        _navTitleView.transform = CGAffineTransformMakeScale(1, 1);
+        _navTitleView.mj_y = 0;
+    }
+    
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>DFC380E1-AD2F-4B4F-8B39-48B13D6C5FA2</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>ttt</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>ttttttttttttttttttt</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>
