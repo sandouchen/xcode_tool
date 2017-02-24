@@ -23,6 +23,7 @@
     
     self.imageView.image = [UIImage sd_imageWithColor:[UIColor redColor] size:CGSizeMake(100, 100)];
     
+    
 }
 
 
