@@ -28,4 +28,34 @@
  自定义一种颜色,返回一个变色但保持背景色的UIImage
  */
 - (UIImage *)sd_imageWithGradientTintColor:(UIColor *)tintColor;
+
+/**
+ *  从指定的UIView中截图：UIView转UIImage
+ */
++ (UIImage *)sd_cutFromView:(UIView *)view;
+
+/**
+ *  直接截屏
+ */
++ (UIImage *)sd_cutScreen;
+
+/**
+ *  从指定的UIImage和指定Frame截图：
+ */
+- (UIImage *)sd_cutWithFrame:(CGRect)frame;
+
+/**
+ *  拉伸图片:自定义比例
+ */
++(UIImage *)sd_resizeWithImageName:(NSString *)name leftCap:(CGFloat)leftCap topCap:(CGFloat)topCap;
+
+/**
+ *  拉伸图片
+ */
++ (UIImage *)sd_resizeWithImageName:(NSString *)name;
+
+/**
+ *  图片取消渲染
+ */
++ (instancetype)sd_imageWithOriRenderingImage:(NSString *)imageName;
 @end

@@ -46,6 +46,7 @@
 }
 
 
+
 /**
  自定义一种颜色,返回一个完全变色的UIImage
  */
@@ -82,5 +83,80 @@
     
     return tintedImage;
 }
+
+
+
+/**
+ *  从指定的UIView中截图：UIView转UIImage
+ */
++ (UIImage *)sd_cutFromView:(UIView *)view {
+    //开启图形上下文
+    UIGraphicsBeginImageContextWithOptions(view.frame.size, 1, 0);
+    
+    //获取上下文
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    //在新建的图形上下文中渲染view的layer
+    [view.layer renderInContext:context];
+    
+    [[UIColor clearColor] setFill];
+    
+    //获取图片
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    
+    //关闭图形上下文
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
+/**
+ *  直接截屏
+ */
++ (UIImage *)sd_cutScreen {
+    return [self sd_cutFromView:[UIApplication sharedApplication].keyWindow];
+}
+
+/**
+ *  从指定的UIImage和指定Frame截图：
+ */
+- (UIImage *)sd_cutWithFrame:(CGRect)frame {
+    //创建CGImage
+    CGImageRef cgimage = CGImageCreateWithImageInRect(self.CGImage, frame);
+    
+    //创建image
+    UIImage *newImage = [UIImage imageWithCGImage:cgimage];
+    
+    //释放CGImage
+    CGImageRelease(cgimage);
+    
+    return newImage;
+}
+
+
+/**
+ *  拉伸图片:自定义比例
+ */
++(UIImage *)sd_resizeWithImageName:(NSString *)name leftCap:(CGFloat)leftCap topCap:(CGFloat)topCap {
+    UIImage *image = [self imageNamed:name];
+    return [image stretchableImageWithLeftCapWidth:image.size.width * leftCap topCapHeight:image.size.height * topCap];
+}
+
+/**
+ *  拉伸图片
+ */
++ (UIImage *)sd_resizeWithImageName:(NSString *)name {
+    return [self sd_resizeWithImageName:name leftCap:.5f topCap:.5f];
+}
+
+/**
+ *  图片取消渲染
+ */
++ (instancetype)sd_imageWithOriRenderingImage:(NSString *)imageName {
+    UIImage *image = [UIImage imageNamed:imageName];
+    return [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+}
+
+
 
 @end

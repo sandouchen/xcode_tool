@@ -11,7 +11,7 @@
 
 #ifdef __OBJC__
 #import "UIImage+SDExtend.h"
-
+#import "UIView+SDExtend.h"
 
 #endif /* __OBJC__ */
 
