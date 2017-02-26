@@ -39,9 +39,15 @@
 //    self.btn.sd_centerY = self.imageView.sd_centerY;
     self.btn.center = self.imageView.center;
     
-    UIView *testView = [UIView viewFromXib];
+    TestView *testView = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([TestView class]) owner:nil options:nil].lastObject;
     [self.view addSubview:testView];
-    testView.frame = CGRectMake(300, 50, 90, 150);
+    testView.frame = CGRectMake(50, 400, 90, 150);
+    
+    testView.sd_top = self.imageView.sd_bottom + 10;
+    testView.sd_size = self.imageView.sd_size;
+    
+    testView.sd_origin = CGPointMake(10, 10);
+    
 }
 - (IBAction)click {
 //    self.imageView.image = [UIImage sd_cutScreen];

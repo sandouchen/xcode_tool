@@ -121,8 +121,7 @@
 
 
 /** 自动从xib创建视图 */
-+ (instancetype)viewFromXib{
-    
++ (instancetype)viewFromXib {
     NSString *name = NSStringFromClass(self);
     
     UIView *xibView = [[[NSBundle mainBundle] loadNibNamed:name owner:nil options:nil] firstObject];
