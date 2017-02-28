@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>SDData</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>NSString *path = [[NSBundle mainBundle] pathForResource:@"&lt;#fileName#&gt;" ofType:@"&lt;#type#&gt;"];
+        
+        NSData *data = [NSData dataWithContentsOfFile:path];
+        NSDictionary *rootDict = [NSJSONSerialization JSONObjectWithData:data options:(NSJSONReadingAllowFragments) error:nil];
+        NSArray *dicArray = rootDict[@"&lt;#name#&gt;"];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>56213514-544F-4895-8CDF-685F399E637B</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>SDData</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>解析Data文件</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>

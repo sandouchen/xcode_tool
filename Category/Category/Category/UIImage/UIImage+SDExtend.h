@@ -58,4 +58,10 @@
  *  图片取消渲染
  */
 + (instancetype)sd_imageWithOriRenderingImage:(NSString *)imageName;
+
+/**
+ *  图片画圆角
+ */
+- (UIImage *)sd_imageWithRoundedCornersAndSize:(CGSize)sizeToFit andCornerRadius:(CGFloat)radius;
+
 @end
