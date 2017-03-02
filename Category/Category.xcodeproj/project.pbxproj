@@ -17,6 +17,8 @@
 		C9696B701E5ED01C001A141D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9696B6D1E5ED01C001A141D /* ViewController.m */; };
 		C9696B731E5ED63E001A141D /* UIImage+FixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = C9696B721E5ED63E001A141D /* UIImage+FixOrientation.m */; };
 		C9696B761E5ED7BC001A141D /* UIImage+SDExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = C9696B751E5ED7BC001A141D /* UIImage+SDExtend.m */; };
+		C98D06E01E6818B600F6F3B3 /* UIColor+SDExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = C98D06DF1E6818B600F6F3B3 /* UIColor+SDExtend.m */; };
+		C98D06E41E68207B00F6F3B3 /* SDCommonConst.m in Sources */ = {isa = PBXBuildFile; fileRef = C98D06E31E68207B00F6F3B3 /* SDCommonConst.m */; };
 		C9A7DD7F1E6037B4006BAF4C /* UIView+SDExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A7DD7E1E6037B4006BAF4C /* UIView+SDExtend.m */; };
 		C9A7DD821E603FEB006BAF4C /* TestView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A7DD811E603FEB006BAF4C /* TestView.m */; };
 		C9A7DD841E603FF9006BAF4C /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9A7DD831E603FF9006BAF4C /* TestView.xib */; };
@@ -61,6 +63,11 @@
 		C9696B741E5ED7BC001A141D /* UIImage+SDExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SDExtend.h"; sourceTree = "<group>"; };
 		C9696B751E5ED7BC001A141D /* UIImage+SDExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SDExtend.m"; sourceTree = "<group>"; };
 		C9696B771E5EDA1A001A141D /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		C98D06DE1E6818B600F6F3B3 /* UIColor+SDExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+SDExtend.h"; sourceTree = "<group>"; };
+		C98D06DF1E6818B600F6F3B3 /* UIColor+SDExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+SDExtend.m"; sourceTree = "<group>"; };
+		C98D06E11E68203300F6F3B3 /* SDMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDMacro.h; sourceTree = "<group>"; };
+		C98D06E21E68207B00F6F3B3 /* SDCommonConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCommonConst.h; sourceTree = "<group>"; };
+		C98D06E31E68207B00F6F3B3 /* SDCommonConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCommonConst.m; sourceTree = "<group>"; };
 		C9A7DD7D1E6037B4006BAF4C /* UIView+SDExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDExtend.h"; sourceTree = "<group>"; };
 		C9A7DD7E1E6037B4006BAF4C /* UIView+SDExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDExtend.m"; sourceTree = "<group>"; };
 		C9A7DD801E603FEB006BAF4C /* TestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestView.h; sourceTree = "<group>"; };
@@ -242,6 +249,8 @@
 		C9696B631E5ED01C001A141D /* UIColor */ = {
 			isa = PBXGroup;
 			children = (
+				C98D06DE1E6818B600F6F3B3 /* UIColor+SDExtend.h */,
+				C98D06DF1E6818B600F6F3B3 /* UIColor+SDExtend.m */,
 			);
 			path = UIColor;
 			sourceTree = "<group>";
@@ -304,6 +313,9 @@
 		C9696B6E1E5ED01C001A141D /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				C98D06E21E68207B00F6F3B3 /* SDCommonConst.h */,
+				C98D06E31E68207B00F6F3B3 /* SDCommonConst.m */,
+				C98D06E11E68203300F6F3B3 /* SDMacro.h */,
 				C9696B771E5EDA1A001A141D /* PrefixHeader.pch */,
 			);
 			path = Tools;
@@ -447,9 +459,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9A7DD821E603FEB006BAF4C /* TestView.m in Sources */,
+				C98D06E41E68207B00F6F3B3 /* SDCommonConst.m in Sources */,
 				C9696B701E5ED01C001A141D /* ViewController.m in Sources */,
 				C9696B761E5ED7BC001A141D /* UIImage+SDExtend.m in Sources */,
 				C9696B6F1E5ED01C001A141D /* AppDelegate.m in Sources */,
+				C98D06E01E6818B600F6F3B3 /* UIColor+SDExtend.m in Sources */,
 				C9A7DD7F1E6037B4006BAF4C /* UIView+SDExtend.m in Sources */,
 				C9696B731E5ED63E001A141D /* UIImage+FixOrientation.m in Sources */,
 				C9696B281E5EBC15001A141D /* main.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "TestView.h"
+#import "UIColor+SDExtend.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -42,7 +43,7 @@
     TestView *testView = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([TestView class]) owner:nil options:nil].lastObject;
     [self.view addSubview:testView];
     testView.frame = CGRectMake(50, 400, 90, 150);
-    
+    testView.backgroundColor = [UIColor sd_colorWithHexString:@"ff7f50"];
     testView.sd_top = self.imageView.sd_bottom + 10;
     testView.sd_size = self.imageView.sd_size;
     

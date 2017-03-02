@@ -14,6 +14,7 @@ UIKIT_EXTERN const CGFloat XMGBlue;
 UIKIT_EXTERN const CGFloat XMGAlpha;
 UIKIT_EXTERN const int XMGAge;
 UIKIT_EXTERN NSString * const XMGName;
+
 /** 改变Placerholder颜色 */
 UIKIT_EXTERN NSString * const SDPlacerholderColor;
 
