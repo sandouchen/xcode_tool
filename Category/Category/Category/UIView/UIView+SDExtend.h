@@ -12,36 +12,42 @@ float radiansForDegrees(int degrees);
 
 @interface UIView (SDExtend)
 /** 控件头部位置*/
-@property(nonatomic, assign) CGFloat sd_top;
+@property (nonatomic, assign) CGFloat sd_top;
 /** 控件左边位置*/
-@property(nonatomic, assign) CGFloat sd_left;
+@property (nonatomic, assign) CGFloat sd_left;
 /** 控件底部位置*/
-@property(nonatomic, assign) CGFloat sd_bottom;
+@property (nonatomic, assign) CGFloat sd_bottom;
 /** 控件右边位置*/
-@property(nonatomic, assign) CGFloat sd_right;
+@property (nonatomic, assign) CGFloat sd_right;
 /** 控件宽度*/
-@property(nonatomic, assign) CGFloat sd_width;
+@property (nonatomic, assign) CGFloat sd_width;
 /** 控件高度*/
-@property(nonatomic, assign) CGFloat sd_height;
+@property (nonatomic, assign) CGFloat sd_height;
 /** 控件X轴中点位置*/
-@property(nonatomic, assign) CGFloat sd_centerX;
+@property (nonatomic, assign) CGFloat sd_centerX;
 /** 控件Y轴中点位置*/
-@property(nonatomic, assign) CGFloat sd_centerY;
+@property (nonatomic, assign) CGFloat sd_centerY;
 /** 控件点的位置*/
-@property(nonatomic, assign) CGPoint sd_origin;
+@property (nonatomic, assign) CGPoint sd_origin;
 /** 控件的尺寸*/
-@property(nonatomic, assign) CGSize  sd_size;
+@property (nonatomic, assign) CGSize  sd_size;
 /** 控件圆角 */
 @property (nonatomic, assign) CGFloat sd_radius;
 
 
 /** 自动从xib创建视图 */
-+ (instancetype)viewFromXib;
++ (instancetype)sd_viewFromXib;
+
+/** 移除对应的view */
+- (void)sd_removeClassView:(Class)classV;
+
+/** 控件添加阴影 */
+- (void)sd_addShadowWithOpacity:(CGFloat)opacity;
 
 /**
  *  添加边框&颜色:四边
  */
-- (void)setBorder:(UIColor *)color width:(CGFloat)width;
+- (void)sd_setBorder:(UIColor *)color width:(CGFloat)width;
 
 
 //***************************UIView 动画*********************************

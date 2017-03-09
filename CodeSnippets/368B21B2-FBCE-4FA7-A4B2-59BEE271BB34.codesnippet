@@ -9,7 +9,7 @@
 		<string>CodeExpression</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>[UIFont systemFontOfSize:&lt;#(CGFloat)#&gt;];</string>
+	<string>[UIFont systemFontOfSize:&lt;#(CGFloat)#&gt;]</string>
 	<key>IDECodeSnippetIdentifier</key>
 	<string>368B21B2-FBCE-4FA7-A4B2-59BEE271BB34</string>
 	<key>IDECodeSnippetLanguage</key>

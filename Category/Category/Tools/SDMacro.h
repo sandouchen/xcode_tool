@@ -54,12 +54,13 @@
 #define RGBCOLOR(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
 #define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
 
+#define HEXCOLOR(rgbValue) [UIColor colorWithRed:((float)((0x##rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((0x##rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(0x##rgbValue & 0xFF))/255.0 alpha:1.0]
+
+#define HEXACOLOR(rgbValue, a) [UIColor colorWithRed:((float)((0x##rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((0x##rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(0x##rgbValue & 0xFF))/255.0 alpha:(a)]
+
 // 随机色
 #define RANDOMCOLOR RGBCOLOR(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
 
-#define HEXCOLOR(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
-
-#define HEXACOLOR(rgbValue, a) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:(a)]
 
 // NSUserDefaults
 #define USERDEFAULTS [NSUserDefaults standardUserDefaults]

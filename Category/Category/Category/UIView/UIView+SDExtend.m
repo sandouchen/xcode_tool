@@ -125,7 +125,7 @@ float radiansForDegrees(int degrees) {
 
 
 /** 自动从xib创建视图 */
-+ (instancetype)viewFromXib {
++ (instancetype)sd_viewFromXib {
     NSString *name = NSStringFromClass(self);
     
     UIView *xibView = [[[NSBundle mainBundle] loadNibNamed:name owner:nil options:nil] firstObject];
@@ -137,10 +137,26 @@ float radiansForDegrees(int degrees) {
     return xibView;
 }
 
+/** 移除对应的view */
+- (void)sd_removeClassView:(Class)classV {
+    for (UIView *view in self.subviews) {
+        if ([view isKindOfClass:classV]) {
+            [view removeFromSuperview];
+        }
+    }
+}
+
+/** 控件添加阴影 */
+- (void)sd_addShadowWithOpacity:(CGFloat)opacity {
+    self.layer.shadowOffset = CGSizeMake(0, 2);
+    self.layer.shadowOpacity = opacity;
+    self.layer.shadowPath = [UIBezierPath bezierPathWithRect:CGRectMake(0, self.sd_height - 2, self.sd_width == 320 ? [UIScreen mainScreen].bounds.size.width : self.sd_width, 2)].CGPath;
+}
+
 /**
  *  添加边框&颜色:四边
  */
--(void)setBorder:(UIColor *)color width:(CGFloat)width {
+-(void)sd_setBorder:(UIColor *)color width:(CGFloat)width {
     CALayer *layer = self.layer;
     layer.borderColor = color.CGColor;
     layer.borderWidth = width;

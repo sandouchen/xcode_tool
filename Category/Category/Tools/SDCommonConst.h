@@ -21,7 +21,7 @@ UIKIT_EXTERN NSString * const SDPlacerholderColor;
 typedef NS_ENUM(NSInteger, RWTLeftMenuTopItemType) {
     RWTLeftMenuTopItemMain,
     RWTLeftMenuTopItemShows,
-    RWTLeftMenuTopItemSchedule
+    RWTLeftMenuTopItemSchedule,
 };
 
 typedef NS_ENUM(NSInteger, RWTGlobalConstants) {
