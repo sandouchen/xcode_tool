@@ -11,7 +11,7 @@
 #define SDStrIsEmpty(str) ([str isKindOfClass:[NSNull class]] || [str length] < 1 ? YES : NO || [str isEqualToString:@"(null)"] || [str isEqualToString:@"null"])
 
 @interface UILabel (SDExtend)
-/** 创建label */
+/** 创建label font = 0(默认字体) */
 + (UILabel *)sd_labelWithFrame:(CGRect)frame title:(NSString *)title font:(CGFloat)font color:(UIColor *)color alignment:(NSTextAlignment)alignment;
 
 /** 有删除线的label */

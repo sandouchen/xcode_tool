@@ -22,11 +22,7 @@
     
     self.imageView.image = [[UIImage imageNamed:@"RS3"] sd_imageWithRoundedCornersAndSize:_imageView.sd_size andCornerRadius:_imageView.sd_width / 2];
     
-    
-    [self.btn sizeToFit];
-    [_btn sd_setImagePosition:(SDImagePositionBottom) spacing:5];
-    
-    
+    [_btn sd_setImagePosition:(SDImagePositionTop) spacing:5];
     
     UILabel *label = [UILabel sd_labelWithFrame:CGRectMake(20, 100, 100, 0) title:nil font:15 color:[UIColor redColor] alignment:(NSTextAlignmentCenter)];
     [label sizeToFit];
@@ -47,6 +43,33 @@
     
     [UIBarButtonItem sd_itemWithTarget:self action:nil image:@"mine-setting-icon" highImage:@"mine-setting-icon-click" insets:ContentInstesRight];
     
+    NSString *image = @"friendsRecommentIcon";
+    NSString *hImage = @"friendsRecommentIcon-click";
+    NSString *title = @"Hello World";
+    
+    UIButton *btn = [UIButton sd_buttonWithImage:image highlImage:hImage title:title titleColor:[UIColor redColor] font:0 frame:CGRectMake(20, 200, 0, 0) sizeToFit:NO target:nil action:nil];
+    btn.backgroundColor = [UIColor yellowColor];
+    [self.view addSubview:btn];
+    [btn sd_setImagePosition:(SDImagePositionTop) spacing:5];
+    [btn sizeToFit];
+    
+    
+    UILabel *l = [UILabel sd_labelWithFrame:CGRectMake(20, 600, 0, 0) title:@"24小时未领完，将退回" font:20 color:[UIColor blackColor] alignment:(NSTextAlignmentLeft)];
+    [l sizeToFit];
+    [self.view addSubview:l];
+    
+    UIButton *b = [UIButton sd_buttonWithTitle:@"余额" titleColor:[UIColor redColor] font:20 BackgroundColor:nil frame:CGRectZero sizeToFit:NO target:self action:@selector(click)];
+    [b sizeToFit];
+    b.sd_left = l.sd_right;
+    b.sd_centerY = l.sd_centerY;
+    b.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [self.view addSubview:b];
+    
+    UILabel *ll = [UILabel sd_labelWithFrame:CGRectZero title:@"请留意" font:20 color:[UIColor blackColor] alignment:(NSTextAlignmentLeft)];
+    [ll sizeToFit];
+    ll.sd_left = b.sd_right;
+    ll.sd_centerY = b.sd_centerY;
+    [self.view addSubview:ll];
     
 }
 - (IBAction)click {

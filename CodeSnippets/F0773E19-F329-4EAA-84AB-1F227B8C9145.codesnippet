@@ -9,7 +9,7 @@
 		<string>ClassInterfaceMethods</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>@property (assign, nonatomic, getter = is&lt;#name#&gt;) BOOL &lt;#name#&gt;;</string>
+	<string>@property (assign, nonatomic, getter=is&lt;#name#&gt;) BOOL &lt;#name#&gt;;</string>
 	<key>IDECodeSnippetIdentifier</key>
 	<string>F0773E19-F329-4EAA-84AB-1F227B8C9145</string>
 	<key>IDECodeSnippetLanguage</key>

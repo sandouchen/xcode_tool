@@ -9,14 +9,14 @@
 #import "UILabel+SDExtend.h"
 
 @implementation UILabel (SDExtend)
-/** 创建label */
+/** 创建label font = 0(默认字体) */
 + (UILabel *)sd_labelWithFrame:(CGRect)frame title:(NSString *)title font:(CGFloat)font color:(UIColor *)color alignment:(NSTextAlignment)alignment {
     UILabel *label = [[UILabel alloc] initWithFrame:frame];
-    label.font = [UIFont systemFontOfSize:font];
-    label.textColor = color;
     label.text = title;
     label.textAlignment = alignment;
     label.numberOfLines = 0;
+    label.textColor = color;
+    if (font > 0) label.font = [UIFont systemFontOfSize:font];
     return label;
 }
 

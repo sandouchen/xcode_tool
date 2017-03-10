@@ -141,7 +141,6 @@
 				C9696B691E5ED01C001A141D /* Classes */,
 				C9696B591E5ED01C001A141D /* Category */,
 				C9696B6E1E5ED01C001A141D /* Tools */,
-				C9696B2F1E5EBC15001A141D /* Main.storyboard */,
 				C9696B321E5EBC15001A141D /* Assets.xcassets */,
 				C9696B261E5EBC15001A141D /* Supporting Files */,
 			);
@@ -321,6 +320,7 @@
 		C9696B691E5ED01C001A141D /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C9696B2F1E5EBC15001A141D /* Main.storyboard */,
 				C9696B6A1E5ED01C001A141D /* AppDelegate.h */,
 				C9696B6B1E5ED01C001A141D /* AppDelegate.m */,
 				C9696B6C1E5ED01C001A141D /* ViewController.h */,
@@ -546,6 +546,7 @@
 				C9696B301E5EBC15001A141D /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		C9696B341E5EBC15001A141D /* LaunchScreen.storyboard */ = {

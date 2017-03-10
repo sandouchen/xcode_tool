@@ -9,7 +9,7 @@
 		<string>CodeExpression</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>[UIImage imageNamed:@"&lt;#image name#&gt;"];</string>
+	<string>[UIImage imageNamed:@"&lt;#image name#&gt;"]</string>
 	<key>IDECodeSnippetIdentifier</key>
 	<string>038466DB-5B72-47DF-A2CD-0A7FFAAEAD99</string>
 	<key>IDECodeSnippetLanguage</key>

@@ -10,8 +10,70 @@
 
 @implementation UIButton (SDExtend)
 /**
- *  利用UIButton的titleEdgeInsets和imageEdgeInsets来实现文字和图片的自由排列
- *  注意：这个方法需要在设置图片和文字之后才可以调用，且button的大小要大于 图片大小+文字大小+spacing
+ 快速生成一个含有Title & TitleColor & font & BackgroundColor的按钮
+ 
+ @param font 字体大小, front = 0(默认字体)
+ */
++ (UIButton *)sd_buttonWithTitle:(NSString *)title titleColor:(UIColor *)titleColor font:(CGFloat)font BackgroundColor:(UIColor *)bgColor frame:(CGRect)frame sizeToFit:(BOOL)fit target:(id)target action:(SEL)action {
+    UIButton *btn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    
+    [btn setFrame:frame];
+    [btn setTitle:title forState:(UIControlStateNormal)];
+    [btn setTitleColor:titleColor forState:(UIControlStateNormal)];
+    [btn setBackgroundColor:bgColor];
+    
+    if (font > 0) btn.titleLabel.font = [UIFont systemFontOfSize:font];
+    
+    if (fit) [btn sizeToFit];
+    
+    [btn addTarget:target action:action forControlEvents:(UIControlEventTouchUpInside)];
+    
+    return btn;
+}
+
+/**
+ 快速生成一个含有BackgroundImage的按钮
+ */
++ (UIButton *)sd_buttonWithBgImage:(NSString *)image highlImage:(NSString *)highlImage frame:(CGRect)frame sizeToFit:(BOOL)fit target:(id)target action:(SEL)action {
+    UIButton *btn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    
+    [btn setFrame:frame];
+    [btn setBackgroundImage:[UIImage imageNamed:image] forState:(UIControlStateNormal)];
+    [btn setBackgroundImage:[UIImage imageNamed:highlImage] forState:(UIControlStateHighlighted)];
+    
+    if (fit) [btn sizeToFit];
+    
+    [btn addTarget:target action:action forControlEvents:(UIControlEventTouchUpInside)];
+    
+    return btn;
+}
+
+/**
+ 快速生成一个含有Image & Title & Font & TitleColor的按钮
+ 
+ @param font 字体大小, front = 0(默认字体)
+ */
++ (UIButton *)sd_buttonWithImage:(NSString *)image highlImage:(NSString *)highlImage title:(NSString *)title titleColor:(UIColor *)titleColor font:(CGFloat)font frame:(CGRect)frame sizeToFit:(BOOL)fit target:(id)target action:(SEL)action {
+    UIButton *btn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    
+    [btn setFrame:frame];
+    [btn setTitle:title forState:(UIControlStateNormal)];
+    [btn setTitleColor:titleColor forState:(UIControlStateNormal)];
+    [btn setImage:[UIImage imageNamed:image] forState:(UIControlStateNormal)];
+    [btn setImage:[UIImage imageNamed:highlImage] forState:(UIControlStateHighlighted)];
+    
+    if (font > 0) btn.titleLabel.font = [UIFont systemFontOfSize:font];
+    
+    if (fit) [btn sizeToFit];
+    
+    [btn addTarget:target action:action forControlEvents:(UIControlEventTouchUpInside)];
+    
+    return btn;
+}
+
+/**
+ *UIButton实现文字和图片的自由排列
+ *注意：代码实现要在本方法后面加 [btn sizeToFit];
  *
  *  @param spacing 图片和文字的间隔
  */
@@ -70,4 +132,5 @@
             break;
     }
 }
+
 @end
