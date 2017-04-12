@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>SDDownloadPath</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>// 拼接缓存文件保存路径
+    NSString *downloadDir = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"Downloads"];
+    NSLog(@"downloadDir = %@",downloadDir);
+    
+    // 打开文件管理器
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    // 创建Download目录
+    [fileManager createDirectoryAtPath:downloadDir withIntermediateDirectories:YES attributes:nil error:nil];
+    
+    // 获取文件名
+    NSString *fileName = downloadTask.response.suggestedFilename;
+    NSLog(@"fileName = %@",fileName);
+    
+    // 拼接文件路径
+    NSString *filePath = [downloadDir stringByAppendingPathComponent:fileName];
+    NSLog(@"filePath = %@",filePath);
+    
+    // 剪切location的临时文件到真是路径
+    [fileManager moveItemAtPath:location.path toPath:filePath error:nil];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>2DDD2104-4E18-4B13-868A-E62685826CEF</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>SDDownloadPath</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>下载文件保存路径</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

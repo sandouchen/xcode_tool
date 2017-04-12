@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>SDFilePath</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>// 文件将来存放的真是路径
+    NSString *file = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:downloadTask.response.suggestedFilename];
+    
+    // 剪切location的临时文件到真是路径
+    NSFileManager *manager = [NSFileManager defaultManager];
+    [manager moveItemAtURL:location toURL:[NSURL fileURLWithPath:file] error:nil];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>CC8523A4-6AD8-4D7D-BFF4-09B25EFC1E5D</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>SDFilePath</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>文件将来存放的真是路径</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

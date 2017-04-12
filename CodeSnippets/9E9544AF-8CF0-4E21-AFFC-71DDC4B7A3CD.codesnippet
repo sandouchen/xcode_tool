@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>SDPath</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>// 获取总目录路径的函数（其他目录拼接常用stringByAppendingPathComponent:）
+    NSHomeDirectory();
+    // 获取Documents目录路径的方法
+    NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    // 获取Caches目录路径的方法
+    NSString *cachesDir = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+    // 获取tmp目录路径的方法：
+    NSString *tmpDir = NSTemporaryDirectory();</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>9E9544AF-8CF0-4E21-AFFC-71DDC4B7A3CD</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>SDPath</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>获取沙盒各个路径</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

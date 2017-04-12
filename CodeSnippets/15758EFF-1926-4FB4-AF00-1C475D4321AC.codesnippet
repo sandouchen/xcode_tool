@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>SDPath</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>// 获取资源文件路径路径(图片资源)
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"apple" ofType:@"png"];
+    UIImage *appleImage = [[UIImage alloc] initWithContentsOfFile:imagePath];
+    
+    // 获取资源文件路径路径(json文件)
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"country" ofType:@"json"];
+    NSString *str = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    NSArray *array = [NSJSONSerialization dataWithJSONObject:str options:kNilOptions error:nil];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>15758EFF-1926-4FB4-AF00-1C475D4321AC</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>SDPath</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>获取资源文件路径路径</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>
