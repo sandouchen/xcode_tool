@@ -49,6 +49,8 @@
 // 定义UIImage对象
 #define IMAGENAME(imageName) [UIImage imageNamed:@#imageName]
 
+// 转换字符串
+#define SDStringFormat(format,...) [NSString stringWithFormat:format,##__VA_ARGS__]
 
 // 自定义颜色
 #define RGBCOLOR(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
@@ -117,9 +119,9 @@
  */
 
 #ifdef DEBUG
-#define NSLog(fmt, ...) NSLog((@"\n[函数名: %s]\n" "[行序号: %d]\n" fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#define NSLog(format, ...) printf("[%s] %s [第%d行] %s\n", __TIME__, __FUNCTION__, __LINE__, [[NSString stringWithFormat:format, ## __VA_ARGS__] UTF8String]);
 #else
-#define NSLog(...);
+#define NSLog(format, ...)
 #endif
 
 // 打印rect,size,point

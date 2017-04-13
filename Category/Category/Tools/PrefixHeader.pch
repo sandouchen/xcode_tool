@@ -12,6 +12,8 @@
 #ifdef __OBJC__
 // Basic frame
 #import <UIKit/UIKit.h>
+#import "SDHTTPRequest.h"
+#import "SDNetworkHelper.h"
 
 // Category
 #import "CALayer+SDExtend.h"

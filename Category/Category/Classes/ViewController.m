@@ -20,6 +20,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    
+}
+
+- (void)createUI {
     self.imageView.image = [[UIImage imageNamed:@"RS3"] sd_imageWithRoundedCornersAndSize:_imageView.sd_size andCornerRadius:_imageView.sd_width / 2];
     
     [_btn sd_setImagePosition:(SDImagePositionTop) spacing:5];
@@ -70,8 +75,8 @@
     ll.sd_left = b.sd_right;
     ll.sd_centerY = b.sd_centerY;
     [self.view addSubview:ll];
-    
 }
+
 - (IBAction)click {
     TestView *testView = [TestView sd_viewFromXib];
     [self.view addSubview:testView];
