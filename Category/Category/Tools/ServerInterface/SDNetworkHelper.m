@@ -88,21 +88,24 @@ static AFHTTPSessionManager *_sessionManager;
     dispatch_once(&onceToken, ^{
         [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
             switch (status) {
-                case AFNetworkReachabilityStatusUnknown:
+                case AFNetworkReachabilityStatusUnknown: // 未知网络
                     networkStatus ? networkStatus(SDNetworkStatusUnknown) : nil;
-                    NSLog(@"未知网络");
+                    
                     break;
-                case AFNetworkReachabilityStatusNotReachable:
+                    
+                case AFNetworkReachabilityStatusNotReachable: // 无网络
                     networkStatus ? networkStatus(SDNetworkStatusNotReachable) : nil;
-                    NSLog(@"无网络");
+                    
                     break;
-                case AFNetworkReachabilityStatusReachableViaWWAN:
+                    
+                case AFNetworkReachabilityStatusReachableViaWWAN: // 蜂窝网络
                     networkStatus ? networkStatus(SDNetworkStatusReachableViaWWAN) : nil;
-                    NSLog(@"蜂窝网络");
+                    
                     break;
-                case AFNetworkReachabilityStatusReachableViaWiFi:
+                    
+                case AFNetworkReachabilityStatusReachableViaWiFi: // WIFI
                     networkStatus ? networkStatus(SDNetworkStatusReachableViaWiFi) : nil;
-                    NSLog(@"WIFI");
+                    
                     break;
             }
         }];
@@ -323,7 +326,7 @@ static AFHTTPSessionManager *_sessionManager;
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             formatter.dateFormat = @"yyyyMMddHHmmss";
             NSString *str = [formatter stringFromDate:[NSDate date]];
-            NSString *imageFileName = [NSString stringWithFormat:@"%@%ld.%@", str, i, imageType ?: @"jpg"];
+            NSString *imageFileName = [NSString stringWithFormat:@"%@%zd.%@", str, i, imageType ?: @"jpg"];
             
             [formData appendPartWithFileData:imageData
                                         name:name
@@ -415,28 +418,53 @@ static AFHTTPSessionManager *_sessionManager;
 
 #pragma mark - NSDictionary,NSArray的分类,控制台打印json数据中的中文
 #ifdef DEBUG
-@implementation NSArray (SDArray)
+@implementation NSDictionary (Log)
 - (NSString *)descriptionWithLocale:(id)locale {
-    NSMutableString *strM = [NSMutableString stringWithString:@"(\n"];
-    [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        [strM appendFormat:@"\t%@,\n", obj];
-    }];
-    [strM appendString:@")"];
+    NSMutableString *string = [NSMutableString string];
     
-    return strM;
+    // 开头有个{
+    [string appendString:@"{\n"];
+    
+    // 遍历所有的键值对
+    [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        [string appendFormat:@"\t%@", key];
+        [string appendString:@" : "];
+        [string appendFormat:@"%@,\n", obj];
+    }];
+    
+    // 结尾有个}
+    [string appendString:@"}"];
+    
+    // 查找最后一个逗号
+    NSRange range = [string rangeOfString:@"," options:NSBackwardsSearch];
+    if (range.location != NSNotFound)
+        [string deleteCharactersInRange:range];
+    
+    return string;
 }
 @end
 
-@implementation NSDictionary (SDDictionary)
+@implementation NSArray (Log)
 - (NSString *)descriptionWithLocale:(id)locale {
-    NSMutableString *strM = [NSMutableString stringWithString:@"{\n"];
-    [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        [strM appendFormat:@"\t%@ = %@;\n", key, obj];
+    NSMutableString *string = [NSMutableString string];
+    
+    // 开头有个[
+    [string appendString:@"[\n"];
+    
+    // 遍历所有的元素
+    [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [string appendFormat:@"\t%@,\n", obj];
     }];
     
-    [strM appendString:@"}\n"];
+    // 结尾有个]
+    [string appendString:@"]"];
     
-    return strM;
+    // 查找最后一个逗号
+    NSRange range = [string rangeOfString:@"," options:NSBackwardsSearch];
+    if (range.location != NSNotFound)
+        [string deleteCharactersInRange:range];
+    
+    return string;
 }
 @end
 #endif

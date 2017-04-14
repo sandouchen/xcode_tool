@@ -16,8 +16,34 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    [self monitorNetworkStatus];
     return YES;
+}
+
+#pragma mark - 实时监测网络状态
+- (void)monitorNetworkStatus {
+    [SDNetworkHelper networkStatusWithBlock:^(SDNetworkStatusType status) {
+        switch (status) {
+            case SDNetworkStatusUnknown:
+                ALERTVIEW(@"未知名网络,请注意!!!");
+                break;
+                
+            case SDNetworkStatusNotReachable:
+                ALERTVIEW(@"断网了,请注意!!!");
+                break;
+                
+            case SDNetworkStatusReachableViaWiFi:
+                NSLog(@"已连接WIFI,可以使劲用!!!");
+                break;
+                
+            case SDNetworkStatusReachableViaWWAN:
+                ALERTVIEW(@"手机4G网络,省着点用!!!");
+                break;
+                
+            default:
+                break;
+        }
+    }];
 }
 
 

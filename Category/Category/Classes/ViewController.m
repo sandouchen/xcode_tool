@@ -8,21 +8,98 @@
 
 #import "ViewController.h"
 #import "TestView.h"
+#import "SDRecommendLeftModel.h"
+#import "SDRecommendLeftCell.h"
 
-@interface ViewController ()
+@interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *btn;
+@property (nonatomic, strong) NSArray *leftArray;
+@property (nonatomic, strong) NSArray *rightArray;
+@property (weak, nonatomic) IBOutlet UITableView *leftTableView;
 
 @end
 
 @implementation ViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.leftTableView.tableFooterView = [[UIView alloc] init];
     
+    [MJProperty mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
+        return @{@"ID" : @"id"};
+    }];
     
+    [SVProgressHUD setDefaultMaskType:(SVProgressHUDMaskTypeBlack)];
+    [SVProgressHUD show];
+    
+    [SDHTTPRequest recommendListWithSuccess:^(id responseObject) {
+        [SVProgressHUD dismiss];
+//        NSLog(@"%@", responseObject);
+        
+        self.leftArray = [SDRecommendLeftModel mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
+        
+        [self.leftTableView reloadData];
+        [self.leftTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:(UITableViewScrollPositionTop)];
+        
+    } andFailure:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:@"加载失败"];
+        NSLog(@"%@", error);
+    }];
+}
+
+#pragma mark - UITableView Datasource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.leftArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *cellIdentifier = @"leftCell";
+    
+    SDRecommendLeftCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    cell.recommendLeftModel = self.leftArray[indexPath.row];
+    
+    return cell;
+}
+
+#pragma mark - UITableView Delegate methods
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 - (void)createUI {
     self.imageView.image = [[UIImage imageNamed:@"RS3"] sd_imageWithRoundedCornersAndSize:_imageView.sd_size andCornerRadius:_imageView.sd_width / 2];

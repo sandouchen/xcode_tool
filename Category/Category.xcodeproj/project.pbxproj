@@ -11,6 +11,10 @@
 		C9347B8A1E9E131000F9BC9E /* SDNetworkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C9347B891E9E131000F9BC9E /* SDNetworkHelper.m */; };
 		C9347B8D1E9E132E00F9BC9E /* SDNetworkCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C9347B8C1E9E132E00F9BC9E /* SDNetworkCache.m */; };
 		C9347B901E9E135200F9BC9E /* SDHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C9347B8F1E9E135200F9BC9E /* SDHTTPRequest.m */; };
+		C9347B931E9F632B00F9BC9E /* NSObject+SDProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = C9347B921E9F632B00F9BC9E /* NSObject+SDProperty.m */; };
+		C9347B961E9F7D0800F9BC9E /* SDNewListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9347B951E9F7D0800F9BC9E /* SDNewListModel.m */; };
+		C9347B991EA0C13800F9BC9E /* SDRecommendLeftModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9347B981EA0C13800F9BC9E /* SDRecommendLeftModel.m */; };
+		C9347B9F1EA0D29400F9BC9E /* SDRecommendLeftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9347B9E1EA0D29400F9BC9E /* SDRecommendLeftCell.m */; };
 		C9696B281E5EBC15001A141D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9696B271E5EBC15001A141D /* main.m */; };
 		C9696B311E5EBC15001A141D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9696B2F1E5EBC15001A141D /* Main.storyboard */; };
 		C9696B331E5EBC15001A141D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9696B321E5EBC15001A141D /* Assets.xcassets */; };
@@ -60,6 +64,14 @@
 		C9347B8C1E9E132E00F9BC9E /* SDNetworkCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDNetworkCache.m; sourceTree = "<group>"; };
 		C9347B8E1E9E135200F9BC9E /* SDHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDHTTPRequest.h; sourceTree = "<group>"; };
 		C9347B8F1E9E135200F9BC9E /* SDHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDHTTPRequest.m; sourceTree = "<group>"; };
+		C9347B911E9F632B00F9BC9E /* NSObject+SDProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SDProperty.h"; sourceTree = "<group>"; };
+		C9347B921E9F632B00F9BC9E /* NSObject+SDProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SDProperty.m"; sourceTree = "<group>"; };
+		C9347B941E9F7D0800F9BC9E /* SDNewListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDNewListModel.h; sourceTree = "<group>"; };
+		C9347B951E9F7D0800F9BC9E /* SDNewListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDNewListModel.m; sourceTree = "<group>"; };
+		C9347B971EA0C13800F9BC9E /* SDRecommendLeftModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDRecommendLeftModel.h; sourceTree = "<group>"; };
+		C9347B981EA0C13800F9BC9E /* SDRecommendLeftModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDRecommendLeftModel.m; sourceTree = "<group>"; };
+		C9347B9D1EA0D29400F9BC9E /* SDRecommendLeftCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDRecommendLeftCell.h; sourceTree = "<group>"; };
+		C9347B9E1EA0D29400F9BC9E /* SDRecommendLeftCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDRecommendLeftCell.m; sourceTree = "<group>"; };
 		C9696B231E5EBC15001A141D /* Category.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Category.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9696B271E5EBC15001A141D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C9696B301E5EBC15001A141D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -270,6 +282,8 @@
 		C9696B5D1E5ED01C001A141D /* NSObject */ = {
 			isa = PBXGroup;
 			children = (
+				C9347B911E9F632B00F9BC9E /* NSObject+SDProperty.h */,
+				C9347B921E9F632B00F9BC9E /* NSObject+SDProperty.m */,
 			);
 			path = NSObject;
 			sourceTree = "<group>";
@@ -371,8 +385,14 @@
 				C9696B6B1E5ED01C001A141D /* AppDelegate.m */,
 				C9696B6C1E5ED01C001A141D /* ViewController.h */,
 				C9696B6D1E5ED01C001A141D /* ViewController.m */,
+				C9347B9D1EA0D29400F9BC9E /* SDRecommendLeftCell.h */,
+				C9347B9E1EA0D29400F9BC9E /* SDRecommendLeftCell.m */,
+				C9347B971EA0C13800F9BC9E /* SDRecommendLeftModel.h */,
+				C9347B981EA0C13800F9BC9E /* SDRecommendLeftModel.m */,
 				C9BF79981E6E85A5006DF566 /* TableViewController.h */,
 				C9BF79991E6E85A5006DF566 /* TableViewController.m */,
+				C9347B941E9F7D0800F9BC9E /* SDNewListModel.h */,
+				C9347B951E9F7D0800F9BC9E /* SDNewListModel.m */,
 				C9A7DD801E603FEB006BAF4C /* TestView.h */,
 				C9A7DD811E603FEB006BAF4C /* TestView.m */,
 				C9A7DD831E603FF9006BAF4C /* TestView.xib */,
@@ -595,16 +615,20 @@
 				C98D06E41E68207B00F6F3B3 /* SDCommonConst.m in Sources */,
 				C9696B701E5ED01C001A141D /* ViewController.m in Sources */,
 				C9696B761E5ED7BC001A141D /* UIImage+SDExtend.m in Sources */,
+				C9347B9F1EA0D29400F9BC9E /* SDRecommendLeftCell.m in Sources */,
 				C9696B6F1E5ED01C001A141D /* AppDelegate.m in Sources */,
 				C9347B901E9E135200F9BC9E /* SDHTTPRequest.m in Sources */,
+				C9347B961E9F7D0800F9BC9E /* SDNewListModel.m in Sources */,
 				C9725C1A1E6CFA6A00BFD21E /* UILabel+SDExtend.m in Sources */,
 				C9725C201E6D4F6800BFD21E /* CALayer+SDExtend.m in Sources */,
+				C9347B991EA0C13800F9BC9E /* SDRecommendLeftModel.m in Sources */,
 				C9347B8A1E9E131000F9BC9E /* SDNetworkHelper.m in Sources */,
 				C9BF799A1E6E85A5006DF566 /* TableViewController.m in Sources */,
 				C98D06E01E6818B600F6F3B3 /* UIColor+SDExtend.m in Sources */,
 				C9A7DD7F1E6037B4006BAF4C /* UIView+SDExtend.m in Sources */,
 				C9725C231E6D6F4700BFD21E /* UIBarButtonItem+SDExtend.m in Sources */,
 				C9696B731E5ED63E001A141D /* UIImage+FixOrientation.m in Sources */,
+				C9347B931E9F632B00F9BC9E /* NSObject+SDProperty.m in Sources */,
 				C9BF799D1E6EA0F0006DF566 /* UIButton+SDExtend.m in Sources */,
 				C9696B281E5EBC15001A141D /* main.m in Sources */,
 			);

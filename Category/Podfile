@@ -5,4 +5,8 @@ use_frameworks!
 target 'Category' do
 pod 'AFNetworking'
 pod 'YYCache'
+pod 'Masonry'
+pod 'SDWebImage'
+pod 'MJExtension'
+pod 'SVProgressHUD'
 end
