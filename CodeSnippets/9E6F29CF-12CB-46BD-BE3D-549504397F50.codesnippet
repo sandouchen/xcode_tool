@@ -10,7 +10,7 @@
 	</array>
 	<key>IDECodeSnippetContents</key>
 	<string>self.tableView.estimatedRowHeight = &lt;#number#&gt;;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;</string>
+self.tableView.rowHeight = UITableViewAutomaticDimension;</string>
 	<key>IDECodeSnippetIdentifier</key>
 	<string>9E6F29CF-12CB-46BD-BE3D-549504397F50</string>
 	<key>IDECodeSnippetLanguage</key>

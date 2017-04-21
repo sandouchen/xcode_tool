@@ -8,6 +8,7 @@
 
 #import "TableViewController.h"
 #import "SDNewListModel.h"
+#import "SDNewListCell.h"
 
 @interface TableViewController ()
 @property (nonatomic, strong) NSArray *listArray;
@@ -24,14 +25,13 @@
     [SVProgressHUD setDefaultStyle:(SVProgressHUDStyleDark)];
     [SVProgressHUD setDefaultMaskType:(SVProgressHUDMaskTypeBlack)];
     [SVProgressHUD show];
-    [SDHTTPRequest newListWithList:@"list" withPer:50 withType:1 success:^(id responseObject) {
+    
+    [SDHTTPRequest recommendTagWithSuccess:^(id responseObject) {
         [SVProgressHUD dismiss];
-        NSLog(@"%@", responseObject);
-        
-        self.listArray = [SDNewListModel mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
+        self.listArray = [SDNewListModel mj_objectArrayWithKeyValuesArray:responseObject];
         
         [self.tableView reloadData];
-    } failure:^(NSError *error) {
+    } andFailure:^(NSError *error) {
         NSLog(@"%@", error);
         [SVProgressHUD showErrorWithStatus:@"加载失败"];
     }];
@@ -43,15 +43,11 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *ID = @"cell";
+    static NSString *ID = @"recommendTagCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    SDNewListCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     
-    SDNewListModel *listModel = self.listArray[indexPath.row];
-    cell.textLabel.text = listModel.name;
-    cell.detailTextLabel.text = listModel.text;
-    NSString *imageURL = listModel.profile_image;
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imageURL] placeholderImage:[UIImage imageNamed:@"image"]];
+    cell.listModel = self.listArray[indexPath.row];
     
     return cell;
 }

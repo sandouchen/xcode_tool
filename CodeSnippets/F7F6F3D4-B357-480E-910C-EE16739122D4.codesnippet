@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>SDTableViewCellLine</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>-(void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    if ([self.rightTableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.rightTableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([self.rightTableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [self.rightTableView setLayoutMargins:UIEdgeInsetsZero];
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>F7F6F3D4-B357-480E-910C-EE16739122D4</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>SDTableViewCellLine</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>TableViewCell分割线顶头</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>

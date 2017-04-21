@@ -18,12 +18,29 @@ static NSString *const serverPrefix;
 #endif
 
 @implementation SDHTTPRequest
-+ (void)newListWithList:(NSString *)list withPer:(NSInteger)per withType:(NSInteger)type success:(SDHttpRequestSuccess)success failure:(SDHttpRequestFailed)failure {
-    [SDNetworkHelper GET:serverPrefix parameters:@{@"a":list,  @"c":@"data", @"per":[NSString stringWithFormat:@"%zd", per], @"type":[NSString stringWithFormat:@"%zd", type]} success:success failure:failure];
++ (void)newListWithList:(NSString *)list withPage:(NSInteger)page withType:(NSInteger)type withMaxtime:(NSString *)maxtime success:(SDHttpRequestSuccess)success failure:(SDHttpRequestFailed)failure {
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"a"] = list;
+    parameters[@"c"] = @"data";
+    parameters[@"type"] = @(type);
+    parameters[@"page"] = @(page);
+    
+    if (maxtime) parameters[@"maxtime"] = maxtime;
+    
+    [SDNetworkHelper GET:serverPrefix parameters:parameters success:success failure:failure];
+    // @{@"a" : list,  @"c" : @"data", @"per" :@(per), @"type" : @(type), @"maxtime" : maxtime ? maxtime : nil}
 }
 
 + (void)recommendListWithSuccess:(SDHttpRequestSuccess)success andFailure:(SDHttpRequestFailed)failure {
     [SDNetworkHelper GET:serverPrefix parameters:@{@"a" : @"category", @"c" : @"subscribe"} success:success failure:failure];
+}
+
++ (void)recommendListWithCategory_id:(NSInteger)category_id withPage:(NSInteger)page Success:(SDHttpRequestSuccess)success andFailure:(SDHttpRequestFailed)failure {
+    [SDNetworkHelper GET:serverPrefix parameters:@{@"a" : @"list", @"c" : @"subscribe", @"category_id" : @(category_id), @"page" : @(page)} success:success failure:failure];
+}
+
++ (void)recommendTagWithSuccess:(SDHttpRequestSuccess)success andFailure:(SDHttpRequestFailed)failure {
+    [SDNetworkHelper GET:serverPrefix parameters:@{@"a" : @"tag_recommend", @"c" : @"topic", @"action" : @"sub"} success:success failure:failure];
 }
 
 /**

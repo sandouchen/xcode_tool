@@ -9,7 +9,7 @@
 		<string>CodeExpression</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>[UIColor &lt;#color#&gt;] colorWithAlphaComponent:&lt;#(CGFloat)#&gt;];</string>
+	<string>[[UIColor &lt;#color#&gt;] colorWithAlphaComponent:&lt;#(CGFloat)#&gt;];</string>
 	<key>IDECodeSnippetIdentifier</key>
 	<string>0346A510-0C14-407B-BD52-DDDDC35E67D3</string>
 	<key>IDECodeSnippetLanguage</key>

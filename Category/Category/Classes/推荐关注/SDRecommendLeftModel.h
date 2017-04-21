@@ -14,4 +14,12 @@
 @property (assign, nonatomic) NSInteger ID;
 
 @property (copy, nonatomic) NSString *name;
+
+/** 这个类别对应的用户数据 */
+@property (nonatomic, strong) NSMutableArray *users;
+
+@property (nonatomic, assign) NSInteger currentPage;
+
+@property (nonatomic, assign) NSInteger total;
+
 @end
