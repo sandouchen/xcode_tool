@@ -7,21 +7,42 @@
 //
 
 #import <UIKit/UIKit.h>
-
-UIKIT_EXTERN const CGFloat SDNavigationBarH;
-UIKIT_EXTERN const CGFloat SDTabBarH;
-
-UIKIT_EXTERN const CGFloat SDTitlesViewH;
-UIKIT_EXTERN const int XMGAge;
-
 /** 改变Placerholder颜色 */
 UIKIT_EXTERN NSString *const SDPlacerholderColor;
-UIKIT_EXTERN NSString *const XMGName;
 
-typedef NS_ENUM(NSInteger, RWTLeftMenuTopItemType) {
-    RWTLeftMenuTopItemMain,
-    RWTLeftMenuTopItemShows,
-    RWTLeftMenuTopItemSchedule
+/** 改变Placerholder字体 */
+UIKIT_EXTERN NSString *const SDPlacerholderFont;
+
+/** 导航栏高度 */
+UIKIT_EXTERN const CGFloat SDNavigationBarH;
+
+/** TabBar高度 */
+UIKIT_EXTERN const CGFloat SDTabBarH;
+
+/** 精华页面标签栏高度 */
+UIKIT_EXTERN const CGFloat SDTitlesViewH;
+
+/** 图片最大高度 */
+UIKIT_EXTERN const CGFloat SDPictureMaxH;
+
+/** 图片缩小高度 */
+UIKIT_EXTERN const CGFloat SDPictureSmallH;
+
+/**
+ 精华页面返回自定义类型的帖子
+
+ - SDAllView: 1为全部
+ - SDVideoView: 41为视频
+ - SDVoiceView: 31为音频
+ - SDPictureView: 10为图片
+ - SDWordView: 29为段子
+ */
+typedef NS_ENUM(NSInteger, SDNewlistType) {
+    SDAllView = 1,
+    SDVideoView = 41,
+    SDVoiceView = 31,
+    SDPictureView = 10,
+    SDWordView = 29
 };
 
 typedef NS_ENUM(NSInteger, RWTGlobalConstants) {

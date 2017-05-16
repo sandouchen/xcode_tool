@@ -8,6 +8,10 @@
 
 #import "SDTopicCell.h"
 #import "SDTopic.h"
+#import "SDShowPictureViewController.h"
+#import "SDComment.h"
+#import "SDUser.h"
+#import "SDCenterPictureView.h"
 
 @interface SDTopicCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
@@ -19,10 +23,34 @@
 @property (weak, nonatomic) IBOutlet UIButton *caiBtn;
 @property (weak, nonatomic) IBOutlet UIButton *zhuanBtn;
 @property (weak, nonatomic) IBOutlet UIButton *moreBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *sina_vImageView;
+@property (weak, nonatomic) IBOutlet UIView *topCmtView;
+@property (weak, nonatomic) IBOutlet UILabel *topCmtLabel;
+@property (weak, nonatomic) IBOutlet UIView *bottomView;
+
+@property (nonatomic, strong) SDCenterPictureView *centerPictureView;
+
 
 @end
 
 @implementation SDTopicCell
++ (instancetype)cell {
+    return [self sd_viewFromXib];
+}
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.autoresizingMask = UIViewAutoresizingNone;
+}
+
+- (SDCenterPictureView *)centerPictureView {
+    if (!_centerPictureView) {
+        _centerPictureView = [SDCenterPictureView pictureView];
+        [self.contentView addSubview:_centerPictureView];
+    }
+    return _centerPictureView;
+}
+
 - (void)setTopics:(SDTopic *)topics {
     _topics = topics;
     
@@ -30,45 +58,70 @@
     
     self.nameLabel.text = topics.name;
     
-    NSDate *now = [NSDate date];
-    
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    
-    NSDateComponents *cmps = [calendar components:NSCalendarUnitDay | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond fromDate:now];
-    
-    NSLog(@"年:%zd 月:%zd 日:%zd 时:%zd 分:%zd 秒:%zd", cmps.year, cmps.month, cmps.day, cmps.hour, cmps.minute, cmps.second);
-    
-    
-    
     self.timeLabel.text = topics.create_time;
     
     self.textLb.text = topics.text;
     
-    [self setupButtonTitle:self.dingBtn count:[topics.ding integerValue] placeholder:@"顶"];
-    [self setupButtonTitle:self.caiBtn count:[topics.cai integerValue] placeholder:@"踩"];
-    [self setupButtonTitle:self.zhuanBtn count:[topics.repost integerValue] placeholder:@"分享"];
-    [self setupButtonTitle:self.moreBtn count:[topics.comment integerValue] placeholder:@"评论"];
-}
-
-- (void)setupButtonTitle:(UIButton *)button count:(NSInteger)count placeholder:(NSString *)placeholder {
-    if (count > 10000) {
-        placeholder = [NSString stringWithFormat:@"%.1f万", count / 10000.0];
-    } else if (count > 0) {
-        placeholder = [NSString stringWithFormat:@"%zd", count];
+    [self.dingBtn setTitle:topics.ding forState:(UIControlStateNormal)];
+    [self.caiBtn setTitle:topics.cai forState:(UIControlStateNormal)];
+    [self.zhuanBtn setTitle:topics.repost forState:(UIControlStateNormal)];
+    [self.moreBtn setTitle:topics.comment forState:(UIControlStateNormal)];
+    
+    SDComment *cmt = [topics.top_cmt firstObject];
+    
+    if (cmt) {
+        self.topCmtView.hidden = NO;
+        
+        self.topCmtLabel.text = [NSString stringWithFormat:@"%@ : %@", cmt.user.username, cmt.content];
+    } else {
+        self.topCmtView.hidden = YES;
     }
     
-    [button setTitle:placeholder forState:(UIControlStateNormal)];
-}
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    if (topics.type == SDWordView) {
+        if (cmt) {
+            [self.textLb mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.bottom.equalTo(self.topCmtView.mas_top).offset(-8);
+            }];
+        } else {
+            [self.textLb mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.bottom.equalTo(self.bottomView.mas_top).offset(-8);
+            }];
+        }
+    } else if (topics.type == SDPictureView) {
+        self.centerPictureView.topic = topics;
+        
+        if (cmt) {
+            [self.textLb mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.bottom.equalTo(self.centerPictureView.mas_top).offset(-8);
+            }];
+            
+            [self.centerPictureView mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.bottom.equalTo(self.topCmtView.mas_top).offset(-8);
+                make.left.right.equalTo(self.textLb);
+                make.height.equalTo(@(topics.pictureSize.height));
+            }];
+            
+        } else {
+            [self.textLb mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.bottom.equalTo(self.centerPictureView.mas_top).offset(-8);
+            }];
+            
+            [self.centerPictureView mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.bottom.equalTo(self.bottomView.mas_top).offset(-8);
+                make.left.right.equalTo(self.textLb);
+                make.height.equalTo(@(topics.pictureSize.height));
+            }];
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 
 @end

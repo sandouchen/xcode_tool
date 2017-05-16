@@ -10,10 +10,16 @@
 
 /** 改变Placerholder颜色 */
 NSString *const SDPlacerholderColor = @"_placeholderLabel.textColor";
-NSString *const XMGName = @"jack";
+
+/** 改变Placerholder字体 */
+NSString *const SDPlacerholderFont = @"_placeholderLabel.font";
 
 const CGFloat SDNavigationBarH = 64;
+
 const CGFloat SDTabBarH = 49;
 
 const CGFloat SDTitlesViewH = 35;
-const int XMGAge = 20;
+
+const CGFloat SDPictureMaxH = 1000;
+
+const CGFloat SDPictureSmallH = 250;

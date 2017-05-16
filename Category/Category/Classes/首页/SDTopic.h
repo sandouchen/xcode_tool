@@ -9,6 +9,15 @@
 #import <Foundation/Foundation.h>
 
 @interface SDTopic : NSObject
+@property (assign, nonatomic, getter=isSina_v) BOOL sina_v;
+@property (assign, nonatomic, getter=isIs_gif) BOOL is_gif;
+
+/** 图片的下载进度 */
+@property (nonatomic, assign) CGFloat pictureProgress;
+@property (nonatomic, assign) CGSize pictureSize;
+/** 图片是否太大 */
+@property (nonatomic, assign, getter=isBigPicture) BOOL bigPicture;
+
 
 @property (assign, nonatomic) NSInteger cache_version;
 
@@ -38,7 +47,7 @@
 
 @property (copy, nonatomic) NSString *passtime;
 
-@property (copy, nonatomic) NSString *type;
+@property (assign, nonatomic) SDNewlistType type;
 
 @property (copy, nonatomic) NSString *tag;
 
@@ -83,4 +92,6 @@
 @property (copy, nonatomic) NSString *videouri;
 
 @property (copy, nonatomic) NSString *width;
+
+@property (nonatomic, copy) NSString *image1;
 @end

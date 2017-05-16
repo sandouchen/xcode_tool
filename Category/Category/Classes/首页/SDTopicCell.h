@@ -11,5 +11,6 @@
 @class SDTopic;
 
 @interface SDTopicCell : UITableViewCell
++ (instancetype)cell;
 @property (nonatomic, strong) SDTopic *topics;
 @end

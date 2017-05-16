@@ -7,11 +7,7 @@
 //
 
 #import "SDEssenceViewController.h"
-#import "SDAllViewController.h"
-#import "SDVideoViewController.h"
-#import "SDVoiceViewController.h"
-#import "SDPictureViewController.h"
-#import "SDWordViewController.h"
+#import "SDBaseViewController.h"
 
 @interface SDEssenceViewController () <UIScrollViewDelegate>
 @property (nonatomic, strong) UIView *indicatorView;
@@ -32,25 +28,30 @@
 }
 
 - (void)setupChildView {
-    SDWordViewController *word = [[SDWordViewController alloc] init];
-    word.title = @"段子";
-    [self addChildViewController:word];
-    
-    SDAllViewController *all = [[SDAllViewController alloc] init];
+    SDBaseViewController *all = [[SDBaseViewController alloc] init];
     all.title = @"全部";
+    all.newlistType = SDAllView;
     [self addChildViewController:all];
     
-    SDVideoViewController *video = [[SDVideoViewController alloc] init];
+    SDBaseViewController *video = [[SDBaseViewController alloc] init];
     video.title = @"视频";
+    video.newlistType = SDVideoView;
     [self addChildViewController:video];
     
-    SDVoiceViewController *voice = [[SDVoiceViewController alloc] init];
+    SDBaseViewController *voice = [[SDBaseViewController alloc] init];
     voice.title = @"声音";
+    voice.newlistType = SDVoiceView;
     [self addChildViewController:voice];
     
-    SDPictureViewController *picture = [[SDPictureViewController alloc] init];
+    SDBaseViewController *picture = [[SDBaseViewController alloc] init];
     picture.title = @"图片";
+    picture.newlistType = SDPictureView;
     [self addChildViewController:picture];
+    
+    SDBaseViewController *word = [[SDBaseViewController alloc] init];
+    word.title = @"段子";
+    word.newlistType = SDWordView;
+    [self addChildViewController:word];
 }
 
 - (void)setupContentView {
@@ -69,7 +70,7 @@
 
 - (void)setupTitleView {
     UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, SDNavigationBarH, self.view.sd_width, SDTitlesViewH)];
-    titleView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.6f];
+    titleView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.8f];
     [self.view addSubview:titleView];
     self.titlesView = titleView;
     
