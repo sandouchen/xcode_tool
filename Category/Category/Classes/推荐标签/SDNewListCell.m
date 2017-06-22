@@ -30,18 +30,7 @@
     
     self.numLb.text = subNumber;
     
-    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:listModel.image_list]];
-}
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    [self.headerImageView sd_setHeaderViewWithURL:listModel.image_list placeholder:@"defaultUserIcon"];
 }
 
 @end

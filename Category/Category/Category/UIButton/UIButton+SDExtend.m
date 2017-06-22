@@ -89,14 +89,17 @@
     CGFloat labelHeight = [self.titleLabel.text sizeWithFont:self.titleLabel.font].height;
 #pragma clang diagnostic pop
     
+    static const CGFloat margin_2 = 2;
+    static const CGFloat margin_3 = 3;
+    
     //image中心移动的x距离
-    CGFloat imageOffsetX = (imageWidth + labelWidth) / 2 - imageWidth / 2;
+    CGFloat imageOffsetX = (imageWidth + labelWidth) / margin_2 - imageWidth / margin_2;
     //image中心移动的y距离
-    CGFloat imageOffsetY = imageHeight / 2 + spacing / 2;
+    CGFloat imageOffsetY = imageHeight / margin_2 + spacing / margin_2;
     //label中心移动的x距离
-    CGFloat labelOffsetX = (imageWidth + labelWidth / 2) - (imageWidth + labelWidth) / 2;
+    CGFloat labelOffsetX = (imageWidth + labelWidth / margin_2) - (imageWidth + labelWidth) / margin_2;
     //label中心移动的y距离
-    CGFloat labelOffsetY = labelHeight / 2 + spacing / 2;
+    CGFloat labelOffsetY = labelHeight / margin_2 + spacing / margin_2;
     
     CGFloat tempWidth = MAX(labelWidth, imageWidth);
     CGFloat changedWidth = labelWidth + imageWidth - tempWidth;
@@ -105,27 +108,27 @@
     
     switch (postion) {
         case SDImagePositionLeft:
-            self.imageEdgeInsets = UIEdgeInsetsMake(0, -spacing/2, 0, spacing/2);
-            self.titleEdgeInsets = UIEdgeInsetsMake(0, spacing/2, 0, -spacing/2);
-            self.contentEdgeInsets = UIEdgeInsetsMake(0, spacing/2, 0, spacing/2);
+            self.imageEdgeInsets = UIEdgeInsetsMake(0, -spacing / margin_2, 0, spacing / margin_2);
+            self.titleEdgeInsets = UIEdgeInsetsMake(0, spacing / margin_2, 0, -spacing / margin_2);
+            self.contentEdgeInsets = UIEdgeInsetsMake(0, spacing / margin_2 + margin_3, 0, spacing / margin_2 + margin_3);
             break;
             
         case SDImagePositionRight:
-            self.imageEdgeInsets = UIEdgeInsetsMake(0, labelWidth + spacing/2, 0, -(labelWidth + spacing/2));
-            self.titleEdgeInsets = UIEdgeInsetsMake(0, -(imageWidth + spacing/2), 0, imageWidth + spacing/2);
-            self.contentEdgeInsets = UIEdgeInsetsMake(0, spacing/2, 0, spacing/2);
+            self.imageEdgeInsets = UIEdgeInsetsMake(0, labelWidth + spacing / margin_2, 0, -(labelWidth + spacing / margin_2));
+            self.titleEdgeInsets = UIEdgeInsetsMake(0, -(imageWidth + spacing / margin_2), 0, imageWidth + spacing / margin_2);
+            self.contentEdgeInsets = UIEdgeInsetsMake(0, spacing / margin_2 + margin_3, 0, spacing / margin_2 + margin_3);
             break;
             
         case SDImagePositionTop:
             self.imageEdgeInsets = UIEdgeInsetsMake(-imageOffsetY, imageOffsetX, imageOffsetY, -imageOffsetX);
             self.titleEdgeInsets = UIEdgeInsetsMake(labelOffsetY, -labelOffsetX, -labelOffsetY, labelOffsetX);
-            self.contentEdgeInsets = UIEdgeInsetsMake(imageOffsetY, -changedWidth/2, changedHeight-imageOffsetY, -changedWidth/2);
+            self.contentEdgeInsets = UIEdgeInsetsMake(imageOffsetY + margin_3, -changedWidth / margin_2, changedHeight-imageOffsetY + margin_3, -changedWidth / margin_2);
             break;
             
         case SDImagePositionBottom:
             self.imageEdgeInsets = UIEdgeInsetsMake(imageOffsetY, imageOffsetX, -imageOffsetY, -imageOffsetX);
             self.titleEdgeInsets = UIEdgeInsetsMake(-labelOffsetY, -labelOffsetX, labelOffsetY, labelOffsetX);
-            self.contentEdgeInsets = UIEdgeInsetsMake(changedHeight-imageOffsetY, -changedWidth/2, imageOffsetY, -changedWidth/2);
+            self.contentEdgeInsets = UIEdgeInsetsMake(changedHeight-imageOffsetY + margin_3, -changedWidth / margin_2, imageOffsetY + margin_3, -changedWidth / margin_2);
             break;
             
         default:

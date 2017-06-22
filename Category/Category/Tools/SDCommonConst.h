@@ -13,6 +13,9 @@ UIKIT_EXTERN NSString *const SDPlacerholderColor;
 /** 改变Placerholder字体 */
 UIKIT_EXTERN NSString *const SDPlacerholderFont;
 
+/** 自定义 TabBar */
+UIKIT_EXTERN NSString *const SDTabBarKeyPath;
+
 /** 导航栏高度 */
 UIKIT_EXTERN const CGFloat SDNavigationBarH;
 
@@ -28,6 +31,13 @@ UIKIT_EXTERN const CGFloat SDPictureMaxH;
 /** 图片缩小高度 */
 UIKIT_EXTERN const CGFloat SDPictureSmallH;
 
+/** 布局间距 - 5 */
+UIKIT_EXTERN const CGFloat SDLayoutMargin_5;
+/** 布局间距 - 8 */
+UIKIT_EXTERN const CGFloat SDLayoutMargin_8;
+/** 布局间距 - 10 */
+UIKIT_EXTERN const CGFloat SDLayoutMargin_10;
+
 /**
  精华页面返回自定义类型的帖子
 
@@ -38,11 +48,11 @@ UIKIT_EXTERN const CGFloat SDPictureSmallH;
  - SDWordView: 29为段子
  */
 typedef NS_ENUM(NSInteger, SDNewlistType) {
-    SDAllView = 1,
-    SDVideoView = 41,
-    SDVoiceView = 31,
+    SDAllView     = 1,
+    SDVideoView   = 41,
+    SDVoiceView   = 31,
     SDPictureView = 10,
-    SDWordView = 29
+    SDWordView    = 29
 };
 
 typedef NS_ENUM(NSInteger, RWTGlobalConstants) {
@@ -53,9 +63,9 @@ typedef NS_ENUM(NSInteger, RWTGlobalConstants) {
 };
 
 typedef NS_OPTIONS(NSUInteger, SDControlState) {
-    SDControlStateNormal       = 0,
-    SDControlStateHighlighted  = 1 << 0,
-    SDControlStateDisabled     = 1 << 1,
-    SDControlStateSelected     = 1 << 2
+    SDControlStateNormal      = 0,
+    SDControlStateHighlighted = 1 << 0,
+    SDControlStateDisabled    = 1 << 1,
+    SDControlStateSelected    = 1 << 2
 };
 

@@ -17,6 +17,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self monitorNetworkStatus];
+    [[UIButton appearance] setExclusiveTouch:YES];
+    
     return YES;
 }
 

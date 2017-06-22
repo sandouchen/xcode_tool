@@ -29,9 +29,6 @@ static NSString *const topicCell = @"topicCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [SDTopic mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
-        return @{@"ID" : @"id"};
-    }];
     
     [self setupTableView];
     [self setupRefresh];

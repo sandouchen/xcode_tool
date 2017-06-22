@@ -22,18 +22,8 @@
     
     self.screenNameLabel.text = rightModel.screen_name;
     self.fansCountLabel.text = [NSString stringWithFormat:@"%zd人关注", rightModel.fans_count];
-    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:rightModel.header] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
-}
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    
+    [self.headerImageView sd_setHeaderViewWithURL:rightModel.header placeholder:@"defaultUserIcon"];
 }
 
 @end

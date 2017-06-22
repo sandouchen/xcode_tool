@@ -123,6 +123,20 @@ float radiansForDegrees(int degrees) {
     return 0;
 }
 
+/** 判断一个控件是否真正显示在主窗口 */
+- (BOOL)isShowingOnKeyWindow {
+    // 主窗口
+    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+    
+    // 以主窗口左上角为坐标原点, 计算self的矩形框
+    CGRect newFrame = [keyWindow convertRect:self.frame fromView:self.superview];
+    CGRect winBounds = keyWindow.bounds;
+    
+    // 主窗口的bounds 和 self的矩形框 是否有重叠
+    BOOL intersects = CGRectIntersectsRect(newFrame, winBounds);
+    
+    return !self.isHidden && self.alpha > 0.01 && self.window == keyWindow && intersects;
+}
 
 /** 自动从xib创建视图 */
 + (instancetype)sd_viewFromXib {
@@ -163,7 +177,7 @@ float radiansForDegrees(int degrees) {
 }
 
 
-//***************************UIView 动画*********************************
+// *************** UIView 动画 ***************
 #pragma mark - Moves
 - (void)moveTo:(CGPoint)destination duration:(float)secs option:(UIViewAnimationOptions)option {
     [self moveTo:destination duration:secs option:option delegate:nil callback:nil];
@@ -398,6 +412,41 @@ float radiansForDegrees(int degrees) {
     [self addSubview:subview];
     [UIView animateWithDuration:0.2 animations:^{
         subview.alpha = finalAlpha;
+    }];
+}
+
+// 淡入
+- (void)fadeInWithTime:(NSTimeInterval)time{
+    self.alpha = 0;
+    [UIView animateWithDuration:time animations:^{
+        self.alpha = 1;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+// 淡出
+- (void)fadeOutWithTime:(NSTimeInterval)time{
+    self.alpha = 1;
+    [UIView animateWithDuration:time animations:^{
+        self.alpha = 0;
+    } completion:^(BOOL finished) {
+        [self removeFromSuperview];
+    }];
+}
+
+// 缩放
+- (void)scalingWithTime:(NSTimeInterval)time andscal:(CGFloat)scal{
+    
+    [UIView animateWithDuration:time animations:^{
+        self.transform = CGAffineTransformMakeScale(scal,scal);
+    }];
+}
+
+// 旋转
+- (void)RevolvingWithTime:(NSTimeInterval)time andDelta:(CGFloat)angle{
+    [UIView animateWithDuration:time animations:^{
+        self.transform = CGAffineTransformMakeRotation(angle);
     }];
 }
 

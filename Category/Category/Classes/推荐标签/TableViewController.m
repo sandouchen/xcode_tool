@@ -18,9 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [MJProperty mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
-        return @{@"ID" : @"id"};
-    }];
     
     [SVProgressHUD setDefaultStyle:(SVProgressHUDStyleDark)];
     [SVProgressHUD setDefaultMaskType:(SVProgressHUDMaskTypeBlack)];

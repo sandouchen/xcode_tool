@@ -12,6 +12,8 @@
 #import "SDRecommendLeftCell.h"
 #import "SDRecommendRightModel.h"
 #import "SDRecommendRightCell.h"
+#import "SDPostWordViewController.h"
+#import "SDNavigationController.h"
 
 #define SDSelectedRow self.leftArray[self.leftTableView.indexPathForSelectedRow.row]
 
@@ -31,6 +33,14 @@
     [self setupTableView];
     [self loagingLeftList];
     [self setupRefresh];
+    
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"新帖" style:(UIBarButtonItemStyleDone) target:self action:@selector(toPostWordViewController)];
+}
+
+- (void)toPostWordViewController {
+    SDPostWordViewController *postWordViewController = [[SDPostWordViewController alloc] init];
+    SDNavigationController *nav = [[SDNavigationController alloc] initWithRootViewController:postWordViewController];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 -(void)viewDidLayoutSubviews {
@@ -47,6 +57,8 @@
 
 - (void)setupRefresh {
     self.rightTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewUsers)];
+    
+    self.rightTableView.mj_header.automaticallyChangeAlpha = YES;
     
     self.rightTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreUsers)];
     
@@ -140,10 +152,6 @@
 }
 
 - (void)loagingLeftList {
-    [SDRecommendLeftModel mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
-        return @{@"ID" : @"id"};
-    }];
-    
     [SVProgressHUD setDefaultMaskType:(SVProgressHUDMaskTypeBlack)];
     [SVProgressHUD show];
     

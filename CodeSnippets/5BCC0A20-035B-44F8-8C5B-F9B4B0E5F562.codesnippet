@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>SDTextViewAutoHeight</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>#pragma mark - UITextView自适应高度
+- (void)textViewDidChange:(UITextView *)textView {
+    CGRect rect = textView.frame;
+    rect.size.height = textView.contentSize.height;
+    [UIView animateWithDuration:0.2 animations:^{
+        textView.frame = rect;
+        [textView scrollRangeToVisible:NSMakeRange(0,0)];
+    }];
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>5BCC0A20-035B-44F8-8C5B-F9B4B0E5F562</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>SDTextViewAutoHeight</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>UITextView自适应高度</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

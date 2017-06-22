@@ -54,7 +54,7 @@
 - (void)setTopics:(SDTopic *)topics {
     _topics = topics;
     
-    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:topics.profile_image] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
+    [self.headerImageView sd_setHeaderViewWithURL:topics.profile_image placeholder:@"defaultUserIcon"];
     
     self.nameLabel.text = topics.name;
     

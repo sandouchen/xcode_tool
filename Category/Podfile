@@ -11,4 +11,6 @@ pod 'MJExtension'
 pod 'SVProgressHUD'
 pod 'MJRefresh'
 pod 'YYWebImage'
+pod 'pop'
+pod 'SDCycleScrollView'
 end

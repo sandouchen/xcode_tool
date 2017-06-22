@@ -20,18 +20,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    [self setupHeader];
+    [self addNotificationCenter];
+}
+
+#pragma mark - 添加通知监听键盘弹出事件
+- (void)addNotificationCenter {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
 }
 
+#pragma mark - 监听键盘事件,底部工具条跟随键盘弹出或隐藏
 - (void)keyboardWillChangeFrame:(NSNotification *)note {
-    CGRect frame = [note.userInfo [UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGRect frame = [note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
+    // 控制器由 xib/storyboard 创建
     self.bottomSapce.constant = SCREENHEIGHT - frame.origin.y;
     
     CGFloat duration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     
     [UIView animateWithDuration:duration animations:^{
+        // 控制器由 xib/storyboard 创建
         [self.view layoutIfNeeded];
+        
+        // 控制器由代码创建
+//        self.view.transform = CGAffineTransformMakeTranslation(0, frame.origin.y - SCREENHEIGHT);
     }];
 }
 

@@ -10,7 +10,6 @@
 	</array>
 	<key>IDECodeSnippetContents</key>
 	<string>- (void)touchesBegan:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event {
-    [super touchesBegan:touches withEvent:event];
     [self.view endEditing:YES];
 }</string>
 	<key>IDECodeSnippetIdentifier</key>

@@ -38,15 +38,16 @@ float radiansForDegrees(int degrees);
 /** 自动从xib创建视图 */
 + (instancetype)sd_viewFromXib;
 
+/** 判断一个控件是否真正显示在主窗口 */
+- (BOOL)isShowingOnKeyWindow;
+
 /** 移除对应的view */
 - (void)sd_removeClassView:(Class)classV;
 
 /** 控件添加阴影 */
 - (void)sd_addShadowWithOpacity:(CGFloat)opacity;
 
-/**
- *  添加边框&颜色:四边
- */
+/** 添加边框&颜色:四边 */
 - (void)sd_setBorder:(UIColor *)color width:(CGFloat)width;
 
 
@@ -154,4 +155,40 @@ float radiansForDegrees(int degrees);
  *  @param subview 需要添加的子控件
  */
 - (void)addSubviewWithFadeAnimation:(UIView *)subview;
+
+/**
+ 淡入动画
+
+ @param time 持续时间
+ */
+- (void)fadeInWithTime:(NSTimeInterval)time;
+
+/**
+ 淡出动画
+
+ @param time 持续时间
+ */
+- (void)fadeOutWithTime:(NSTimeInterval)time;
+
+/**
+ 缩放
+
+ @param time 持续时间
+ @param scal 缩放比例
+ */
+- (void)scalingWithTime:(NSTimeInterval)time andscal:(CGFloat)scal;
+
+/**
+ 旋转
+
+ @param time 持续时间
+ @param angle 旋转方向
+ */
+- (void)RevolvingWithTime:(NSTimeInterval)time andDelta:(CGFloat)angle;
+
 @end
+
+
+
+
+

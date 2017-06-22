@@ -152,7 +152,7 @@
 /**
  *  图片取消渲染
  */
-+ (instancetype)sd_imageWithOriRenderingImage:(NSString *)imageName {
++ (UIImage *)sd_imageWithOriRenderingImage:(NSString *)imageName {
     UIImage *image = [UIImage imageNamed:imageName];
     return [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 }
@@ -164,15 +164,42 @@
     CGRect rect = (CGRect){0.f, 0.f, sizeToFit};
     
     UIGraphicsBeginImageContextWithOptions(sizeToFit, NO, UIScreen.mainScreen.scale);
-    CGContextAddPath(UIGraphicsGetCurrentContext(), [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:radius].CGPath);
-    CGContextClip(UIGraphicsGetCurrentContext());
+    
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    
+    CGContextAddPath(ctx, [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:radius].CGPath);
+    
+    CGContextClip(ctx);
     
     [self drawInRect:rect];
+    
     UIImage *output = UIGraphicsGetImageFromCurrentImageContext();
     
     UIGraphicsEndImageContext();
     
     return output;
+}
+
+/**
+ *  图片画圆角
+ */
+- (UIImage *)sd_circleImage {
+    UIGraphicsBeginImageContextWithOptions(self.size, NO, 0.0);
+    
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    
+    CGRect rect = CGRectMake(0, 0, self.size.width, self.size.height);
+    CGContextAddEllipseInRect(ctx, rect);
+    
+    CGContextClip(ctx);
+    
+    [self drawInRect:rect];
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 @end

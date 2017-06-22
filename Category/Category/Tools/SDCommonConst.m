@@ -14,6 +14,9 @@ NSString *const SDPlacerholderColor = @"_placeholderLabel.textColor";
 /** 改变Placerholder字体 */
 NSString *const SDPlacerholderFont = @"_placeholderLabel.font";
 
+/** 自定义 TabBar */
+NSString *const SDTabBarKeyPath = @"tabBar";
+
 const CGFloat SDNavigationBarH = 64;
 
 const CGFloat SDTabBarH = 49;
@@ -23,3 +26,10 @@ const CGFloat SDTitlesViewH = 35;
 const CGFloat SDPictureMaxH = 1000;
 
 const CGFloat SDPictureSmallH = 250;
+
+/** 布局间距 - 5 */
+const CGFloat SDLayoutMargin_5 = 5;
+/** 布局间距 - 8 */
+const CGFloat SDLayoutMargin_8 = 8;
+/** 布局间距 - 10 */
+const CGFloat SDLayoutMargin_10 = 10;

@@ -124,10 +124,8 @@
 #define NSLog(format, ...)
 #endif
 
-// 打印rect,size,point
+// 打印rect
 #ifdef DEBUG
-#define LOGPOINT(point)    NSLog(@"%s = { x:%.f, y:%.f }", #point, point.x, point.y)
-#define LOGSIZE(size)      NSLog(@"%s = { w:%.f, h:%.f }", #size, size.width, size.height)
 #define LOGRECT(rect)      NSLog(@"%s = { x:%.f, y:%.f, w:%.f, h:%.f }", #rect, rect.origin.x, rect.origin.y, rect.size.width, rect.size.height)
 #endif
 

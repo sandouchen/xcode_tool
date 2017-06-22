@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>SDKeyboardToolBar</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>#pragma mark - 添加通知监听键盘弹出事件
+- (void)addNotificationCenter {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+}
+
+#pragma mark - 监听键盘事件,底部工具条跟随键盘弹出或隐藏
+- (void)keyboardWillChangeFrame:(NSNotification *)note {
+    CGRect frame = [note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    
+    // 控制器由 xib/storyboard 创建
+    self.bottomSapce.constant = SCREENHEIGHT - frame.origin.y;
+    
+    CGFloat duration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    [UIView animateWithDuration:duration animations:^{
+        // 控制器由 xib/storyboard 创建
+        [self.view layoutIfNeeded];
+        
+        // 控制器由代码创建
+//        self.view.transform = CGAffineTransformMakeTranslation(0, frame.origin.y - SCREENHEIGHT);
+    }];
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>514BAFCC-4CE3-42A1-A43E-8BF94E8DA4D2</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>SDKeyboardToolBar</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>键盘底部工具条</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>
