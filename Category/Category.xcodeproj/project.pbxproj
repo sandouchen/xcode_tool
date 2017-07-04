@@ -15,6 +15,8 @@
 		C9347B8D1E9E132E00F9BC9E /* SDNetworkCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C9347B8C1E9E132E00F9BC9E /* SDNetworkCache.m */; };
 		C9347B901E9E135200F9BC9E /* SDHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C9347B8F1E9E135200F9BC9E /* SDHTTPRequest.m */; };
 		C9347B931E9F632B00F9BC9E /* NSObject+SDProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = C9347B921E9F632B00F9BC9E /* NSObject+SDProperty.m */; };
+		C9551FE91F0266F8007085AD /* NSString+SDExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = C9551FE81F0266F8007085AD /* NSString+SDExtend.m */; };
+		C96637741F09E60D00947FA7 /* WRNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C96637731F09E60D00947FA7 /* WRNavigationBar.m */; };
 		C966B2FF1ED2D53E00F08C05 /* SDPostWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C966B2FE1ED2D53E00F08C05 /* SDPostWordViewController.m */; };
 		C966B3031ED2E1CC00F08C05 /* SDTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C966B3021ED2E1CC00F08C05 /* SDTextView.m */; };
 		C966B3061ED5427700F08C05 /* SDAddTagToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = C966B3051ED5427700F08C05 /* SDAddTagToolbar.m */; };
@@ -23,7 +25,6 @@
 		C966B30E1ED6E76C00F08C05 /* SDTagTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C966B30D1ED6E76C00F08C05 /* SDTagTextField.m */; };
 		C966B3111ED9219B00F08C05 /* SDSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C966B3101ED9219B00F08C05 /* SDSettingViewController.m */; };
 		C966B3141ED9743D00F08C05 /* SDClearCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C966B3131ED9743D00F08C05 /* SDClearCache.m */; };
-		C967E1911EF9140C002D96EF /* UINavigationBar+SDNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C967E1901EF9140C002D96EF /* UINavigationBar+SDNavigationBar.m */; };
 		C9696B281E5EBC15001A141D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9696B271E5EBC15001A141D /* main.m */; };
 		C9696B311E5EBC15001A141D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9696B2F1E5EBC15001A141D /* Main.storyboard */; };
 		C9696B331E5EBC15001A141D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9696B321E5EBC15001A141D /* Assets.xcassets */; };
@@ -113,6 +114,10 @@
 		C9347B8F1E9E135200F9BC9E /* SDHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDHTTPRequest.m; sourceTree = "<group>"; };
 		C9347B911E9F632B00F9BC9E /* NSObject+SDProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SDProperty.h"; sourceTree = "<group>"; };
 		C9347B921E9F632B00F9BC9E /* NSObject+SDProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SDProperty.m"; sourceTree = "<group>"; };
+		C9551FE71F0266F8007085AD /* NSString+SDExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SDExtend.h"; sourceTree = "<group>"; };
+		C9551FE81F0266F8007085AD /* NSString+SDExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SDExtend.m"; sourceTree = "<group>"; };
+		C96637721F09E60D00947FA7 /* WRNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRNavigationBar.h; sourceTree = "<group>"; };
+		C96637731F09E60D00947FA7 /* WRNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WRNavigationBar.m; sourceTree = "<group>"; };
 		C966B2FD1ED2D53E00F08C05 /* SDPostWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDPostWordViewController.h; path = "Category/Classes/我/SDPostWordViewController.h"; sourceTree = SOURCE_ROOT; };
 		C966B2FE1ED2D53E00F08C05 /* SDPostWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDPostWordViewController.m; path = "Category/Classes/我/SDPostWordViewController.m"; sourceTree = SOURCE_ROOT; };
 		C966B3011ED2E1CC00F08C05 /* SDTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDTextView.h; sourceTree = "<group>"; };
@@ -128,8 +133,6 @@
 		C966B3101ED9219B00F08C05 /* SDSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDSettingViewController.m; sourceTree = "<group>"; };
 		C966B3121ED9743D00F08C05 /* SDClearCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDClearCache.h; sourceTree = "<group>"; };
 		C966B3131ED9743D00F08C05 /* SDClearCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDClearCache.m; sourceTree = "<group>"; };
-		C967E18F1EF9140C002D96EF /* UINavigationBar+SDNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+SDNavigationBar.h"; sourceTree = "<group>"; };
-		C967E1901EF9140C002D96EF /* UINavigationBar+SDNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+SDNavigationBar.m"; sourceTree = "<group>"; };
 		C9696B231E5EBC15001A141D /* Category.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Category.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9696B271E5EBC15001A141D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C9696B301E5EBC15001A141D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -314,8 +317,8 @@
 		C967E18B1EF8F706002D96EF /* UINavigationBar */ = {
 			isa = PBXGroup;
 			children = (
-				C967E18F1EF9140C002D96EF /* UINavigationBar+SDNavigationBar.h */,
-				C967E1901EF9140C002D96EF /* UINavigationBar+SDNavigationBar.m */,
+				C96637721F09E60D00947FA7 /* WRNavigationBar.h */,
+				C96637731F09E60D00947FA7 /* WRNavigationBar.m */,
 			);
 			path = UINavigationBar;
 			sourceTree = "<group>";
@@ -444,6 +447,8 @@
 		C9696B5E1E5ED01C001A141D /* NSString */ = {
 			isa = PBXGroup;
 			children = (
+				C9551FE71F0266F8007085AD /* NSString+SDExtend.h */,
+				C9551FE81F0266F8007085AD /* NSString+SDExtend.m */,
 			);
 			path = NSString;
 			sourceTree = "<group>";
@@ -881,6 +886,7 @@
 				C966B3031ED2E1CC00F08C05 /* SDTextView.m in Sources */,
 				C98290DD1ECD906C00CFF616 /* SDMeViewController.m in Sources */,
 				C970CB361EA754B100309A9D /* SDRecommendLeftCell.m in Sources */,
+				C9551FE91F0266F8007085AD /* NSString+SDExtend.m in Sources */,
 				C97C47231EE55E0400935A7E /* SDFlowLayout.m in Sources */,
 				C98290E61ECE9D1300CFF616 /* SDSqaureButton.m in Sources */,
 				C9696B6F1E5ED01C001A141D /* AppDelegate.m in Sources */,
@@ -921,12 +927,12 @@
 				C970CB381EA754B100309A9D /* SDRecommendRightCell.m in Sources */,
 				C9696B281E5EBC15001A141D /* main.m in Sources */,
 				C970CB3A1EA754B100309A9D /* ViewController.m in Sources */,
-				C967E1911EF9140C002D96EF /* UINavigationBar+SDNavigationBar.m in Sources */,
 				C97C47261EE6682D00935A7E /* SDTabBarController.m in Sources */,
 				C970CB531EA8993900309A9D /* SDTopicCell.m in Sources */,
 				C919B1391EEEA1E900D5E3ED /* SDExtensionConfig.m in Sources */,
 				C966B30B1ED564FF00F08C05 /* SDAddTagViewController.m in Sources */,
 				C9B196F01EB0894300E366EC /* SDShowPictureViewController.m in Sources */,
+				C96637741F09E60D00947FA7 /* WRNavigationBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -28,6 +28,15 @@
     
 }
 
+#pragma mark - 添加子控制器（纯代码创建时使用）
+- (void)setupChildViewControllers {
+    // 添加子控制器
+    
+    
+    // 更换tabBar
+    [self setValue:[[SDTabBar alloc] init] forKeyPath:SDTabBarKeyPath];
+}
+
 #pragma mark - 初始化子控制器（纯代码创建时使用）
 - (void)setupChildVc:(UIViewController *)vc title:(NSString *)title image:(NSString *)image selectedImage:(NSString *)selectedImage {
     // 设置文字和图片
@@ -42,15 +51,6 @@
     // 包装一个导航控制器, 添加导航控制器为tabbarcontroller的子控制器
     SDNavigationController *nav = [[SDNavigationController alloc] initWithRootViewController:vc];
     [self addChildViewController:nav];
-}
-#pragma mark - 添加子控制器（纯代码创建时使用）
-- (void)setupChildViewControllers {
-    
-}
-
-#pragma mark - 更换TabBar（纯代码创建时使用）
-- (void)setupTabBar{
-    [self setValue:[[SDTabBar alloc] init] forKeyPath:SDTabBarKeyPath];
 }
 
 @end

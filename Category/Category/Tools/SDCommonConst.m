@@ -33,3 +33,19 @@ const CGFloat SDLayoutMargin_5 = 5;
 const CGFloat SDLayoutMargin_8 = 8;
 /** 布局间距 - 10 */
 const CGFloat SDLayoutMargin_10 = 10;
+
+/** tabBar被选中的通知名字 */
+NSString *const SDTabBarDidSelectNotification = @"SDTabBarDidSelectNotification";
+/** tabBar被选中的通知 - 被选中的控制器的index key */
+NSString *const SDSelectedControllerIndexKey = @"SDSelectedControllerIndexKey";
+/** tabBar被选中的通知 - 被选中的控制器 key */
+NSString *const SDSelectedControllerKey = @"SDSelectedControllerKey";
+
+
+
+
+
+
+
+
+

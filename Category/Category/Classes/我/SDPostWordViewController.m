@@ -19,6 +19,8 @@
 @implementation SDPostWordViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self wr_setNavBarBarTintColor:[[UIColor yellowColor] colorWithAlphaComponent:0.9]];
+    
     [self setupNav];
     [self setupTextView];
     [self setupToolbar];

@@ -17,6 +17,8 @@ static NSString *const topicCell = @"topicCell";
 @property (nonatomic, strong) NSMutableArray *topics;
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, copy) NSString *maxtime;
+/** 上次选中的索引(或者控制器) */
+@property (nonatomic, assign) NSInteger lastSelectedIndex;
 @end
 
 @implementation SDBaseViewController
@@ -46,6 +48,19 @@ static NSString *const topicCell = @"topicCell";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.contentInset = UIEdgeInsetsMake(SDTitlesViewH + SDNavigationBarH, 0, 0, 0);
     self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
+    
+    // 监听tabbar点击的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabBarSelect) name:SDTabBarDidSelectNotification object:nil];
+}
+
+- (void)tabBarSelect {
+    // 如果是连续选中2次, 直接刷新
+    if (self.lastSelectedIndex == self.tabBarController.selectedIndex && self.view.isShowingOnKeyWindow) {
+        [self.tableView.mj_header beginRefreshing];
+    }
+    
+    // 记录这一次选中的索引
+    self.lastSelectedIndex = self.tabBarController.selectedIndex;
 }
 
 - (void)setupRefresh{
@@ -126,6 +141,10 @@ static NSString *const topicCell = @"topicCell";
     commentVC.topics = self.topics[indexPath.row];
     
     [self.navigationController pushViewController:commentVC animated:YES];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

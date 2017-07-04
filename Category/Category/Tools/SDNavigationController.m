@@ -8,9 +8,10 @@
 
 #import "SDNavigationController.h"
 
-@interface SDNavigationController () <UINavigationControllerDelegate, UIGestureRecognizerDelegate>
-/** 记录右滑状态 */
-@property (nonatomic, strong) id popDelegate;
+static const NSUInteger itemTitleFont = 20;
+
+@interface SDNavigationController () <UIGestureRecognizerDelegate>
+
 @end
 
 @implementation SDNavigationController
@@ -18,6 +19,14 @@
  * 当第一次使用这个类的时候,会调用一次
  */
 + (void)initialize {
+    /** WRNavigationBar 定义导航栏 */
+    [UIColor wr_setDefaultNavBarBarTintColor:[[UIColor yellowColor] colorWithAlphaComponent:0.9]];
+    [UIColor wr_setDefaultNavBarTitleColor:[UIColor redColor]];
+    
+    UINavigationBar *navBar = [UINavigationBar appearance];
+    [navBar setTitleTextAttributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:20]}];
+    
+    /** 自定义导航栏
     UINavigationBar *navBar = [UINavigationBar appearanceWhenContainedIn:[self class], nil];
     
     navBar.translucent = YES;
@@ -27,11 +36,12 @@
     
     // 设置导航栏标题属性
     [navBar setTitleTextAttributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:20], NSForegroundColorAttributeName : [UIColor redColor]}];
-    
-    UIBarButtonItem *navItem = [UIBarButtonItem appearanceWhenContainedIn:[self class], nil];
+     */
     
     // 设置导航栏按钮文字颜色
-    [navItem setTitleTextAttributes:@{NSFontAttributeName : [UIFont systemFontOfSize:17], NSForegroundColorAttributeName : [UIColor redColor]} forState:(UIControlStateNormal)];
+    UIBarButtonItem *navItem = [UIBarButtonItem appearance];
+    
+    [navItem setTitleTextAttributes:@{NSFontAttributeName : [UIFont systemFontOfSize:itemTitleFont], NSForegroundColorAttributeName : [UIColor purpleColor]} forState:(UIControlStateNormal)];
     
     [navItem setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor greenColor]} forState:(UIControlStateHighlighted)];
     
@@ -40,25 +50,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self fullScreenSlideBack];
-}
-
-/*
-#pragma mark - 系统默认滑动返回
-- (void)defaultSlideBack {
-    self.popDelegate = self.interactivePopGestureRecognizer.delegate;
     
-    self.delegate = self;
+    [self fullScreenSlideBackEnabled:YES];
 }
 
-#pragma mark - 系统默认滑动返回代理 (注意：用全屏手势这里要注释)
-- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    if (viewController == [self.viewControllers firstObject]) {
-        // 如果展示的控制器是根控制器，就还原pop手势代理
-        self.interactivePopGestureRecognizer.delegate = self.popDelegate;
+#pragma mark - 选择是否需要全屏滑动返回功能
+- (void)fullScreenSlideBackEnabled:(BOOL)enabled {
+    if (enabled) {
+        // 全屏滑动返回
+        [self fullScreenSlideBack];
+    }else {
+        // 系统默认右滑返回（设置导航控制器为手势识别器的代理）
+        self.interactivePopGestureRecognizer.delegate = self;
     }
 }
-*/
 
 #pragma mark - 全屏滑动返回
 - (void)fullScreenSlideBack {
@@ -74,9 +79,9 @@
     [self.view addGestureRecognizer:pan];
 }
 
-#pragma mark - 全屏滑动返回代理 (注意：用系统默认滑动返回这里要注释)
+#pragma mark - 手势识别器对象会调用这个代理方法来决定手势是否有效 YES : 手势有效, NO : 手势无效
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-    return (self.topViewController != [self.viewControllers firstObject]);
+    return self.childViewControllers.count > 1;
 }
 
 #pragma mark - 自定义返回按钮
@@ -86,6 +91,7 @@
         UIButton *backBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
         
         [backBtn setTitle:@"返回" forState:UIControlStateNormal];
+        backBtn.titleLabel.font = [UIFont systemFontOfSize:itemTitleFont];
         [backBtn setImage:[UIImage imageNamed:@"navigationButtonReturn"] forState:UIControlStateNormal];
         [backBtn setImage:[UIImage imageNamed:@"navigationButtonReturnClick"] forState:UIControlStateHighlighted];
         [backBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -100,9 +106,6 @@
         
         // 隐藏tabbar
         viewController.hidesBottomBarWhenPushed = YES;
-        
-        // 清空代理(让导航控制器重新设置这个功能)(注意：用全屏手势这句要注释)
-//        self.interactivePopGestureRecognizer.delegate = nil;
     }
     
     // 这句super的push要放在后面, 让viewController可以覆盖上面设置的leftBarButtonItem

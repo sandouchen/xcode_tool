@@ -79,38 +79,52 @@
     
     if (topics.type == SDWordView) {
         if (cmt) {
-            [self.textLb mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.bottom.equalTo(self.topCmtView.mas_top).offset(-8);
-            }];
+//            [self.textLb mas_remakeConstraints:^(MASConstraintMaker *make) {
+//                make.bottom.equalTo(self.topCmtView.mas_top).offset(-8);
+//            }];
+            
+            self.textLb.sd_resetLayout.bottomSpaceToView(self.topCmtView, -8);
+            
         } else {
-            [self.textLb mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.bottom.equalTo(self.bottomView.mas_top).offset(-8);
-            }];
+//            [self.textLb mas_remakeConstraints:^(MASConstraintMaker *make) {
+//                make.bottom.equalTo(self.bottomView.mas_top).offset(-8);
+//            }];
+            
+            self.textLb.sd_resetLayout.bottomSpaceToView(self.bottomView, 0);
+            
         }
     } else if (topics.type == SDPictureView) {
         self.centerPictureView.topic = topics;
         
         if (cmt) {
-            [self.textLb mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.bottom.equalTo(self.centerPictureView.mas_top).offset(-8);
-            }];
+//            [self.textLb mas_remakeConstraints:^(MASConstraintMaker *make) {
+//                make.bottom.equalTo(self.centerPictureView.mas_top).offset(-8);
+//            }];
             
-            [self.centerPictureView mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.bottom.equalTo(self.topCmtView.mas_top).offset(-8);
-                make.left.right.equalTo(self.textLb);
-                make.height.equalTo(@(topics.pictureSize.height));
-            }];
+            self.textLb.sd_layout.bottomSpaceToView(self.centerPictureView, -8);
+            
+//            [self.centerPictureView mas_remakeConstraints:^(MASConstraintMaker *make) {
+//                make.bottom.equalTo(self.topCmtView.mas_top).offset(-8);
+//                make.left.right.equalTo(self.textLb);
+//                make.height.equalTo(@(topics.pictureSize.height));
+//            }];
+            
+            self.centerPictureView.sd_layout.bottomSpaceToView(self.topCmtView, -8).leftEqualToView(self.textLb).rightEqualToView(self.textLb).heightIs(topics.pictureSize.height);
             
         } else {
-            [self.textLb mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.bottom.equalTo(self.centerPictureView.mas_top).offset(-8);
-            }];
+//            [self.textLb mas_remakeConstraints:^(MASConstraintMaker *make) {
+//                make.bottom.equalTo(self.centerPictureView.mas_top).offset(-8);
+//            }];
             
-            [self.centerPictureView mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.bottom.equalTo(self.bottomView.mas_top).offset(-8);
-                make.left.right.equalTo(self.textLb);
-                make.height.equalTo(@(topics.pictureSize.height));
-            }];
+            self.textLb.sd_layout.bottomSpaceToView(self.centerPictureView, -8);
+            
+//            [self.centerPictureView mas_remakeConstraints:^(MASConstraintMaker *make) {
+//                make.bottom.equalTo(self.bottomView.mas_top).offset(-8);
+//                make.left.right.equalTo(self.textLb);
+//                make.height.equalTo(@(topics.pictureSize.height));
+//            }];
+            
+            self.centerPictureView.sd_layout.bottomSpaceToView(self.bottomView, -8).leftEqualToView(self.textLb).rightEqualToView(self.textLb).heightIs(topics.pictureSize.height);
         }
     }
     

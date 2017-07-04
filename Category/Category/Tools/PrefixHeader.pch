@@ -15,7 +15,7 @@
 #import <MJExtension/MJExtension.h>
 #define MAS_SHORTHAND
 #define MAS_SHORTHAND_GLOBALS
-#import <Masonry/Masonry.h>
+//#import <Masonry/Masonry.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SDWebImage/UIButton+WebCache.h>
 #import <SVProgressHUD/SVProgressHUD.h>
@@ -23,6 +23,7 @@
 #import <YYWebImage/UIImageView+YYWebImage.h>
 #import <YYImage/YYAnimatedImageView.h>
 #import <pop/POP.h>
+#import <SDAutoLayout/SDAutoLayout.h>
 
 // Category
 #import "CALayer+SDExtend.h"
@@ -36,6 +37,9 @@
 #import "NSObject+SDProperty.h"
 #import "NSDate+SDExtension.h"
 #import "UIImageView+SDExtension.h"
+#import "NSString+SDExtend.h"
+#import "WRNavigationBar.h"
+//#import "UINavigationBar+SDNavigationBar.h"
 
 // Tool
 #import "SDMacro.h"

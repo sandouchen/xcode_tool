@@ -38,6 +38,14 @@ UIKIT_EXTERN const CGFloat SDLayoutMargin_8;
 /** 布局间距 - 10 */
 UIKIT_EXTERN const CGFloat SDLayoutMargin_10;
 
+/** tabBar被选中的通知名字 */
+UIKIT_EXTERN NSString *const SDTabBarDidSelectNotification;
+/** tabBar被选中的通知 - 被选中的控制器的index key */
+UIKIT_EXTERN NSString *const SDSelectedControllerIndexKey;
+/** tabBar被选中的通知 - 被选中的控制器 key */
+UIKIT_EXTERN NSString *const SDSelectedControllerKey;
+
+
 /**
  精华页面返回自定义类型的帖子
 

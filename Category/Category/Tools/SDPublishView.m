@@ -63,14 +63,12 @@ static const CGFloat SDSpringFactor = 7;
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor whiteColor];
         // 禁止交互
-        self.userInteractionEnabled = NO;
+        [self setWindowInteractionEnabled:NO];
         [self setupButton];
         [self setupsloganImageView];
     }
     return self;
 }
-
-
 
 - (NSMutableArray *)buttons {
     if (!_buttons) {
@@ -102,7 +100,6 @@ static const CGFloat SDSpringFactor = 7;
     self.sloganImageView = sloganView;
     
     // 添加动画
-    __weak __typeof(&*self) weakSelf = self;
     POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
     anim.toValue = @(SCREENHEIGHT * 0.2);
     anim.springSpeed = SDSpringFactor;
@@ -110,7 +107,7 @@ static const CGFloat SDSpringFactor = 7;
     anim.beginTime = CACurrentMediaTime() + [self.times.lastObject doubleValue];
     // 动画完成后开启交互
     [anim setCompletionBlock:^(POPAnimation *anim, BOOL finished) {
-        weakSelf.userInteractionEnabled = YES;
+        [self setWindowInteractionEnabled:YES];
     }];
     [sloganView.layer pop_addAnimation:anim forKey:nil];
 }
@@ -145,6 +142,7 @@ static const CGFloat SDSpringFactor = 7;
         CGFloat buttonW = SCREENWIDTH / maxColsCount;
         CGFloat buttonH = button.sd_height + SDLayoutMargin_10;
         CGFloat buttonX = (i % maxColsCount) * buttonW;
+        
         // 取出2个按钮的高度，在屏幕中点的位置
         CGFloat centerY = (SCREENHEIGHT - rowsCount * buttonH) * 0.5;
         CGFloat buttonY = centerY + (i / maxColsCount) * buttonH;
@@ -179,7 +177,7 @@ static const CGFloat SDSpringFactor = 7;
  */
 - (void)cancelWithCompletionBlock:(void (^)())completionBlock {
     // 禁止交互
-    self.userInteractionEnabled = NO;
+    [self setWindowInteractionEnabled:NO];
     
     // 按钮执行退出动画
     for (int i = 0; i < self.buttons.count; i++) {
@@ -195,8 +193,11 @@ static const CGFloat SDSpringFactor = 7;
     POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPositionY];
     anim.toValue = @(self.sloganImageView.layer.position.y + SCREENHEIGHT);
     anim.beginTime = CACurrentMediaTime() + [self.times.lastObject doubleValue];
+    
     [anim setCompletionBlock:^(POPAnimation *anim, BOOL finished) {
-        [weakSelf fadeOutWithTime:0.3f];
+        [weakSelf fadeOutWithTime:0.2f];
+        
+        [self setWindowInteractionEnabled:YES];
         
         // 执行传进来的completionBlock参数
         !completionBlock ? : completionBlock();
@@ -207,6 +208,10 @@ static const CGFloat SDSpringFactor = 7;
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [super touchesBegan:touches withEvent:event];
     [self cancelWithCompletionBlock:nil];
+}
+
+- (void)setWindowInteractionEnabled:(BOOL)enabled {
+    [UIApplication sharedApplication].keyWindow.rootViewController.view.userInteractionEnabled = enabled;
 }
 
 @end
