@@ -12,6 +12,8 @@
 #import "SDComment.h"
 #import "SDUser.h"
 #import "SDCenterPictureView.h"
+#import "SDTopicVideoView.h"
+#import "SDTopicVoiceView.h"
 
 @interface SDTopicCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
@@ -27,28 +29,45 @@
 @property (weak, nonatomic) IBOutlet UIView *topCmtView;
 @property (weak, nonatomic) IBOutlet UILabel *topCmtLabel;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
+@property (weak, nonatomic) IBOutlet UIView *placeholderView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *hot;
 
 @property (nonatomic, strong) SDCenterPictureView *centerPictureView;
+@property (nonatomic, strong) SDTopicVoiceView *topicVoiceView;
 
+@property (nonatomic, strong) SDTopicVideoView *topicVideoView;
 
 @end
 
 @implementation SDTopicCell
-+ (instancetype)cell {
-    return [self sd_viewFromXib];
-}
-
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.autoresizingMask = UIViewAutoresizingNone;
+    self.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mainCellBackground"]];
 }
 
 - (SDCenterPictureView *)centerPictureView {
     if (!_centerPictureView) {
-        _centerPictureView = [SDCenterPictureView pictureView];
-        [self.contentView addSubview:_centerPictureView];
+        _centerPictureView = [SDCenterPictureView sd_viewFromXib];
+//        [self.contentView addSubview:_centerPictureView];
     }
     return _centerPictureView;
+}
+
+- (SDTopicVideoView *)topicVideoView {
+    if (!_topicVideoView) {
+        _topicVideoView = [SDTopicVideoView sd_viewFromXib];
+        //        [self.contentView addSubview:_topicVideoView];
+    }
+    return _topicVideoView;
+}
+
+- (SDTopicVoiceView *)topicVoiceView {
+    if (!_topicVoiceView) {
+        _topicVoiceView = [SDTopicVoiceView sd_viewFromXib];
+        //        [self.contentView addSubview:_topicVoiceView];
+    }
+    return _topicVoiceView;
 }
 
 - (void)setTopics:(SDTopic *)topics {
@@ -67,75 +86,84 @@
     [self.zhuanBtn setTitle:topics.repost forState:(UIControlStateNormal)];
     [self.moreBtn setTitle:topics.comment forState:(UIControlStateNormal)];
     
-    SDComment *cmt = [topics.top_cmt firstObject];
-    
-    if (cmt) {
+    // 最热评论
+    if (topics.top_cmt) { // 有最热评论
         self.topCmtView.hidden = NO;
         
-        self.topCmtLabel.text = [NSString stringWithFormat:@"%@ : %@", cmt.user.username, cmt.content];
-    } else {
+        NSString *username = topics.top_cmt.user.username; // 用户名
+        NSString *content = topics.top_cmt.content; // 评论内容
+        if (topics.top_cmt.voiceuri.length) {
+            content = @"[语音评论]";
+        }
+        self.topCmtLabel.text = [NSString stringWithFormat:@"%@ : %@", username, content];
+    } else { // 没有最热评论
         self.topCmtView.hidden = YES;
     }
-    
-    if (topics.type == SDWordView) {
-        if (cmt) {
-//            [self.textLb mas_remakeConstraints:^(MASConstraintMaker *make) {
-//                make.bottom.equalTo(self.topCmtView.mas_top).offset(-8);
-//            }];
-            
-            self.textLb.sd_resetLayout.bottomSpaceToView(self.topCmtView, -8);
-            
-        } else {
-//            [self.textLb mas_remakeConstraints:^(MASConstraintMaker *make) {
-//                make.bottom.equalTo(self.bottomView.mas_top).offset(-8);
-//            }];
-            
-            self.textLb.sd_resetLayout.bottomSpaceToView(self.bottomView, 0);
-            
-        }
-    } else if (topics.type == SDPictureView) {
+    /*
+    // 中间内容
+    if (topics.type == SDVideoView) { // 视频
+        _topicVideoView = (SDTopicVideoView *)_placeholderView;
+//        self.topicVideoView.hidden = NO;
+//        self.topicVideoView.frame = topics.contentF;
+        self.topicVideoView.topic = topics;
+        
+//        self.topicVoiceView.hidden = YES;
+//        self.centerPictureView.hidden = YES;
+        
+    } else if (topics.type == SDVoiceView) { // 音频
+        _topicVoiceView = (SDTopicVoiceView *)_placeholderView;
+//        self.topicVoiceView.hidden = NO;
+//        self.topicVoiceView.frame = topics.contentF;
+        self.topicVoiceView.topic = topics;
+        
+//        self.topicVideoView.hidden = YES;
+//        self.centerPictureView.hidden = YES;
+        
+    } else if (topics.type == SDWordView) { // 段子
+        self.topicVideoView.hidden = YES;
+        self.topicVoiceView.hidden = YES;
+        self.centerPictureView.hidden = YES;
+        
+        if (topics.top_cmt) {
+            self.hot.priority = 999;
+        } else self.hot.active = 750;
+        
+    } else if (topics.type == SDPictureView) { // 图片
+        _centerPictureView = (SDCenterPictureView *)_placeholderView;
+//        self.centerPictureView.hidden = NO;
+//        self.centerPictureView.frame = topics.contentF;
         self.centerPictureView.topic = topics;
         
-        if (cmt) {
-//            [self.textLb mas_remakeConstraints:^(MASConstraintMaker *make) {
-//                make.bottom.equalTo(self.centerPictureView.mas_top).offset(-8);
-//            }];
-            
-            self.textLb.sd_layout.bottomSpaceToView(self.centerPictureView, -8);
-            
-//            [self.centerPictureView mas_remakeConstraints:^(MASConstraintMaker *make) {
-//                make.bottom.equalTo(self.topCmtView.mas_top).offset(-8);
-//                make.left.right.equalTo(self.textLb);
-//                make.height.equalTo(@(topics.pictureSize.height));
-//            }];
-            
-            self.centerPictureView.sd_layout.bottomSpaceToView(self.topCmtView, -8).leftEqualToView(self.textLb).rightEqualToView(self.textLb).heightIs(topics.pictureSize.height);
-            
-        } else {
-//            [self.textLb mas_remakeConstraints:^(MASConstraintMaker *make) {
-//                make.bottom.equalTo(self.centerPictureView.mas_top).offset(-8);
-//            }];
-            
-            self.textLb.sd_layout.bottomSpaceToView(self.centerPictureView, -8);
-            
-//            [self.centerPictureView mas_remakeConstraints:^(MASConstraintMaker *make) {
-//                make.bottom.equalTo(self.bottomView.mas_top).offset(-8);
-//                make.left.right.equalTo(self.textLb);
-//                make.height.equalTo(@(topics.pictureSize.height));
-//            }];
-            
-            self.centerPictureView.sd_layout.bottomSpaceToView(self.bottomView, -8).leftEqualToView(self.textLb).rightEqualToView(self.textLb).heightIs(topics.pictureSize.height);
-        }
-    }
+//        self.topicVideoView.hidden = YES;
+//        self.topicVoiceView.hidden = YES;
+    }*/
+}
+
+- (IBAction)moreClick {
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:(UIAlertControllerStyleActionSheet)];
     
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"收藏" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        
+        NSLog(@"点击了[收藏]按钮");
+    }]];
     
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"举报" style:(UIAlertActionStyleDestructive) handler:^(UIAlertAction * _Nonnull action) {
+        
+        NSLog(@"点击了[举报]按钮");
+    }]];
     
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
+        
+        NSLog(@"点击了[取消]按钮");
+    }]];
     
-    
-    
-    
-    
-    
+    [KEYWINDOW.rootViewController presentViewController:actionSheet animated:YES completion:nil];
+}
+
+- (void)setFrame:(CGRect)frame {
+    frame.size.height -= SDLayoutMargin_10;
+    frame.origin.y += SDLayoutMargin_10;
+    [super setFrame:frame];
 }
 
 @end

@@ -23,10 +23,6 @@
 @end
 
 @implementation SDCenterPictureView
-+ (instancetype)pictureView {
-    return [self sd_viewFromXib];
-}
-
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.autoresizingMask = UIViewAutoresizingNone;
@@ -55,22 +51,6 @@
         [self.progressView setProgress:topic.pictureProgress animated:YES];
     } transform:nil completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
         self.progressView.hidden = YES;
-        
-        
-        // 如果是大图片, 才需要进行绘图处理
-        if (topic.isBigPicture == NO) return;
-        
-        UIGraphicsBeginImageContextWithOptions(topic.pictureSize, YES, 0.0);
-        
-        CGFloat pictureW = topic.pictureSize.width;
-        
-        CGFloat pictureH = pictureW * image.size.height / image.size.width;
-        
-        [image drawInRect:CGRectMake(0, 0, pictureW, pictureH)];
-        
-        self.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
-        
-        UIGraphicsEndImageContext();
     }];
     
     self.gifView.hidden = !topic.is_gif;
@@ -78,8 +58,12 @@
     // 判断是否显示"点击查看全图"
     if (topic.isBigPicture) { // 大图
         self.seeBigButton.hidden = NO;
+        self.imageView.contentMode = UIViewContentModeTop;
+        self.imageView.clipsToBounds = YES;
     } else { // 非大图
         self.seeBigButton.hidden = YES;
+        self.imageView.contentMode = UIViewContentModeScaleToFill;
+        self.imageView.clipsToBounds = NO;
     }
 }
 

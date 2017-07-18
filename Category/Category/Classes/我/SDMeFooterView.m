@@ -9,6 +9,8 @@
 #import "SDMeFooterView.h"
 #import "SDSquare.h"
 #import "SDSqaureButton.h"
+#import "SDWebViewController.h"
+#import <SafariServices/SafariServices.h>
 
 @implementation SDMeFooterView
 - (void)setup {
@@ -27,14 +29,14 @@
         [self createSquares:sqaures];
         
     } failure:^(NSError *error) {
-        NSLog(@"error = %@", error);
+        NSLog(@"error = %ld", error.code);
     }];
 }
 
-//- (void)awakeFromNib {
-//    [super awakeFromNib];
-//    [self setup];
-//}
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    [self setup];
+}
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
@@ -82,8 +84,47 @@
     [tableView reloadData];
 }
 
-- (void)buttonClick:(UIButton *)button {
+- (void)buttonClick:(SDSqaureButton *)button {
+    NSString *url = button.square.url;
     
+    if ([url hasPrefix:@"http"]) {
+        UITabBarController *tabBarVC = (UITabBarController *)self.window.rootViewController;
+        
+        UINavigationController *navVC = tabBarVC.selectedViewController;
+        
+        SDWebViewController *webView = [[SDWebViewController alloc] init];
+        webView.url = url;
+        webView.navigationItem.title = button.currentTitle;
+        [navVC pushViewController:webView animated:YES];
+        
+        /*
+        // safari 浏览器
+        SFSafariViewController *webView = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:url]];
+        
+        // safari 控件颜色
+        webView.preferredBarTintColor = NavBarBarTintColor;
+        // safari 按钮颜色
+        webView.preferredControlTintColor = [UIColor blackColor];
+        
+        UITabBarController *tabBarVC = (UITabBarController *)self.window.rootViewController;
+        
+        [tabBarVC presentViewController:webView animated:YES completion:nil];
+        */
+        
+    } else if ([url hasPrefix:@"mod"]) {
+        NSLog(@"%@ 跳转到mod", button.currentTitle);
+    } else {
+        NSLog(@"%@ 不知道做什么", button.currentTitle);
+    }
 }
+
+
+
+
+
+
+
+
+
 
 @end

@@ -29,7 +29,7 @@
         
         [self.tableView reloadData];
     } andFailure:^(NSError *error) {
-        NSLog(@"%@", error);
+        NSLog(@"error = %ld", error.code);
         [SVProgressHUD showErrorWithStatus:@"加载失败"];
     }];
 }

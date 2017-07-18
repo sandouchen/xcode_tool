@@ -47,20 +47,20 @@
         totleSize += size;
     }
     
-    // 8. 将文件夹大小转换为 M/KB/B
+    // 8. 将文件夹大小转换为 GB/MB/KB/B
     NSString *totleStr = nil;
     
-    if (totleSize > 1000 * 1000) {
-        totleStr = [NSString stringWithFormat:@"%.2fM",totleSize / 1000.00f /1000.00f];
+    if (totleSize >= pow(10, 9)) {
+        totleStr = [NSString stringWithFormat:@"%.2fGB", totleSize / pow(10, 9)];
         
-    } else if (totleSize > 1000) {
-        totleStr = [NSString stringWithFormat:@"%.2fKB",totleSize / 1000.00f ];
+    } else if (totleSize >= pow(10, 6)) {
+        totleStr = [NSString stringWithFormat:@"%.2fMB",totleSize / pow(10, 6)];
         
-    } else if (totleSize > 0) {
-        totleStr = [NSString stringWithFormat:@"%.2fB",totleSize / 1.00f];
+    } else if (totleSize >= pow(10, 3)) {
+        totleStr = [NSString stringWithFormat:@"%.2fKB", totleSize / pow(10, 3)];
         
     } else {
-        totleStr = @"0B";
+        totleStr = [NSString stringWithFormat:@"%zdB", totleSize];
     }
     
     return totleStr;

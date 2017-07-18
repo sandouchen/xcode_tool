@@ -7,12 +7,10 @@
 //
 
 #import "SDTopic.h"
+#import "SDComment.h"
+#import "SDUser.h"
 
 @implementation SDTopic
-+ (NSDictionary *)mj_objectClassInArray {
-    return @{@"top_cmt" : @"SDComment"};
-}
-
 - (NSString *)create_time {
     NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
     fmt.dateFormat = @"yyyy-MM-dd HH:mm:ss";
@@ -68,21 +66,60 @@
     return placeholder;
 }
 
-- (CGSize)pictureSize {
-    CGFloat pictureW = [UIScreen mainScreen].bounds.size.width - 4*8;
+- (CGFloat)cellHeight {
+    // 如果cell的高度已经计算过, 就直接返回
+    if (_cellHeight) return _cellHeight;
     
-    CGFloat pictureH = pictureW * [self.height integerValue] / [self.width integerValue];
+    // 1.头像Y值
+    _cellHeight = 10 + 35 +10;
     
-    if (self.type == SDPictureView) {
-        if (pictureH >= SDPictureMaxH) { // 图片高度过长
-            pictureH = SDPictureSmallH;
-            self.bigPicture = YES; // 大图
+    // 2.文字Y值
+    CGFloat textMaxW = SCREENWIDTH - 2 * SDLayoutMargin_10;
+    CGSize maxSize = CGSizeMake(textMaxW, MAXFLOAT);
+    
+    // 计算文字的高度
+    CGFloat textH = [self.text boundingRectWithSize:maxSize options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:15]} context:nil].size.height;
+    
+    _cellHeight = textH + SDLayoutMargin_10;
+    
+    // 3.中间的内容
+    if (self.type != SDWordView) {
+        // 中间内容的高度 == 中间内容的宽度 * 图片的真实高度 / 图片的真实宽度
+        CGFloat contentH = textMaxW * [self.pictureH floatValue] / [self.pictureW floatValue];
+        
+        if (contentH >= SCREENWIDTH) {
+            contentH = SDPictureSmallH;
+            self.bigPicture = YES;
         }
+        
+        // 这里的cellHeight就是中间内容的y值
+        self.contentF = CGRectMake(SDLayoutMargin_10, _cellHeight, textMaxW, contentH);
+        
+        // 累加中间内容的高度
+        _cellHeight += contentH + SDLayoutMargin_10;
     }
     
-    return _pictureSize = CGSizeMake(pictureW, pictureH);
+    // 4.最热评论
+    if (self.top_cmt) {
+        _cellHeight += 20;
+        
+        NSString *content = self.top_cmt.content;
+        
+        if (self.top_cmt.voiceuri.length) {
+            content = @"[语音评论]";
+        }
+        
+        NSString *topCmtContent = [NSString stringWithFormat:@"%@ : %@", self.top_cmt.user.username, content];
+        
+        CGSize topCmtContentSize = [topCmtContent boundingRectWithSize:maxSize options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil].size;
+        
+        _cellHeight += topCmtContentSize.height + SDLayoutMargin_10;
+    }
+    
+    _cellHeight += 40 + SDLayoutMargin_10;
+    
+    return _cellHeight;
 }
-
 
 
 

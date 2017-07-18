@@ -19,7 +19,7 @@
 @implementation SDPostWordViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self wr_setNavBarBarTintColor:[[UIColor yellowColor] colorWithAlphaComponent:0.9]];
+    [self wr_setNavBarBarTintColor:NavBarBarTintColor];
     
     [self setupNav];
     [self setupTextView];

@@ -8,16 +8,38 @@
 
 #import <Foundation/Foundation.h>
 
+@class SDComment;
+
 @interface SDTopic : NSObject
 @property (assign, nonatomic, getter=isSina_v) BOOL sina_v;
 @property (assign, nonatomic, getter=isIs_gif) BOOL is_gif;
 
+
+/****** 额外的辅助属性 ******/
+
+/** cell的高度 */
+@property (nonatomic, assign) CGFloat cellHeight;
+/** 中间内容的frame */
+@property (nonatomic, assign) CGRect contentF;
+/** 图片控件的frame */
+@property (nonatomic, assign, readonly) CGRect pictureF;
+
+/** 声音控件的frame */
+@property (nonatomic, assign, readonly) CGRect voiceF;
+
+/** 视频控件的frame */
+@property (nonatomic, assign, readonly) CGRect videoF;
 /** 图片的下载进度 */
 @property (nonatomic, assign) CGFloat pictureProgress;
-@property (nonatomic, assign) CGSize pictureSize;
 /** 图片是否太大 */
 @property (nonatomic, assign, getter=isBigPicture) BOOL bigPicture;
 
+/** 音频时长 */
+@property (nonatomic, assign) NSInteger voicetime;
+/** 视频时长 */
+@property (nonatomic, assign) NSInteger videotime;
+/** 音频\视频的播放次数 */
+@property (nonatomic, assign) NSInteger playcount;
 
 @property (assign, nonatomic) NSInteger cache_version;
 
@@ -25,11 +47,9 @@
 
 @property (copy, nonatomic) NSString *ID;
 
-@property (copy, nonatomic) NSString *voicetime;
-
 @property (copy, nonatomic) NSString *voicelength;
 
-@property (strong, nonatomic) NSArray *top_cmt;
+@property (strong, nonatomic) SDComment *top_cmt;
 
 @property (copy, nonatomic) NSString *repost;
 
@@ -61,11 +81,9 @@
 
 @property (copy, nonatomic) NSString *name;
 
-@property (copy, nonatomic) NSString *height;
+@property (copy, nonatomic) NSString *pictureH;
 
 @property (copy, nonatomic) NSString *status;
-
-@property (copy, nonatomic) NSString *videotime;
 
 @property (copy, nonatomic) NSString *bookmark;
 
@@ -91,7 +109,9 @@
 
 @property (copy, nonatomic) NSString *videouri;
 
-@property (copy, nonatomic) NSString *width;
+@property (copy, nonatomic) NSString *pictureW;
 
 @property (nonatomic, copy) NSString *image1;
+
+
 @end

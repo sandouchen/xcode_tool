@@ -50,7 +50,7 @@
     // 创建header
     UIView *header = [[UIView alloc] init];
     
-    SDTopicCell *cell = [SDTopicCell cell];
+    SDTopicCell *cell = [SDTopicCell sd_viewFromXib];
     cell.topics = self.topics;
     [header addSubview:cell];
     

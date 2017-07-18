@@ -18,12 +18,11 @@ static NSString *const serverPrefix;
 #endif
 
 @implementation SDHTTPRequest
-+ (void)newListWithList:(NSString *)list withPage:(NSInteger)page withType:(NSInteger)type withMaxtime:(NSString *)maxtime success:(SDHttpRequestSuccess)success failure:(SDHttpRequestFailed)failure {
++ (void)newListWithType:(NSInteger)type andMaxtime:(NSString *)maxtime success:(SDHttpRequestSuccess)success failure:(SDHttpRequestFailed)failure {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    parameters[@"a"] = list;
+    parameters[@"a"] = @"list";
     parameters[@"c"] = @"data";
     parameters[@"type"] = @(type);
-    parameters[@"page"] = @(page);
     
     if (maxtime) parameters[@"maxtime"] = maxtime;
     

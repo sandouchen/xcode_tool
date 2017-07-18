@@ -20,7 +20,7 @@ static const NSUInteger itemTitleFont = 20;
  */
 + (void)initialize {
     /** WRNavigationBar 定义导航栏 */
-    [UIColor wr_setDefaultNavBarBarTintColor:[[UIColor yellowColor] colorWithAlphaComponent:0.9]];
+    [UIColor wr_setDefaultNavBarBarTintColor:NavBarBarTintColor];
     [UIColor wr_setDefaultNavBarTitleColor:[UIColor redColor]];
     
     UINavigationBar *navBar = [UINavigationBar appearance];

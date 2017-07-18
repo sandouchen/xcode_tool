@@ -14,4 +14,6 @@
 
 /** 获取汉字的拼音 */
 + (NSString *)transform:(NSString *)chinese withMark:(BOOL)mark;
+
+- (unsigned long long)fileSize;
 @end

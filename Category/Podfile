@@ -13,4 +13,5 @@ pod 'MJRefresh'
 pod 'YYWebImage'
 pod 'pop'
 pod 'SDCycleScrollView'
+pod 'Masonry'
 end

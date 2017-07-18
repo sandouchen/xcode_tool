@@ -56,11 +56,9 @@
 }
 
 - (void)setupRefresh {
-    self.rightTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewUsers)];
+    self.rightTableView.mj_header = [SDRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewUsers)];
     
-    self.rightTableView.mj_header.automaticallyChangeAlpha = YES;
-    
-    self.rightTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreUsers)];
+    self.rightTableView.mj_footer = [SDRefreshAutoGifFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreUsers)];
     
     self.rightTableView.mj_footer.hidden = YES;
 }
@@ -95,7 +93,7 @@
         
     } andFailure:^(NSError *error) {
         [SVProgressHUD showErrorWithStatus:@"加载失败"];
-        NSLog(@"%@", error);
+        NSLog(@"error = %ld", error.code);
         
         // 结束刷新
         [self.rightTableView.mj_header endRefreshing];
@@ -118,7 +116,7 @@
         
     } andFailure:^(NSError *error) {
         [SVProgressHUD showErrorWithStatus:@"加载失败"];
-        NSLog(@"%@", error);
+        NSLog(@"error = %ld", error.code);
         
         [self.rightTableView.mj_footer endRefreshing];
     }];
@@ -168,7 +166,7 @@
         
     } andFailure:^(NSError *error) {
         [SVProgressHUD showErrorWithStatus:@"加载失败"];
-        NSLog(@"%@", error);
+        NSLog(@"error = %ld", error.code);
     }];
 }
 

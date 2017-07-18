@@ -26,7 +26,7 @@
     [self.scrollView addSubview:self.imageView];
     
     CGFloat pictureW = SCREENWIDTH;
-    CGFloat pictureH = pictureW * [self.topics.height integerValue] / [self.topics.width integerValue];
+    CGFloat pictureH = pictureW * [self.topics.pictureH floatValue] / [self.topics.pictureW floatValue];
     
     if (pictureH > SCREENHEIGHT) {
         self.imageView.frame = CGRectMake(0, 0, pictureW, pictureH);

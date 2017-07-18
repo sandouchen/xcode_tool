@@ -9,6 +9,12 @@
 #ifndef SDMacro_h
 #define SDMacro_h
 
+#pragma mark - 项目宏
+// 导航栏背景颜色
+#define NavBarBarTintColor [[UIColor yellowColor] colorWithAlphaComponent:0.9]
+
+
+#pragma mark - 通用宏
 // 获取主屏幕
 #define KEYWINDOW [UIApplication sharedApplication].keyWindow
 

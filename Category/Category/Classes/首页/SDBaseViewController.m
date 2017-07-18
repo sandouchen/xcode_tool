@@ -14,15 +14,15 @@
 static NSString *const topicCell = @"topicCell";
 
 @interface SDBaseViewController ()
-@property (nonatomic, strong) NSMutableArray *topics;
-@property (nonatomic, assign) NSInteger page;
+/** 所有的帖子数据 */
+@property (nonatomic, strong) NSMutableArray<SDTopic *> *topics;
 @property (nonatomic, copy) NSString *maxtime;
 /** 上次选中的索引(或者控制器) */
 @property (nonatomic, assign) NSInteger lastSelectedIndex;
 @end
 
 @implementation SDBaseViewController
-- (NSMutableArray *)topics {
+- (NSMutableArray<SDTopic *> *)topics {
     if (!_topics) {
         _topics = [NSMutableArray array];
     }
@@ -41,8 +41,7 @@ static NSString *const topicCell = @"topicCell";
     UINib *nib = [UINib nibWithNibName:NSStringFromClass([SDTopicCell class]) bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:topicCell];
     
-    self.tableView.estimatedRowHeight = 100;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.rowHeight = 250;
     
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -64,19 +63,19 @@ static NSString *const topicCell = @"topicCell";
 }
 
 - (void)setupRefresh{
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewTopics)];
+    self.tableView.mj_header = [SDRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewTopics)];
     
-    self.tableView.mj_header.automaticallyChangeAlpha = YES;
     [self.tableView.mj_header beginRefreshing];
     
-    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreTopics)];
+    self.tableView.mj_footer = [SDRefreshAutoGifFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreTopics)];
 }
 
 - (void)loadNewTopics {
     [self.tableView.mj_footer endRefreshing];
+//    [SDNetworkHelper cancelAllRequest];
     
-    [SDHTTPRequest newListWithList:@"list" withPage:0 withType:self.newlistType withMaxtime:nil success:^(id responseObject) {
-        
+    [SDHTTPRequest newListWithType:self.newlistType andMaxtime:nil success:^(id responseObject) {
+        // 存储maxtime(方便用来加载下一页数据)
         self.maxtime = responseObject[@"info"][@"maxtime"];
         
         self.topics = [SDTopic mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
@@ -85,10 +84,8 @@ static NSString *const topicCell = @"topicCell";
         
         [self.tableView.mj_header endRefreshing];
         
-        // 清空页码
-        self.page = 0;
     } failure:^(NSError *error) {
-        NSLog(@"error = %@", error);
+        NSLog(@"error = %ld", error.code);
         [SVProgressHUD showErrorWithStatus:@"加载失败"];
         [self.tableView.mj_header endRefreshing];
     }];
@@ -97,14 +94,11 @@ static NSString *const topicCell = @"topicCell";
 - (void)loadMoreTopics {
     [self.tableView.mj_header endRefreshing];
     
-    self.page++;
-    
-    [SDHTTPRequest newListWithList:@"list" withPage:self.page withType:self.newlistType withMaxtime:self.maxtime success:^(id responseObject) {
-        NSLog(@"%@", responseObject);
+    [SDHTTPRequest newListWithType:self.newlistType andMaxtime:self.maxtime success:^(id responseObject) {
         
         self.maxtime = responseObject[@"info"][@"maxtime"];
         
-        NSArray *moreTopic = [SDTopic mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
+        NSArray<SDTopic *> *moreTopic = [SDTopic mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
         
         [self.topics addObjectsFromArray:moreTopic];
         
@@ -113,11 +107,9 @@ static NSString *const topicCell = @"topicCell";
         [self.tableView.mj_footer endRefreshing];
         
     } failure:^(NSError *error) {
-        NSLog(@"error = %@", error);
+        NSLog(@"error = %ld", error.code);
         [SVProgressHUD showErrorWithStatus:@"加载失败"];
         [self.tableView.mj_footer endRefreshing];
-        
-        self.page--;
     }];
 }
 
@@ -142,6 +134,10 @@ static NSString *const topicCell = @"topicCell";
     
     [self.navigationController pushViewController:commentVC animated:YES];
 }
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return self.topics[indexPath.row].cellHeight;
+//}
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];

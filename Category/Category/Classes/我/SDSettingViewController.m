@@ -15,7 +15,6 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *fontSegment;
 @property (weak, nonatomic) IBOutlet UISwitch *forwardingSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *moonSwitch;
-@property (weak, nonatomic) IBOutlet UILabel *cacheLabel;
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 @property (nonatomic, assign) NSInteger totalSize;
 @end
@@ -26,8 +25,6 @@
     [super viewDidLoad];
     
     self.versionLabel.text = CURRENTVERSION;
-    
-    self.cacheLabel.text = [NSString stringWithFormat:@"清除缓存（%@）", [SDClearCache getCacheSize]];
 }
 
 - (IBAction)segmentAction:(UISegmentedControl *)sender {
@@ -60,7 +57,13 @@
 }
 
 - (IBAction)moonSwitchAction:(UISwitch *)sender {
-    
+    if (sender.isOn) {
+        [sender setOn:YES animated:YES];
+        NSLog(@"夜间");
+    } else {
+        [sender setOn:NO animated:YES];
+        NSLog(@"白天");
+    }
 }
 
 #pragma mark - Table view data source
@@ -76,17 +79,17 @@
     if (indexPath == [NSIndexPath indexPathForRow:0 inSection:1]) {
         NSLog(@"离线下载");
         
-    } else if (indexPath == [NSIndexPath indexPathForRow:1 inSection:1]) {
-        [SDClearCache clearCache];
-        
-        self.cacheLabel.text = [NSString stringWithFormat:@"清除缓存（%@）", [SDClearCache getCacheSize]];
-        
-        [self.tableView reloadData];
-        
-        ALERTVIEW(@"缓存已清除");
-        
     } else if (indexPath == [NSIndexPath indexPathForRow:2 inSection:1]) {
         NSLog(@"当前版本");
+        
+    } else if (indexPath == [NSIndexPath indexPathForRow:3 inSection:1]) {
+        NSURL *url = [NSURL URLWithString:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=1093382986&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8"];
+        
+        if ([[UIApplication sharedApplication] canOpenURL:url]) {
+            [[UIApplication sharedApplication] openURL:url];
+        } else {
+            NSLog(@"can not open");
+        }
     }
 }
 

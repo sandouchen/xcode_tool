@@ -11,8 +11,6 @@
 @class SDTopic;
 
 @interface SDCenterPictureView : UIView
-+ (instancetype)pictureView;
-
 /** 帖子数据 */
 @property (nonatomic, strong) SDTopic *topic;
 
