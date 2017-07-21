@@ -20,15 +20,25 @@
     [super viewDidLoad];
     
     [SVProgressHUD setDefaultStyle:(SVProgressHUDStyleDark)];
-    [SVProgressHUD setDefaultMaskType:(SVProgressHUDMaskTypeBlack)];
+    CGFloat hudW = SCREENWIDTH * 0.25;
+    [SVProgressHUD setMinimumSize:CGSizeMake(hudW, hudW)];
     [SVProgressHUD show];
     
+    __weak __typeof(&*self) weakSelf = self;
+    
     [SDHTTPRequest recommendTagWithSuccess:^(id responseObject) {
-        [SVProgressHUD dismiss];
-        self.listArray = [SDNewListModel mj_objectArrayWithKeyValuesArray:responseObject];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
+            
+            weakSelf.listArray = [SDNewListModel mj_objectArrayWithKeyValuesArray:responseObject];
+            
+            [weakSelf.tableView reloadData];
+        });
         
-        [self.tableView reloadData];
     } andFailure:^(NSError *error) {
+        // 如果是取消任务, 就直接返回
+        if (error.code == NSURLErrorCancelled) return;
+        
         NSLog(@"error = %ld", error.code);
         [SVProgressHUD showErrorWithStatus:@"加载失败"];
     }];
@@ -49,5 +59,13 @@
     return cell;
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [SVProgressHUD dismiss];
+    [SDNetworkHelper cancelAllRequest];
+}
 
+- (void)dealloc {
+    NSLog(@"控制器已销毁");
+}
 @end

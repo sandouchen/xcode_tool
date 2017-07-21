@@ -132,6 +132,8 @@ static AFHTTPSessionManager *_sessionManager;
         }];
         [[self allSessionTask] removeAllObjects];
     }
+    
+//    [_sessionManager invalidateSessionCancelingTasks:YES];
 }
 
 + (void)cancelRequestWithURL:(NSString *)URL {

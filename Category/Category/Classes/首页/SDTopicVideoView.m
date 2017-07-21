@@ -35,7 +35,15 @@
 - (void)setTopic:(SDTopic *)topic {
     _topic = topic;
     
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:topic.image1]];
+    NSURL *imageUrl = nil;
+    
+    if ([SDNetworkHelper isWWANNetwork]) {
+        imageUrl = [NSURL URLWithString:topic.small_image];
+    } else if ([SDNetworkHelper isWiFiNetwork]) {
+        imageUrl = [NSURL URLWithString:topic.large_image];
+    }
+    
+    [self.imageView sd_setImageWithURL:imageUrl];
     self.playCountLabel.text = [NSString stringWithFormat:@"%zd播放", topic.playcount];
     
     NSInteger minute = topic.videotime / 60;

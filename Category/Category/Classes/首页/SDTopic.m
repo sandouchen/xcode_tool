@@ -71,28 +71,27 @@
     if (_cellHeight) return _cellHeight;
     
     // 1.头像Y值
-    _cellHeight = 10 + 35 +10;
+    _cellHeight = 35 + SDLayoutMargin_10 * 2;
     
     // 2.文字Y值
     CGFloat textMaxW = SCREENWIDTH - 2 * SDLayoutMargin_10;
     CGSize maxSize = CGSizeMake(textMaxW, MAXFLOAT);
     
     // 计算文字的高度
-    CGFloat textH = [self.text boundingRectWithSize:maxSize options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:15]} context:nil].size.height;
+    CGFloat textH = [self.text boundingRectWithSize:maxSize options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:18]} context:nil].size.height;
     
-    _cellHeight = textH + SDLayoutMargin_10;
-    
+    _cellHeight += textH + SDLayoutMargin_10;
+
     // 3.中间的内容
     if (self.type != SDWordView) {
         // 中间内容的高度 == 中间内容的宽度 * 图片的真实高度 / 图片的真实宽度
-        CGFloat contentH = textMaxW * [self.pictureH floatValue] / [self.pictureW floatValue];
+        CGFloat contentH = textMaxW * self.height / self.width;
         
-        if (contentH >= SCREENWIDTH) {
+        if (contentH >= SCREENHEIGHT) {
             contentH = SDPictureSmallH;
             self.bigPicture = YES;
         }
         
-        // 这里的cellHeight就是中间内容的y值
         self.contentF = CGRectMake(SDLayoutMargin_10, _cellHeight, textMaxW, contentH);
         
         // 累加中间内容的高度
@@ -101,7 +100,7 @@
     
     // 4.最热评论
     if (self.top_cmt) {
-        _cellHeight += 20;
+        _cellHeight += 17;
         
         NSString *content = self.top_cmt.content;
         
@@ -111,9 +110,9 @@
         
         NSString *topCmtContent = [NSString stringWithFormat:@"%@ : %@", self.top_cmt.user.username, content];
         
-        CGSize topCmtContentSize = [topCmtContent boundingRectWithSize:maxSize options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil].size;
+        CGFloat topCmtH = [topCmtContent boundingRectWithSize:maxSize options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]} context:nil].size.height;
         
-        _cellHeight += topCmtContentSize.height + SDLayoutMargin_10;
+        _cellHeight += topCmtH + SDLayoutMargin_10;
     }
     
     _cellHeight += 40 + SDLayoutMargin_10;

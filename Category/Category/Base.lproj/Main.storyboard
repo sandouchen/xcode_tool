@@ -574,10 +574,10 @@
             </objects>
             <point key="canvasLocation" x="737" y="-1028"/>
         </scene>
-        <!--View Controller-->
+        <!--New View Controller-->
         <scene sceneID="Fds-Eh-uS6">
             <objects>
-                <viewController id="GHX-nl-ORM" sceneMemberID="viewController">
+                <viewController id="GHX-nl-ORM" customClass="SDNewViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gzl-eK-KQV"/>
                         <viewControllerLayoutGuide type="bottom" id="3HB-mQ-m3R"/>
@@ -609,7 +609,7 @@
                     <navigationItem key="navigationItem" id="H5q-2x-xO5"/>
                     <connections>
                         <segue destination="hyw-kj-tos" kind="push" id="knd-li-6y2"/>
-                        <segue destination="iRd-Dm-ZdS" kind="push" identifier="toEssenceVC" id="HXZ-ZJ-HRh"/>
+                        <segue destination="iRd-Dm-ZdS" kind="push" identifier="toNextVC" id="HXZ-ZJ-HRh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6LZ-Iq-wxT" userLabel="First Responder" sceneMemberID="firstResponder"/>

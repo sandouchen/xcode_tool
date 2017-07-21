@@ -18,7 +18,7 @@
  @param success 成功Block
  @param failure 失败Block
  */
-+ (void)newListWithType:(NSInteger)type andMaxtime:(NSString *)maxtime success:(SDHttpRequestSuccess)success failure:(SDHttpRequestFailed)failure;
++ (void)newListWithType:(NSInteger)type andMaxtime:(NSString *)maxtime andList:(NSString *)list success:(SDHttpRequestSuccess)success failure:(SDHttpRequestFailed)failure;
 
 /**
  获取推荐关注左边数据

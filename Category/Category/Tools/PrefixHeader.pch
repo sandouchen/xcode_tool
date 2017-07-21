@@ -21,8 +21,7 @@
 #import <SDWebImage/SDImageCache.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <MJRefresh/MJRefresh.h>
-#import <YYWebImage/UIImageView+YYWebImage.h>
-#import <YYImage/YYAnimatedImageView.h>
+#import <DACircularProgress/DALabeledCircularProgressView.h>
 #import <pop/POP.h>
 #import <SDAutoLayout/SDAutoLayout.h>
 
@@ -49,6 +48,7 @@
 #import "SDRefreshHeader.h"
 #import "SDRefreshGifHeader.h"
 #import "SDRefreshAutoGifFooter.h"
+#import "SDProgressView.h"
 
 #endif /* __OBJC__ */
 

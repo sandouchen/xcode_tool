@@ -23,8 +23,6 @@ const CGFloat SDTabBarH = 49;
 
 const CGFloat SDTitlesViewH = 35;
 
-const CGFloat SDPictureMaxH = 1000;
-
 const CGFloat SDPictureSmallH = 250;
 
 /** 布局间距 - 5 */

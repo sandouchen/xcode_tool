@@ -15,6 +15,8 @@
 
 
 #pragma mark - 通用宏
+#define SDLogFunc NSLog(@"%s", __func__);
+
 // 获取主屏幕
 #define KEYWINDOW [UIApplication sharedApplication].keyWindow
 
@@ -28,13 +30,13 @@
 #define SCREENBOUNDS [UIScreen mainScreen].bounds
 
 // 获取系统版本
-#define SYSTEMVERSION [[[UIDevice currentDevice] systemVersion] floatValue]
+#define SYSTEMVERSION [[[UIDevice currentDevice] systemVersion] doubleValue]
 
 // 获取当前版本号
 #define CURRENTVERSION [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"]
 
 // 获取程序名称
-#define APPNAME [NSBundle mainBundle].infoDictionary[@"CFBundleName"]
+#define APPNAME [NSBundle mainBundle].infoDictionary[@"CFBundleDisplayName"]
 
 // 获取程序图标图片
 #define APPICONIMAGE [UIImage imageNamed:[[[NSBundle mainBundle].infoDictionary valueForKeyPath:@"CFBundleIcons.CFBundlePrimaryIcon.CFBundleIconFiles"] lastObject]]

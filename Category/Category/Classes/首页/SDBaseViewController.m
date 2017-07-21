@@ -10,6 +10,7 @@
 #import "SDTopic.h"
 #import "SDTopicCell.h"
 #import "SDCommentViewController.h"
+#import "SDNewViewController.h"
 
 static NSString *const topicCell = @"topicCell";
 
@@ -29,6 +30,11 @@ static NSString *const topicCell = @"topicCell";
     return _topics;
 }
 
+#pragma mark - a参数
+- (NSString *)a {
+    return [self.parentViewController isKindOfClass:[SDNewViewController class]] ? @"newlist" : @"list";
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -40,8 +46,6 @@ static NSString *const topicCell = @"topicCell";
     // xib自定义cell-注册
     UINib *nib = [UINib nibWithNibName:NSStringFromClass([SDTopicCell class]) bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:topicCell];
-    
-    self.tableView.rowHeight = 250;
     
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -74,7 +78,7 @@ static NSString *const topicCell = @"topicCell";
     [self.tableView.mj_footer endRefreshing];
 //    [SDNetworkHelper cancelAllRequest];
     
-    [SDHTTPRequest newListWithType:self.newlistType andMaxtime:nil success:^(id responseObject) {
+    [SDHTTPRequest newListWithType:self.newlistType andMaxtime:nil andList:self.a success:^(id responseObject) {
         // 存储maxtime(方便用来加载下一页数据)
         self.maxtime = responseObject[@"info"][@"maxtime"];
         
@@ -94,7 +98,7 @@ static NSString *const topicCell = @"topicCell";
 - (void)loadMoreTopics {
     [self.tableView.mj_header endRefreshing];
     
-    [SDHTTPRequest newListWithType:self.newlistType andMaxtime:self.maxtime success:^(id responseObject) {
+    [SDHTTPRequest newListWithType:self.newlistType andMaxtime:self.maxtime andList:self.a success:^(id responseObject) {
         
         self.maxtime = responseObject[@"info"][@"maxtime"];
         
@@ -135,9 +139,9 @@ static NSString *const topicCell = @"topicCell";
     [self.navigationController pushViewController:commentVC animated:YES];
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return self.topics[indexPath.row].cellHeight;
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return self.topics[indexPath.row].cellHeight;
+}
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];

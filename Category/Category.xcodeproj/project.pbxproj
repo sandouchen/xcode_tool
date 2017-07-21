@@ -27,7 +27,6 @@
 		C9696B281E5EBC15001A141D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9696B271E5EBC15001A141D /* main.m */; };
 		C9696B311E5EBC15001A141D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9696B2F1E5EBC15001A141D /* Main.storyboard */; };
 		C9696B331E5EBC15001A141D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9696B321E5EBC15001A141D /* Assets.xcassets */; };
-		C9696B361E5EBC15001A141D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9696B341E5EBC15001A141D /* LaunchScreen.storyboard */; };
 		C9696B411E5EBC15001A141D /* CategoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9696B401E5EBC15001A141D /* CategoryTests.m */; };
 		C9696B4C1E5EBC15001A141D /* CategoryUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9696B4B1E5EBC15001A141D /* CategoryUITests.m */; };
 		C9696B6F1E5ED01C001A141D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9696B6B1E5ED01C001A141D /* AppDelegate.m */; };
@@ -64,6 +63,8 @@
 		C984B5491F1DB5A80082F594 /* SDFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C984B5441F1DB5A80082F594 /* SDFlowLayout.m */; };
 		C984B54A1F1DB5A80082F594 /* TestView.m in Sources */ = {isa = PBXBuildFile; fileRef = C984B5461F1DB5A80082F594 /* TestView.m */; };
 		C984B54B1F1DB5A80082F594 /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C984B5471F1DB5A80082F594 /* TestView.xib */; };
+		C984B54F1F1F23FF0082F594 /* SDNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C984B54E1F1F23FF0082F594 /* SDNewViewController.m */; };
+		C984B5521F21A0660082F594 /* SDProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = C984B5511F21A0660082F594 /* SDProgressView.m */; };
 		C98C20A41EB882AA002FABEF /* SDCenterPictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C20A31EB882AA002FABEF /* SDCenterPictureView.m */; };
 		C98C20A61EB882B7002FABEF /* SDCenterPictureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C98C20A51EB882B7002FABEF /* SDCenterPictureView.xib */; };
 		C98C20A91EB88C8D002FABEF /* SDComment.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C20A81EB88C8D002FABEF /* SDComment.m */; };
@@ -146,7 +147,6 @@
 		C9696B271E5EBC15001A141D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C9696B301E5EBC15001A141D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C9696B321E5EBC15001A141D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C9696B351E5EBC15001A141D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9696B371E5EBC15001A141D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9696B3C1E5EBC15001A141D /* CategoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CategoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9696B401E5EBC15001A141D /* CategoryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryTests.m; sourceTree = "<group>"; };
@@ -221,6 +221,10 @@
 		C984B5451F1DB5A80082F594 /* TestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestView.h; sourceTree = "<group>"; };
 		C984B5461F1DB5A80082F594 /* TestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestView.m; sourceTree = "<group>"; };
 		C984B5471F1DB5A80082F594 /* TestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestView.xib; sourceTree = "<group>"; };
+		C984B54D1F1F23FF0082F594 /* SDNewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDNewViewController.h; sourceTree = "<group>"; };
+		C984B54E1F1F23FF0082F594 /* SDNewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDNewViewController.m; sourceTree = "<group>"; };
+		C984B5501F21A0660082F594 /* SDProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDProgressView.h; sourceTree = "<group>"; };
+		C984B5511F21A0660082F594 /* SDProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDProgressView.m; sourceTree = "<group>"; };
 		C98C20A21EB882AA002FABEF /* SDCenterPictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCenterPictureView.h; sourceTree = "<group>"; };
 		C98C20A31EB882AA002FABEF /* SDCenterPictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCenterPictureView.m; sourceTree = "<group>"; };
 		C98C20A51EB882B7002FABEF /* SDCenterPictureView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SDCenterPictureView.xib; sourceTree = "<group>"; };
@@ -390,7 +394,6 @@
 		C9696B261E5EBC15001A141D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C9696B341E5EBC15001A141D /* LaunchScreen.storyboard */,
 				C9696B371E5EBC15001A141D /* Info.plist */,
 				C9696B271E5EBC15001A141D /* main.m */,
 			);
@@ -573,6 +576,7 @@
 				C9696B6A1E5ED01C001A141D /* AppDelegate.h */,
 				C9696B6B1E5ED01C001A141D /* AppDelegate.m */,
 				C970CB1D1EA754B100309A9D /* 精华 */,
+				C984B54C1F1F23C70082F594 /* 新帖 */,
 				C970CB201EA754B100309A9D /* 推荐标签 */,
 				C970CB271EA754B100309A9D /* 推荐关注 */,
 				C98290DA1ECD904800CFF616 /* 我 */,
@@ -643,6 +647,8 @@
 				C9C7EB881F172819001F61AA /* SDTopicVoiceView.h */,
 				C9C7EB891F172819001F61AA /* SDTopicVoiceView.m */,
 				C9C7EB8B1F172831001F61AA /* SDTopicVoiceView.xib */,
+				C984B5501F21A0660082F594 /* SDProgressView.h */,
+				C984B5511F21A0660082F594 /* SDProgressView.m */,
 			);
 			name = "精华";
 			path = "首页";
@@ -736,6 +742,15 @@
 				C984B5471F1DB5A80082F594 /* TestView.xib */,
 			);
 			path = "练习";
+			sourceTree = "<group>";
+		};
+		C984B54C1F1F23C70082F594 /* 新帖 */ = {
+			isa = PBXGroup;
+			children = (
+				C984B54D1F1F23FF0082F594 /* SDNewViewController.h */,
+				C984B54E1F1F23FF0082F594 /* SDNewViewController.m */,
+			);
+			path = "新帖";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -854,7 +869,6 @@
 				C984B54B1F1DB5A80082F594 /* TestView.xib in Resources */,
 				C970CB541EA8993900309A9D /* SDTopicCell.xib in Resources */,
 				C9C7EB871F172731001F61AA /* SDTopicVideoView.xib in Resources */,
-				C9696B361E5EBC15001A141D /* LaunchScreen.storyboard in Resources */,
 				C966B3081ED5428600F08C05 /* SDAddTagToolbar.xib in Resources */,
 				C9696B331E5EBC15001A141D /* Assets.xcassets in Resources */,
 				C98C20A61EB882B7002FABEF /* SDCenterPictureView.xib in Resources */,
@@ -993,7 +1007,9 @@
 				C9BF799D1E6EA0F0006DF566 /* UIButton+SDExtend.m in Sources */,
 				C970CB371EA754B100309A9D /* SDRecommendLeftModel.m in Sources */,
 				C970CB381EA754B100309A9D /* SDRecommendRightCell.m in Sources */,
+				C984B5521F21A0660082F594 /* SDProgressView.m in Sources */,
 				C9696B281E5EBC15001A141D /* main.m in Sources */,
+				C984B54F1F1F23FF0082F594 /* SDNewViewController.m in Sources */,
 				C970CB3A1EA754B100309A9D /* ViewController.m in Sources */,
 				C97C47261EE6682D00935A7E /* SDTabBarController.m in Sources */,
 				C970CB531EA8993900309A9D /* SDTopicCell.m in Sources */,
@@ -1043,14 +1059,6 @@
 			);
 			name = Main.storyboard;
 			path = ..;
-			sourceTree = "<group>";
-		};
-		C9696B341E5EBC15001A141D /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C9696B351E5EBC15001A141D /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1149,6 +1157,7 @@
 			baseConfigurationReference = 8FAA838841B9FCDB92E9AD69 /* Pods-Category.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 27A9PVFTM4;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Category/Tools/PrefixHeader.pch;
@@ -1165,6 +1174,7 @@
 			baseConfigurationReference = 41DA5859020CCB13D0D46C08 /* Pods-Category.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 27A9PVFTM4;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Category/Tools/PrefixHeader.pch;

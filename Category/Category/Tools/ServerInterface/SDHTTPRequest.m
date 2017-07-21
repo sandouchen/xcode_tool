@@ -18,16 +18,15 @@ static NSString *const serverPrefix;
 #endif
 
 @implementation SDHTTPRequest
-+ (void)newListWithType:(NSInteger)type andMaxtime:(NSString *)maxtime success:(SDHttpRequestSuccess)success failure:(SDHttpRequestFailed)failure {
++ (void)newListWithType:(NSInteger)type andMaxtime:(NSString *)maxtime andList:(NSString *)list success:(SDHttpRequestSuccess)success failure:(SDHttpRequestFailed)failure {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    parameters[@"a"] = @"list";
+    parameters[@"a"] = list;
     parameters[@"c"] = @"data";
     parameters[@"type"] = @(type);
     
     if (maxtime) parameters[@"maxtime"] = maxtime;
     
     [SDNetworkHelper GET:serverPrefix parameters:parameters success:success failure:failure];
-    // @{@"a" : list,  @"c" : @"data", @"per" :@(per), @"type" : @(type), @"maxtime" : maxtime ? maxtime : nil}
 }
 
 + (void)recommendListWithSuccess:(SDHttpRequestSuccess)success andFailure:(SDHttpRequestFailed)failure {

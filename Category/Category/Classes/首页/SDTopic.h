@@ -11,28 +11,41 @@
 @class SDComment;
 
 @interface SDTopic : NSObject
-@property (assign, nonatomic, getter=isSina_v) BOOL sina_v;
-@property (assign, nonatomic, getter=isIs_gif) BOOL is_gif;
+/** id */
+@property (nonatomic, copy) NSString *ID;
+/** 用户的名字 */
+@property (nonatomic, copy) NSString *name;
+/** 用户的头像 */
+@property (nonatomic, copy) NSString *profile_image;
+/** 帖子的文字内容 */
+@property (nonatomic, copy) NSString *text;
+/** 帖子审核通过的时间 */
+@property (nonatomic, copy) NSString *create_time;
+/** 顶数量 */
+@property (nonatomic, copy) NSString *ding;
+/** 踩数量 */
+@property (nonatomic, copy) NSString *cai;
+/** 转发\分享数量 */
+@property (nonatomic, copy) NSString *repost;
+/** 评论数量 */
+@property (nonatomic, copy) NSString *comment;
+/** 最热评论 */
+@property (nonatomic, strong) SDComment *top_cmt;
+/** 帖子类型 */
+@property (nonatomic, assign) SDNewlistType type;
+/** 图片的真实宽度 */
+@property (nonatomic, assign) CGFloat width;
+/** 图片的真实高度 */
+@property (nonatomic, assign) CGFloat height;
 
-
-/****** 额外的辅助属性 ******/
-
+/** 小图 */
+@property (nonatomic, copy) NSString *small_image;
+/** 中图 */
+@property (nonatomic, copy) NSString *middle_image;
+/** 大图 */
+@property (nonatomic, copy) NSString *large_image;
 /** cell的高度 */
 @property (nonatomic, assign) CGFloat cellHeight;
-/** 中间内容的frame */
-@property (nonatomic, assign) CGRect contentF;
-/** 图片控件的frame */
-@property (nonatomic, assign, readonly) CGRect pictureF;
-
-/** 声音控件的frame */
-@property (nonatomic, assign, readonly) CGRect voiceF;
-
-/** 视频控件的frame */
-@property (nonatomic, assign, readonly) CGRect videoF;
-/** 图片的下载进度 */
-@property (nonatomic, assign) CGFloat pictureProgress;
-/** 图片是否太大 */
-@property (nonatomic, assign, getter=isBigPicture) BOOL bigPicture;
 
 /** 音频时长 */
 @property (nonatomic, assign) NSInteger voicetime;
@@ -41,77 +54,17 @@
 /** 音频\视频的播放次数 */
 @property (nonatomic, assign) NSInteger playcount;
 
-@property (assign, nonatomic) NSInteger cache_version;
 
-@property (copy, nonatomic) NSString *created_at;
-
-@property (copy, nonatomic) NSString *ID;
-
-@property (copy, nonatomic) NSString *voicelength;
-
-@property (strong, nonatomic) SDComment *top_cmt;
-
-@property (copy, nonatomic) NSString *repost;
-
-@property (copy, nonatomic) NSString *bimageuri;
-
-@property (copy, nonatomic) NSString *text;
-
-@property (copy, nonatomic) NSString *theme_type;
-
-@property (copy, nonatomic) NSString *hate;
-
-@property (copy, nonatomic) NSString *ding;
-
-@property (copy, nonatomic) NSString *comment;
-
-@property (copy, nonatomic) NSString *passtime;
-
-@property (assign, nonatomic) SDNewlistType type;
-
-@property (copy, nonatomic) NSString *tag;
-
-@property (copy, nonatomic) NSString *theme_name;
-
-@property (copy, nonatomic) NSString *create_time;
-
-@property (copy, nonatomic) NSString *favourite;
-
-@property (strong, nonatomic) NSArray *themes;
-
-@property (copy, nonatomic) NSString *name;
-
-@property (copy, nonatomic) NSString *pictureH;
-
-@property (copy, nonatomic) NSString *status;
-
-@property (copy, nonatomic) NSString *bookmark;
-
-@property (copy, nonatomic) NSString *cai;
-
-@property (copy, nonatomic) NSString *screen_name;
-
-@property (copy, nonatomic) NSString *profile_image;
-
-@property (copy, nonatomic) NSString *love;
-
-@property (copy, nonatomic) NSString *user_id;
-
-@property (copy, nonatomic) NSString *theme_id;
-
-@property (copy, nonatomic) NSString *original_pid;
-
-@property (assign, nonatomic) NSInteger t;
-
-@property (copy, nonatomic) NSString *weixin_url;
-
-@property (copy, nonatomic) NSString *voiceuri;
-
-@property (copy, nonatomic) NSString *videouri;
-
-@property (copy, nonatomic) NSString *pictureW;
-
-@property (nonatomic, copy) NSString *image1;
-
+/***** 额外增加的属性 - 方便开发 *****/
+/** 是否为gif动画图片 */
+@property (nonatomic, assign) BOOL is_gif;
+/** 中间内容的frame */
+@property (nonatomic, assign) CGRect contentF;
+/** 是否为超长图片 */
+@property (nonatomic, assign, getter=isBigPicture) BOOL bigPicture;
+/** 是否会员 */
+@property (assign, nonatomic, getter=isSina_v) BOOL sina_v;
+/** 图片的下载进度 */
+@property (nonatomic, assign) CGFloat pictureProgress;
 
 @end

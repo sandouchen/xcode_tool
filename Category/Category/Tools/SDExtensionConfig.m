@@ -17,10 +17,17 @@
     
     [SDTopic mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
         return @{@"top_cmt" : @"top_cmt[0]",
-                 @"width" : @"pictureW",
-                 @"height" : @"pictureH"
+                 @"small_image" : @"image0",
+                 @"middle_image" : @"image2",
+                 @"large_image" : @"image1"
                  };
     }];
     
+    /*
+    // 服务器返回下划线的属性，统一改驼峰属性
+    [NSString mj_setupReplacedKeyFromPropertyName121:^id(NSString *propertyName) {
+        return [propertyName mj_camelFromUnderline];
+    }];
+    */
 }
 @end

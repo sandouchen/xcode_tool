@@ -127,11 +127,11 @@
 - (void)setupNav {
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MainTitle"]];
     
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem sd_itemWithTarget:self action:@selector(toEssenceVC) image:@"MainTagSubIcon" highImage:@"MainTagSubIconClick" insets:1];
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem sd_itemWithTarget:self action:@selector(toNextVC) image:@"MainTagSubIcon" highImage:@"MainTagSubIconClick" insets:1];
 }
 
-- (void)toEssenceVC {
-    [self performSegueWithIdentifier:@"toEssenceVC" sender:nil];
+- (void)toNextVC {
+    [self performSegueWithIdentifier:@"toNextVC" sender:nil];
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
