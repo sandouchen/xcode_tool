@@ -32,7 +32,6 @@
 		C9696B6F1E5ED01C001A141D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9696B6B1E5ED01C001A141D /* AppDelegate.m */; };
 		C9696B731E5ED63E001A141D /* UIImage+FixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = C9696B721E5ED63E001A141D /* UIImage+FixOrientation.m */; };
 		C9696B761E5ED7BC001A141D /* UIImage+SDExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = C9696B751E5ED7BC001A141D /* UIImage+SDExtend.m */; };
-		C96DFFF41EB9E6B60094C3B8 /* SDCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C96DFFF21EB9D7520094C3B8 /* SDCommentViewController.m */; };
 		C970CB321EA754B100309A9D /* SDEssenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C970CB1F1EA754B100309A9D /* SDEssenceViewController.m */; };
 		C970CB331EA754B100309A9D /* SDNewListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C970CB221EA754B100309A9D /* SDNewListCell.m */; };
 		C970CB341EA754B100309A9D /* SDNewListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C970CB241EA754B100309A9D /* SDNewListModel.m */; };
@@ -71,6 +70,12 @@
 		C98C20AC1EB88C9B002FABEF /* SDUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C20AB1EB88C9B002FABEF /* SDUser.m */; };
 		C98D06E01E6818B600F6F3B3 /* UIColor+SDExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = C98D06DF1E6818B600F6F3B3 /* UIColor+SDExtend.m */; };
 		C98D06E41E68207B00F6F3B3 /* SDCommonConst.m in Sources */ = {isa = PBXBuildFile; fileRef = C98D06E31E68207B00F6F3B3 /* SDCommonConst.m */; };
+		C9913FC81F25E17D0031E968 /* SDUserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9913FC71F25E17D0031E968 /* SDUserListViewController.m */; };
+		C9913FCF1F25ED210031E968 /* UIViewController+SDCurrentNav.m in Sources */ = {isa = PBXBuildFile; fileRef = C9913FCE1F25ED210031E968 /* UIViewController+SDCurrentNav.m */; };
+		C9913FD81F25FB8B0031E968 /* SDCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9913FD21F25FB8B0031E968 /* SDCommentCell.m */; };
+		C9913FD91F25FB8B0031E968 /* SDCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9913FD31F25FB8B0031E968 /* SDCommentCell.xib */; };
+		C9913FDA1F25FB8B0031E968 /* SDCommentSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = C9913FD51F25FB8B0031E968 /* SDCommentSectionHeader.m */; };
+		C9913FDB1F25FB8B0031E968 /* SDCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9913FD71F25FB8B0031E968 /* SDCommentViewController.m */; };
 		C9A7DD7F1E6037B4006BAF4C /* UIView+SDExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A7DD7E1E6037B4006BAF4C /* UIView+SDExtend.m */; };
 		C9B196F01EB0894300E366EC /* SDShowPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B196EE1EB0894300E366EC /* SDShowPictureViewController.m */; };
 		C9B196F11EB0894300E366EC /* SDShowPictureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9B196EF1EB0894300E366EC /* SDShowPictureViewController.xib */; };
@@ -161,8 +166,6 @@
 		C9696B741E5ED7BC001A141D /* UIImage+SDExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SDExtend.h"; sourceTree = "<group>"; };
 		C9696B751E5ED7BC001A141D /* UIImage+SDExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SDExtend.m"; sourceTree = "<group>"; };
 		C9696B771E5EDA1A001A141D /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		C96DFFF11EB9D7520094C3B8 /* SDCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCommentViewController.h; sourceTree = "<group>"; };
-		C96DFFF21EB9D7520094C3B8 /* SDCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCommentViewController.m; sourceTree = "<group>"; };
 		C970CB1E1EA754B100309A9D /* SDEssenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDEssenceViewController.h; sourceTree = "<group>"; };
 		C970CB1F1EA754B100309A9D /* SDEssenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDEssenceViewController.m; sourceTree = "<group>"; };
 		C970CB211EA754B100309A9D /* SDNewListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDNewListCell.h; sourceTree = "<group>"; };
@@ -237,6 +240,17 @@
 		C98D06E11E68203300F6F3B3 /* SDMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDMacro.h; sourceTree = "<group>"; };
 		C98D06E21E68207B00F6F3B3 /* SDCommonConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCommonConst.h; sourceTree = "<group>"; };
 		C98D06E31E68207B00F6F3B3 /* SDCommonConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCommonConst.m; sourceTree = "<group>"; };
+		C9913FC61F25E17D0031E968 /* SDUserListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDUserListViewController.h; sourceTree = "<group>"; };
+		C9913FC71F25E17D0031E968 /* SDUserListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDUserListViewController.m; sourceTree = "<group>"; };
+		C9913FCD1F25ED210031E968 /* UIViewController+SDCurrentNav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SDCurrentNav.h"; sourceTree = "<group>"; };
+		C9913FCE1F25ED210031E968 /* UIViewController+SDCurrentNav.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SDCurrentNav.m"; sourceTree = "<group>"; };
+		C9913FD11F25FB8B0031E968 /* SDCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCommentCell.h; sourceTree = "<group>"; };
+		C9913FD21F25FB8B0031E968 /* SDCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCommentCell.m; sourceTree = "<group>"; };
+		C9913FD31F25FB8B0031E968 /* SDCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SDCommentCell.xib; sourceTree = "<group>"; };
+		C9913FD41F25FB8B0031E968 /* SDCommentSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCommentSectionHeader.h; sourceTree = "<group>"; };
+		C9913FD51F25FB8B0031E968 /* SDCommentSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCommentSectionHeader.m; sourceTree = "<group>"; };
+		C9913FD61F25FB8B0031E968 /* SDCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCommentViewController.h; sourceTree = "<group>"; };
+		C9913FD71F25FB8B0031E968 /* SDCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCommentViewController.m; sourceTree = "<group>"; };
 		C9A7DD7D1E6037B4006BAF4C /* UIView+SDExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDExtend.h"; sourceTree = "<group>"; };
 		C9A7DD7E1E6037B4006BAF4C /* UIView+SDExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDExtend.m"; sourceTree = "<group>"; };
 		C9B196ED1EB0894300E366EC /* SDShowPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDShowPictureViewController.h; sourceTree = "<group>"; };
@@ -421,6 +435,7 @@
 		C9696B591E5ED01C001A141D /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				C9913FCC1F25ECE20031E968 /* UIViewController */,
 				C9696B5B1E5ED01C001A141D /* NSArray */,
 				C9696B5C1E5ED01C001A141D /* NSDate */,
 				C9696B5D1E5ED01C001A141D /* NSObject */,
@@ -575,6 +590,7 @@
 				C9696B2F1E5EBC15001A141D /* Main.storyboard */,
 				C9696B6A1E5ED01C001A141D /* AppDelegate.h */,
 				C9696B6B1E5ED01C001A141D /* AppDelegate.m */,
+				C9913FD01F25FB3D0031E968 /* 评论 */,
 				C970CB1D1EA754B100309A9D /* 精华 */,
 				C984B54C1F1F23C70082F594 /* 新帖 */,
 				C970CB201EA754B100309A9D /* 推荐标签 */,
@@ -627,8 +643,6 @@
 				C9B196ED1EB0894300E366EC /* SDShowPictureViewController.h */,
 				C9B196EE1EB0894300E366EC /* SDShowPictureViewController.m */,
 				C9B196EF1EB0894300E366EC /* SDShowPictureViewController.xib */,
-				C96DFFF11EB9D7520094C3B8 /* SDCommentViewController.h */,
-				C96DFFF21EB9D7520094C3B8 /* SDCommentViewController.m */,
 				C970CB4D1EA8603700309A9D /* SDTopic.h */,
 				C970CB4E1EA8603700309A9D /* SDTopic.m */,
 				C98C20A71EB88C8D002FABEF /* SDComment.h */,
@@ -726,6 +740,8 @@
 				C966B3101ED9219B00F08C05 /* SDSettingViewController.m */,
 				C9F71ACA1F0F7DE70099E388 /* SDClearCacheCell.h */,
 				C9F71ACB1F0F7DE70099E388 /* SDClearCacheCell.m */,
+				C9913FC61F25E17D0031E968 /* SDUserListViewController.h */,
+				C9913FC71F25E17D0031E968 /* SDUserListViewController.m */,
 			);
 			path = "我";
 			sourceTree = "<group>";
@@ -751,6 +767,29 @@
 				C984B54E1F1F23FF0082F594 /* SDNewViewController.m */,
 			);
 			path = "新帖";
+			sourceTree = "<group>";
+		};
+		C9913FCC1F25ECE20031E968 /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C9913FCD1F25ED210031E968 /* UIViewController+SDCurrentNav.h */,
+				C9913FCE1F25ED210031E968 /* UIViewController+SDCurrentNav.m */,
+			);
+			path = UIViewController;
+			sourceTree = "<group>";
+		};
+		C9913FD01F25FB3D0031E968 /* 评论 */ = {
+			isa = PBXGroup;
+			children = (
+				C9913FD61F25FB8B0031E968 /* SDCommentViewController.h */,
+				C9913FD71F25FB8B0031E968 /* SDCommentViewController.m */,
+				C9913FD11F25FB8B0031E968 /* SDCommentCell.h */,
+				C9913FD21F25FB8B0031E968 /* SDCommentCell.m */,
+				C9913FD31F25FB8B0031E968 /* SDCommentCell.xib */,
+				C9913FD41F25FB8B0031E968 /* SDCommentSectionHeader.h */,
+				C9913FD51F25FB8B0031E968 /* SDCommentSectionHeader.m */,
+			);
+			path = "评论";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -869,6 +908,7 @@
 				C984B54B1F1DB5A80082F594 /* TestView.xib in Resources */,
 				C970CB541EA8993900309A9D /* SDTopicCell.xib in Resources */,
 				C9C7EB871F172731001F61AA /* SDTopicVideoView.xib in Resources */,
+				C9913FD91F25FB8B0031E968 /* SDCommentCell.xib in Resources */,
 				C966B3081ED5428600F08C05 /* SDAddTagToolbar.xib in Resources */,
 				C9696B331E5EBC15001A141D /* Assets.xcassets in Resources */,
 				C98C20A61EB882B7002FABEF /* SDCenterPictureView.xib in Resources */,
@@ -961,8 +1001,10 @@
 				C9C7EB8A1F172819001F61AA /* SDTopicVoiceView.m in Sources */,
 				C970CB361EA754B100309A9D /* SDRecommendLeftCell.m in Sources */,
 				C9551FE91F0266F8007085AD /* NSString+SDExtend.m in Sources */,
+				C9913FD81F25FB8B0031E968 /* SDCommentCell.m in Sources */,
 				C98290E61ECE9D1300CFF616 /* SDSqaureButton.m in Sources */,
 				C9696B6F1E5ED01C001A141D /* AppDelegate.m in Sources */,
+				C9913FCF1F25ED210031E968 /* UIViewController+SDCurrentNav.m in Sources */,
 				C9347B901E9E135200F9BC9E /* SDHTTPRequest.m in Sources */,
 				C9725C1A1E6CFA6A00BFD21E /* UILabel+SDExtend.m in Sources */,
 				C970CB5A1EA9E7AC00309A9D /* SDBaseViewController.m in Sources */,
@@ -974,6 +1016,7 @@
 				C9FFCC2E1EEA493F00BBA737 /* SDPublishView.m in Sources */,
 				C9725C201E6D4F6800BFD21E /* CALayer+SDExtend.m in Sources */,
 				C966B3061ED5427700F08C05 /* SDAddTagToolbar.m in Sources */,
+				C9913FDB1F25FB8B0031E968 /* SDCommentViewController.m in Sources */,
 				C9C7EB8F1F18A87C001F61AA /* SDRefreshHeader.m in Sources */,
 				C9347B8A1E9E131000F9BC9E /* SDNetworkHelper.m in Sources */,
 				C966B30E1ED6E76C00F08C05 /* SDTagTextField.m in Sources */,
@@ -987,11 +1030,11 @@
 				C966B3111ED9219B00F08C05 /* SDSettingViewController.m in Sources */,
 				C982E21B1EE149B400C31A7A /* SDNavigationController.m in Sources */,
 				C919B13C1EEFDF7600D5E3ED /* SDLoginViewController.m in Sources */,
+				C9913FDA1F25FB8B0031E968 /* SDCommentSectionHeader.m in Sources */,
 				C984B54A1F1DB5A80082F594 /* TestView.m in Sources */,
 				C970CB571EA9AE3B00309A9D /* NSDate+SDExtension.m in Sources */,
 				C970CB321EA754B100309A9D /* SDEssenceViewController.m in Sources */,
 				C9F71ACC1F0F7DE70099E388 /* SDClearCacheCell.m in Sources */,
-				C96DFFF41EB9E6B60094C3B8 /* SDCommentViewController.m in Sources */,
 				C919B13F1EF0DF7500D5E3ED /* SDLoginRegisterTextField.m in Sources */,
 				C9725C231E6D6F4700BFD21E /* UIBarButtonItem+SDExtend.m in Sources */,
 				C9F71AC81F0F22D30099E388 /* SDWebViewController.m in Sources */,
@@ -1009,6 +1052,7 @@
 				C970CB381EA754B100309A9D /* SDRecommendRightCell.m in Sources */,
 				C984B5521F21A0660082F594 /* SDProgressView.m in Sources */,
 				C9696B281E5EBC15001A141D /* main.m in Sources */,
+				C9913FC81F25E17D0031E968 /* SDUserListViewController.m in Sources */,
 				C984B54F1F1F23FF0082F594 /* SDNewViewController.m in Sources */,
 				C970CB3A1EA754B100309A9D /* ViewController.m in Sources */,
 				C97C47261EE6682D00935A7E /* SDTabBarController.m in Sources */,

@@ -39,7 +39,10 @@ static const CGFloat SDSpringFactor = 7;
 - (UIButton *)cancelButton {
     if (!_cancelButton) {
         _cancelButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
-        [_cancelButton setBackgroundImage:[UIImage imageNamed:@"shareButtonCancel"] forState:(UIControlStateNormal)];
+        [_cancelButton setBackgroundColor:[UIColor whiteColor]];
+        [_cancelButton setTitle:@"取消" forState:(UIControlStateNormal)];
+        _cancelButton.titleLabel.font = [UIFont systemFontOfSize:17];
+        [_cancelButton setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
         [_cancelButton addTarget:self action:@selector(cancel) forControlEvents:(UIControlEventTouchUpInside)];
         [self addSubview:_cancelButton];
     }
@@ -56,7 +59,7 @@ static const CGFloat SDSpringFactor = 7;
     
     self.backgroundImageView.frame = SCREENBOUNDS;
     
-    self.cancelButton.frame = CGRectMake(buttonlayout, self.sd_height - 2 * buttonlayout, self.sd_width - 2 * buttonlayout, buttonlayout);
+    self.cancelButton.frame = CGRectMake(0, self.sd_height - buttonlayout, self.sd_width, buttonlayout);
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -166,7 +169,7 @@ static const CGFloat SDSpringFactor = 7;
         if (button.tag == 2) {
             SDPostWordViewController *postWord = [[SDPostWordViewController alloc] init];
             SDNavigationController *nav = [[SDNavigationController alloc] initWithRootViewController:postWord];
-            UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+            UIViewController *rootVC = KEYWINDOW.rootViewController;
             [rootVC presentViewController:nav animated:YES completion:nil];
         }
     }];

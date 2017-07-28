@@ -416,7 +416,16 @@ float radiansForDegrees(int degrees) {
 }
 
 // 淡入
-- (void)fadeInWithTime:(NSTimeInterval)time{
+- (void)fadeInWithTime:(NSTimeInterval)time withAlpha:(CGFloat)alpha {
+    self.alpha = 0;
+    [UIView animateWithDuration:time animations:^{
+        self.alpha = alpha;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+- (void)fadeInWithTime:(NSTimeInterval)time {
     self.alpha = 0;
     [UIView animateWithDuration:time animations:^{
         self.alpha = 1;
@@ -426,7 +435,16 @@ float radiansForDegrees(int degrees) {
 }
 
 // 淡出
-- (void)fadeOutWithTime:(NSTimeInterval)time{
+- (void)fadeOutWithTime:(NSTimeInterval)time withAlpha:(CGFloat)alpha {
+    self.alpha = alpha;
+    [UIView animateWithDuration:time animations:^{
+        self.alpha = 0;
+    } completion:^(BOOL finished) {
+        [self removeFromSuperview];
+    }];
+}
+
+- (void)fadeOutWithTime:(NSTimeInterval)time {
     self.alpha = 1;
     [UIView animateWithDuration:time animations:^{
         self.alpha = 0;
@@ -436,7 +454,7 @@ float radiansForDegrees(int degrees) {
 }
 
 // 缩放
-- (void)scalingWithTime:(NSTimeInterval)time andscal:(CGFloat)scal{
+- (void)scalingWithTime:(NSTimeInterval)time andscal:(CGFloat)scal {
     
     [UIView animateWithDuration:time animations:^{
         self.transform = CGAffineTransformMakeScale(scal,scal);
@@ -444,7 +462,7 @@ float radiansForDegrees(int degrees) {
 }
 
 // 旋转
-- (void)RevolvingWithTime:(NSTimeInterval)time andDelta:(CGFloat)angle{
+- (void)RevolvingWithTime:(NSTimeInterval)time andDelta:(CGFloat)angle {
     [UIView animateWithDuration:time animations:^{
         self.transform = CGAffineTransformMakeRotation(angle);
     }];

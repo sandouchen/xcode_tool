@@ -45,6 +45,11 @@ UIKIT_EXTERN NSString *const SDSelectedControllerIndexKey;
 /** tabBar被选中的通知 - 被选中的控制器 key */
 UIKIT_EXTERN NSString *const SDSelectedControllerKey;
 
+/** XMGUser - sex - male */
+UIKIT_EXTERN NSString * const SDUserSexMale;
+
+/** XMGUser - sex - female */
+UIKIT_EXTERN NSString * const SDUserSexFemale;
 
 /**
  精华页面返回自定义类型的帖子

@@ -15,4 +15,8 @@
 @property (nonatomic, copy) NSString *sex;
 /** 头像 */
 @property (nonatomic, copy) NSString *profile_image;
+/** 点赞的人的发帖的数量 */
+@property (nonatomic, copy) NSString *tiezi_count;
+/** 点赞人的关注了人的总数 */
+@property (nonatomic, copy) NSString *follow_count;
 @end

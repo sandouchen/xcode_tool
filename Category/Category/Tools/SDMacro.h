@@ -17,6 +17,9 @@
 #pragma mark - 通用宏
 #define SDLogFunc NSLog(@"%s", __func__);
 
+// 将服务器返回的数据写入plist
+#define SDWriteToPlist(data, filename) [data writeToFile:[NSString stringWithFormat:@"/Users/fqq3/Desktop/%@.plist", filename] atomically:YES];
+
 // 获取主屏幕
 #define KEYWINDOW [UIApplication sharedApplication].keyWindow
 

@@ -156,12 +156,30 @@ float radiansForDegrees(int degrees);
  */
 - (void)addSubviewWithFadeAnimation:(UIView *)subview;
 
+
+/**
+ 淡入动画
+
+ @param time 持续时间
+ @param alpha 透明度
+ */
+- (void)fadeInWithTime:(NSTimeInterval)time withAlpha:(CGFloat)alpha;
+
 /**
  淡入动画
 
  @param time 持续时间
  */
 - (void)fadeInWithTime:(NSTimeInterval)time;
+
+
+/**
+ 淡出动画
+
+ @param time 持续时间
+ @param alpha 透明度
+ */
+- (void)fadeOutWithTime:(NSTimeInterval)time withAlpha:(CGFloat)alpha;
 
 /**
  淡出动画

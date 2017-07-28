@@ -24,6 +24,7 @@
 #import <DACircularProgress/DALabeledCircularProgressView.h>
 #import <pop/POP.h>
 #import <SDAutoLayout/SDAutoLayout.h>
+#import <YYText/YYText.h>
 
 // Category
 #import "CALayer+SDExtend.h"
@@ -39,6 +40,7 @@
 #import "UIImageView+SDExtension.h"
 #import "NSString+SDExtend.h"
 #import "WRNavigationBar.h"
+#import "UIViewController+SDCurrentNav.h"
 
 // Tool
 #import "SDMacro.h"

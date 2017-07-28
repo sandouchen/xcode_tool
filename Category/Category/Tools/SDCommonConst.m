@@ -39,7 +39,11 @@ NSString *const SDSelectedControllerIndexKey = @"SDSelectedControllerIndexKey";
 /** tabBar被选中的通知 - 被选中的控制器 key */
 NSString *const SDSelectedControllerKey = @"SDSelectedControllerKey";
 
+/** XMGUser - sex - male */
+NSString *const SDUserSexMale = @"m";
 
+/** XMGUser - sex - female */
+NSString *const SDUserSexFemale = @"f";
 
 
 

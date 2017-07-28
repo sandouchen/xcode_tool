@@ -41,12 +41,7 @@
     [self setTitle:@"上拉或点击有惊喜" forState:MJRefreshStateIdle];
     [self setTitle:@"惊喜正在刷新" forState:MJRefreshStateRefreshing];
     
-    // 不要自动刷新
-    self.automaticallyRefresh = YES;
-    
-    // 隐藏刷新状态的文字
-    self.refreshingTitleHidden = NO;
-    
+    self.automaticallyHidden = YES;
     
     self.logo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MainTitle"]];
     [self addSubview:self.logo];

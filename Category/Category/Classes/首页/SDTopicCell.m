@@ -14,6 +14,8 @@
 #import "SDCenterPictureView.h"
 #import "SDTopicVideoView.h"
 #import "SDTopicVoiceView.h"
+#import "SDUserListViewController.h"
+#import "SDNavigationController.h"
 
 @interface SDTopicCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
@@ -27,7 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *moreBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *sina_vImageView;
 @property (weak, nonatomic) IBOutlet UIView *topCmtView;
-@property (weak, nonatomic) IBOutlet UILabel *topCmtLabel;
+@property (weak, nonatomic) IBOutlet YYLabel *topCmtLabel;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 
 @property (nonatomic, strong) SDCenterPictureView *centerPictureView;
@@ -89,13 +91,25 @@
     if (topics.top_cmt) { // 有最热评论
         self.topCmtView.hidden = NO;
         
+        self.topCmtLabel.preferredMaxLayoutWidth = self.sd_width - 2 * SDLayoutMargin_10;
+        
         NSString *username = topics.top_cmt.user.username; // 用户名
         NSString *content = topics.top_cmt.content; // 评论内容
         
         if (topics.top_cmt.voiceuri.length) {
             content = @"[语音评论]";
         }
-        self.topCmtLabel.text = [NSString stringWithFormat:@"%@ : %@", username, content];
+        
+        NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@: %@", username, content]];
+        
+        [attrString yy_setTextHighlightRange:NSMakeRange(0, username.length) color:[UIColor blueColor] backgroundColor:[UIColor clearColor] tapAction:^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
+            SDUserListViewController *userListVC = [[SDUserListViewController alloc] init];
+            
+            [[UIViewController currentView:self].navigationController pushViewController:userListVC animated:YES];
+        }];
+        
+        [self.topCmtLabel setAttributedText:attrString];
+        
     } else { // 没有最热评论
         self.topCmtView.hidden = YES;
     }

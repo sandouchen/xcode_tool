@@ -14,4 +14,5 @@ pod 'SDCycleScrollView'
 pod 'Masonry'
 pod 'DACircularProgress'
 pod 'SDWebImage', '~> 3.8.2'
+pod 'YYText'
 end

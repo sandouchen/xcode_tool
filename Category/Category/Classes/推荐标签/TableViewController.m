@@ -27,13 +27,11 @@
     __weak __typeof(&*self) weakSelf = self;
     
     [SDHTTPRequest recommendTagWithSuccess:^(id responseObject) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [SVProgressHUD dismiss];
-            
-            weakSelf.listArray = [SDNewListModel mj_objectArrayWithKeyValuesArray:responseObject];
-            
-            [weakSelf.tableView reloadData];
-        });
+        [SVProgressHUD dismiss];
+        
+        weakSelf.listArray = [SDNewListModel mj_objectArrayWithKeyValuesArray:responseObject];
+        
+        [weakSelf.tableView reloadData];
         
     } andFailure:^(NSError *error) {
         // 如果是取消任务, 就直接返回
