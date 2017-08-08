@@ -42,6 +42,8 @@ static NSString *const topicCell = @"topicCell";
     [self setupRefresh];
 }
 
+
+
 - (void)setupTableView {
     // xib自定义cell-注册
     UINib *nib = [UINib nibWithNibName:NSStringFromClass([SDTopicCell class]) bundle:nil];
@@ -54,6 +56,13 @@ static NSString *const topicCell = @"topicCell";
     
     // 监听tabbar点击的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabBarSelect) name:SDTabBarDidSelectNotification object:nil];
+    
+    // 监听标题按钮的重复点击
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(titleButtonDidRepeatClick) name:SDTitleButtonDidRepeatClickNotification object:nil];
+}
+
+- (void)titleButtonDidRepeatClick {
+    [self tabBarSelect];
 }
 
 - (void)tabBarSelect {

@@ -90,6 +90,20 @@
         } else {
             NSLog(@"can not open");
         }
+    } else if (indexPath == [NSIndexPath indexPathForRow:4 inSection:1]) {
+        // A跳转到应用B,项目App-B -> TARGETS -> Info -> URL Types -> URL Schemes，设置App-B的URL Schemes为AppB
+        
+        // 如果是iOS9之后的模拟器或是真机,在App-A的Info文件中，添加LSApplicationQueriesSchemes数组，然后添加键值为AppB的字符串
+        
+        // 1.获取应用程序App-B的URL Scheme
+        NSURL *url = [NSURL URLWithString:@"BuDeJie://setting"];
+        
+        if ([[UIApplication sharedApplication] canOpenURL:url]) {
+            // 3. 打开应用程序App-B
+            [[UIApplication sharedApplication] openURL:url];
+        } else {
+            NSLog(@"can not open");
+        }
     }
 }
 

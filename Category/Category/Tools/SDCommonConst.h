@@ -44,6 +44,8 @@ UIKIT_EXTERN NSString *const SDTabBarDidSelectNotification;
 UIKIT_EXTERN NSString *const SDSelectedControllerIndexKey;
 /** tabBar被选中的通知 - 被选中的控制器 key */
 UIKIT_EXTERN NSString *const SDSelectedControllerKey;
+/** 标题按钮被重复点击的通知 */
+UIKIT_EXTERN NSString * const SDTitleButtonDidRepeatClickNotification;
 
 /** XMGUser - sex - male */
 UIKIT_EXTERN NSString * const SDUserSexMale;

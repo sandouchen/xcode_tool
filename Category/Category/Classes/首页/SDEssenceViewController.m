@@ -95,12 +95,12 @@
         button.titleLabel.font = [UIFont systemFontOfSize:14];
         
         [button setTitleColor:[UIColor grayColor] forState:(UIControlStateNormal)];
-        [button setTitleColor:[UIColor redColor] forState:(UIControlStateDisabled)];
+        [button setTitleColor:[UIColor redColor] forState:(UIControlStateSelected)];
         [button addTarget:self action:@selector(titleClick:) forControlEvents:(UIControlEventTouchUpInside)];
         [titleView addSubview:button];
         
         if (i == 0) {
-            button.enabled = NO;
+            button.selected = YES;
             self.selectedBtn = button;
             [button.titleLabel sizeToFit];
             self.indicatorView.sd_width = button.titleLabel.sd_width;
@@ -110,8 +110,12 @@
 }
 
 - (void)titleClick:(UIButton *)button {
-    self.selectedBtn.enabled = YES;
-    button.enabled = NO;
+    if (button == self.selectedBtn) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:SDTitleButtonDidRepeatClickNotification object:nil];
+    }
+    
+    self.selectedBtn.selected = NO;
+    button.selected = YES;
     self.selectedBtn = button;
     
     [UIView animateWithDuration:.25f animations:^{

@@ -38,6 +38,8 @@ NSString *const SDTabBarDidSelectNotification = @"SDTabBarDidSelectNotification"
 NSString *const SDSelectedControllerIndexKey = @"SDSelectedControllerIndexKey";
 /** tabBar被选中的通知 - 被选中的控制器 key */
 NSString *const SDSelectedControllerKey = @"SDSelectedControllerKey";
+/** 标题按钮被重复点击的通知 */
+NSString * const SDTitleButtonDidRepeatClickNotification = @"SDTitleButtonDidRepeatClickNotification";
 
 /** XMGUser - sex - male */
 NSString *const SDUserSexMale = @"m";

@@ -88,17 +88,15 @@
 
 // View 圆角和加边框
 #define VIEWBORDERRADIUS(View, Radius, Width, Color)\
-\
 [View.layer setCornerRadius:(Radius)];\
 [View.layer setMasksToBounds:YES];\
 [View.layer setBorderWidth:(Width)];\
-[View.layer setBorderColor:[Color CGColor]]
+[View.layer setBorderColor:[Color CGColor]];
 
 // View 圆角
 #define VIEWRADIUS(View, Radius)\
-\
 [View.layer setCornerRadius:(Radius)];\
-[View.layer setMasksToBounds:YES]
+[View.layer setMasksToBounds:YES];
 
 // View 坐标(x,y)和宽高(width,height)
 #define FRAMEX(v)   (v).frame.origin.x
@@ -118,7 +116,7 @@
 
 
 // 提示框
-#define ALERTVIEW(_S_, ...) [[[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:(_S_), ##__VA_ARGS__] delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil] show]
+#define ALERTVIEW(_S_, ...) [[[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:(_S_), ##__VA_ARGS__] delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil] show];
 
 // 调试状态判断
 /*
@@ -132,64 +130,76 @@
 #ifdef DEBUG
 #define NSLog(format, ...) printf("[%s] %s [第%d行] %s\n", __TIME__, __FUNCTION__, __LINE__, [[NSString stringWithFormat:format, ## __VA_ARGS__] UTF8String]);
 #else
-#define NSLog(format, ...)
+#define NSLog(format, ...);
 #endif
 
 // 打印rect
 #ifdef DEBUG
-#define LOGRECT(rect)      NSLog(@"%s = { x:%.f, y:%.f, w:%.f, h:%.f }", #rect, rect.origin.x, rect.origin.y, rect.size.width, rect.size.height)
+#define LOGRECT(rect) NSLog(@"%s = { x:%.f, y:%.f, w:%.f, h:%.f }", #rect, rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
 #endif
 
+
 // 单例宏
-// 1. 解决.h文件
-#define singletonInterface(className) + (instancetype)shared##className;
-// 2. 解决.m文件
-// 判断 是否是 ARC
-#if __has_feature(objc_arc)
+// 1.h头文件中的单例宏
+#define singletonInterface(className) \
++ (instancetype)shared##className;
+
+// 2.m文件中的单例宏
+#if __has_feature(objc_arc) // ARC 部分
+
 #define singletonImplementation(className) \
-static id instance; \
+static id _instance; \
 + (instancetype)allocWithZone:(struct _NSZone *)zone { \
-static dispatch_once_t onceToken; \
-dispatch_once(&onceToken, ^{ \
-instance = [super allocWithZone:zone]; \
-}); \
-return instance; \
+    static dispatch_once_t onceToken; \
+    dispatch_once(&onceToken, ^{ \
+        _instance = [super allocWithZone:zone]; \
+    }); \
+    return _instance; \
 } \
 + (instancetype)shared##className { \
-static dispatch_once_t onceToken; \
-dispatch_once(&onceToken, ^{ \
-instance = [[self alloc] init]; \
-}); \
-return instance; \
+    static dispatch_once_t onceToken; \
+    dispatch_once(&onceToken, ^{ \
+        _instance = [[self alloc] init]; \
+    }); \
+    return _instance; \
 } \
 - (id)copyWithZone:(NSZone *)zone { \
-return instance; \
+    return _instance; \
+} \
+- (id)mutableCopyWithZone:(NSZone *)zone { \
+    return _instance; \
 }
-#else
-// MRC 部分
+
+#else // MRC 部分
+
 #define singletonImplementation(className) \
-static id instance; \
+static id _instance; \
 + (instancetype)allocWithZone:(struct _NSZone *)zone { \
-static dispatch_once_t onceToken; \
-dispatch_once(&onceToken, ^{ \
-instance = [super allocWithZone:zone]; \
-}); \
-return instance; \
+    static dispatch_once_t onceToken; \
+    dispatch_once(&onceToken, ^{ \
+        _instance = [super allocWithZone:zone]; \
+    }); \
+    return _instance; \
 } \
 + (instancetype)shared##className { \
-static dispatch_once_t onceToken; \
-dispatch_once(&onceToken, ^{ \
-instance = [[self alloc] init]; \
-}); \
-return instance; \
+    static dispatch_once_t onceToken; \
+    dispatch_once(&onceToken, ^{ \
+        _instance = [[self alloc] init]; \
+    }); \
+    return _instance; \
 } \
 - (id)copyWithZone:(NSZone *)zone { \
-return instance; \
+    return _instance; \
+} \
+- (id)mutableCopyWithZone:(NSZone *)zone { \
+    return _instance; \
 } \
 - (oneway void)release {} \
-- (instancetype)retain {return instance;} \
-- (instancetype)autorelease {return instance;} \
-- (NSUInteger)retainCount {return ULONG_MAX;}
+- (instancetype)retain {return self;} \
+- (instancetype)autorelease {return self;} \
+- (NSUInteger)retainCount {return NSUIntegerMax;}
 #endif
+
+
 
 #endif /* SDMacro_h */
