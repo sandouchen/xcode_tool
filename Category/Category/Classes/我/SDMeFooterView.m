@@ -29,7 +29,7 @@
         [self createSquares:sqaures];
         
     } failure:^(NSError *error) {
-        NSLog(@"error = %ld", error.code);
+        SDLog(@"error = %ld", error.code);
     }];
 }
 
@@ -112,9 +112,9 @@
         */
         
     } else if ([url hasPrefix:@"mod"]) {
-        NSLog(@"%@ 跳转到mod", button.currentTitle);
+        SDLog(@"%@ 跳转到mod", button.currentTitle);
     } else {
-        NSLog(@"%@ 不知道做什么", button.currentTitle);
+        SDLog(@"%@ 不知道做什么", button.currentTitle);
     }
 }
 

@@ -74,7 +74,7 @@
     _cellHeight = 35 + SDLayoutMargin_10 * 2;
     
     // 2.文字Y值
-    CGFloat textMaxW = SCREENWIDTH - 2 * SDLayoutMargin_10;
+    CGFloat textMaxW = SDScreenW - 2 * SDLayoutMargin_10;
     CGSize maxSize = CGSizeMake(textMaxW, MAXFLOAT);
     
     // 计算文字的高度
@@ -87,7 +87,7 @@
         // 中间内容的高度 == 中间内容的宽度 * 图片的真实高度 / 图片的真实宽度
         CGFloat contentH = textMaxW * self.height / self.width;
         
-        if (contentH >= SCREENHEIGHT) {
+        if (contentH >= SDScreenH) {
             contentH = SDPictureSmallH;
             self.bigPicture = YES;
         }

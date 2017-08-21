@@ -93,7 +93,7 @@
         
     } andFailure:^(NSError *error) {
         [SVProgressHUD showErrorWithStatus:@"加载失败"];
-        NSLog(@"error = %ld", error.code);
+        SDLog(@"error = %ld", error.code);
         
         // 结束刷新
         [self.rightTableView.mj_header endRefreshing];
@@ -116,7 +116,7 @@
         
     } andFailure:^(NSError *error) {
         [SVProgressHUD showErrorWithStatus:@"加载失败"];
-        NSLog(@"error = %ld", error.code);
+        SDLog(@"error = %ld", error.code);
         
         [self.rightTableView.mj_footer endRefreshing];
     }];
@@ -155,7 +155,7 @@
     
     [SDHTTPRequest recommendListWithSuccess:^(id responseObject) {
         [SVProgressHUD dismiss];
-//        NSLog(@"%@", responseObject);
+//        SDLog(@"%@", responseObject);
         
         self.leftArray = [SDRecommendLeftModel mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
         
@@ -166,7 +166,7 @@
         
     } andFailure:^(NSError *error) {
         [SVProgressHUD showErrorWithStatus:@"加载失败"];
-        NSLog(@"error = %ld", error.code);
+        SDLog(@"error = %ld", error.code);
     }];
 }
 
@@ -207,7 +207,7 @@
 //        [self.rightTableView.mj_footer endRefreshing];
         
         SDRecommendLeftModel *leftModel = self.leftArray[indexPath.row];
-        NSLog(@"%@", leftModel.name);
+        SDLog(@"%@", leftModel.name);
         
         if (leftModel.users.count) {
             [self.rightTableView reloadData];
@@ -221,7 +221,7 @@
         SDRecommendLeftModel *leftModel = SDSelectedRow;
         
         SDRecommendRightModel *rightModel = leftModel.users[indexPath.row];
-        NSLog(@"%@", rightModel.screen_name);
+        SDLog(@"%@", rightModel.screen_name);
     }
 }
 

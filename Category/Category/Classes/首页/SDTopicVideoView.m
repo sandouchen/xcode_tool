@@ -29,7 +29,7 @@
 - (void)showPicture {
     SDShowPictureViewController *showPictureView = [[SDShowPictureViewController alloc] init];
     showPictureView.topics = self.topic;
-    [KEYWINDOW.rootViewController presentViewController:showPictureView animated:YES completion:nil];
+    [SDWindowRootVc presentViewController:showPictureView animated:YES completion:nil];
 }
 
 - (void)setTopic:(SDTopic *)topic {

@@ -57,7 +57,7 @@ static const CGFloat SDSpringFactor = 7;
     [super layoutSubviews];
     static const CGFloat buttonlayout = 40;
     
-    self.backgroundImageView.frame = SCREENBOUNDS;
+    self.backgroundImageView.frame = SDScreenB;
     
     self.cancelButton.frame = CGRectMake(0, self.sd_height - buttonlayout, self.sd_width, buttonlayout);
 }
@@ -98,13 +98,13 @@ static const CGFloat SDSpringFactor = 7;
 - (void)setupsloganImageView {
     UIImageView *sloganView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"app_slogan"]];
     sloganView.sd_bottom = self.sd_top;
-    sloganView.sd_centerX = SCREENWIDTH * 0.5;
+    sloganView.sd_centerX = SDScreenW * 0.5;
     [self insertSubview:sloganView aboveSubview:self.backgroundImageView];
     self.sloganImageView = sloganView;
     
     // 添加动画
     POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
-    anim.toValue = @(SCREENHEIGHT * 0.2);
+    anim.toValue = @(SDScreenH * 0.2);
     anim.springSpeed = SDSpringFactor;
     anim.springBounciness = SDSpringFactor;
     anim.beginTime = CACurrentMediaTime() + [self.times.lastObject doubleValue];
@@ -142,12 +142,12 @@ static const CGFloat SDSpringFactor = 7;
         [button sizeToFit];
         
         // 按钮尺寸
-        CGFloat buttonW = SCREENWIDTH / maxColsCount;
+        CGFloat buttonW = SDScreenW / maxColsCount;
         CGFloat buttonH = button.sd_height + SDLayoutMargin_10;
         CGFloat buttonX = (i % maxColsCount) * buttonW;
         
         // 取出2个按钮的高度，在屏幕中点的位置
-        CGFloat centerY = (SCREENHEIGHT - rowsCount * buttonH) * 0.5;
+        CGFloat centerY = (SDScreenH - rowsCount * buttonH) * 0.5;
         CGFloat buttonY = centerY + (i / maxColsCount) * buttonH;
         
         button.sd_bottom = self.sd_top;
@@ -169,7 +169,7 @@ static const CGFloat SDSpringFactor = 7;
         if (button.tag == 2) {
             SDPostWordViewController *postWord = [[SDPostWordViewController alloc] init];
             SDNavigationController *nav = [[SDNavigationController alloc] initWithRootViewController:postWord];
-            UIViewController *rootVC = KEYWINDOW.rootViewController;
+            UIViewController *rootVC = SDWindowRootVc;
             [rootVC presentViewController:nav animated:YES completion:nil];
         }
     }];
@@ -186,7 +186,7 @@ static const CGFloat SDSpringFactor = 7;
     for (int i = 0; i < self.buttons.count; i++) {
         UIButton *button = self.buttons[i];
         POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPositionY];
-        anim.toValue = @(button.layer.position.y + SCREENHEIGHT);
+        anim.toValue = @(button.layer.position.y + SDScreenH);
         anim.beginTime = CACurrentMediaTime() + [self.times[i] doubleValue];
         [button.layer pop_addAnimation:anim forKey:nil];
     }
@@ -194,7 +194,7 @@ static const CGFloat SDSpringFactor = 7;
     // 标题执行退出动画
     __weak __typeof(&*self) weakSelf = self;
     POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPositionY];
-    anim.toValue = @(self.sloganImageView.layer.position.y + SCREENHEIGHT);
+    anim.toValue = @(self.sloganImageView.layer.position.y + SDScreenH);
     anim.beginTime = CACurrentMediaTime() + [self.times.lastObject doubleValue];
     
     [anim setCompletionBlock:^(POPAnimation *anim, BOOL finished) {

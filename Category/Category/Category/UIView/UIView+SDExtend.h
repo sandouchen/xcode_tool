@@ -34,6 +34,8 @@ float radiansForDegrees(int degrees);
 /** 控件圆角 */
 @property (nonatomic, assign) CGFloat sd_radius;
 
+/** 找到当前view所在的viewcontroler */
+@property (readonly) UIViewController *currentViewController;
 
 /** 自动从xib创建视图 */
 + (instancetype)sd_viewFromXib;

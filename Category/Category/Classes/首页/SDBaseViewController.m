@@ -11,10 +11,12 @@
 #import "SDTopicCell.h"
 #import "SDCommentViewController.h"
 #import "SDNewViewController.h"
+#import "SDNavigationController.h"
+#import <Social/Social.h>
 
 static NSString *const topicCell = @"topicCell";
 
-@interface SDBaseViewController ()
+@interface SDBaseViewController () <ShareButtonDelegate>
 /** 所有的帖子数据 */
 @property (nonatomic, strong) NSMutableArray<SDTopic *> *topics;
 @property (nonatomic, copy) NSString *maxtime;
@@ -98,7 +100,7 @@ static NSString *const topicCell = @"topicCell";
         [self.tableView.mj_header endRefreshing];
         
     } failure:^(NSError *error) {
-        NSLog(@"error = %ld", error.code);
+        SDLog(@"error = %ld", error.code);
         [SVProgressHUD showErrorWithStatus:@"加载失败"];
         [self.tableView.mj_header endRefreshing];
     }];
@@ -120,7 +122,7 @@ static NSString *const topicCell = @"topicCell";
         [self.tableView.mj_footer endRefreshing];
         
     } failure:^(NSError *error) {
-        NSLog(@"error = %ld", error.code);
+        SDLog(@"error = %ld", error.code);
         [SVProgressHUD showErrorWithStatus:@"加载失败"];
         [self.tableView.mj_footer endRefreshing];
     }];
@@ -136,8 +138,82 @@ static NSString *const topicCell = @"topicCell";
     SDTopicCell *cell = [tableView dequeueReusableCellWithIdentifier:topicCell];
     
     cell.topics = self.topics[indexPath.row];
+    cell.delegate = self;
     
     return cell;
+}
+
+- (void)didClickShareButton {
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:(UIAlertControllerStyleActionSheet)];
+    
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"系统分享" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        
+        if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
+            SLComposeViewController *comVC = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+            
+            comVC.completionHandler = ^(SLComposeViewControllerResult result) {
+                if (result == SLComposeViewControllerResultCancelled) {
+                    [self.navigationController.view makeToast:@"取消分享" duration:2.0 position:CSToastPositionCenter];
+                } else {
+                    [self.navigationController.view makeToast:@"分享成功" duration:2.0 position:CSToastPositionCenter];
+                }
+            };
+            
+            [self presentViewController:comVC animated:YES completion:nil];
+            
+        } else {
+            [self.navigationController.view makeToast:@"还没有对应账号" duration:2.0 position:CSToastPositionCenter];
+        }
+        SDLog(@"点击了[收藏]按钮");
+    }]];
+    
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"友盟分享" style:(UIAlertActionStyleDestructive) handler:^(UIAlertAction * _Nonnull action) {
+        __weak __typeof(&*self) weakSelf = self;
+        
+        //显示分享面板
+        [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
+            // 根据获取的platformType确定所选平台进行下一步操作
+            if (platformType == UMSocialPlatformType_WechatSession) {
+                [weakSelf shareWebPageToPlatformType:UMSocialPlatformType_WechatSession];
+                
+            } else if (platformType == UMSocialPlatformType_Sina) {
+                [weakSelf shareWebPageToPlatformType:UMSocialPlatformType_Sina];
+                
+            } else if (platformType == UMSocialPlatformType_WechatTimeLine) {
+                [weakSelf shareWebPageToPlatformType:UMSocialPlatformType_WechatTimeLine];
+                
+            } else if (platformType == UMSocialPlatformType_QQ) {
+                [weakSelf shareWebPageToPlatformType:UMSocialPlatformType_QQ];
+            }
+        }];
+        
+        SDLog(@"点击了[举报]按钮");
+    }]];
+    
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:nil]];
+    
+    [self presentViewController:actionSheet animated:YES completion:nil];
+}
+
+- (void)shareWebPageToPlatformType:(UMSocialPlatformType)platformType {
+    [UMSocialUIManager removeAllCustomPlatformWithoutFilted];
+    //创建分享消息对象
+    UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+    
+    //创建音乐内容对象
+    UMShareMusicObject *shareObject = [UMShareMusicObject shareObjectWithTitle:@"分享标题" descr:@"分享内容描述" thumImage:[UIImage imageNamed:@"RS3"]];
+    //设置音乐网页播放地址
+    shareObject.musicUrl = @"http://c.y.qq.com/v8/playsong.html?songid=108782194&source=yqq#wechat_redirect";
+    messageObject.shareObject = shareObject;
+    
+    //调用分享接口
+    [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+        if (error) {
+            SDLog(@"************Share fail with error %@*********",error);
+        }else{
+            SDLog(@"response data is %@",data);
+        }
+    }];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

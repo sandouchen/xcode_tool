@@ -48,7 +48,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FfY-DU-8Xe">
-                                                    <rect key="frame" x="0.0" y="0.0" width="7" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="7" height="43"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="7" id="8Nr-q3-zCF"/>
@@ -63,7 +63,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="aVX-gr-iv0" secondAttribute="bottom" id="TMg-mV-tKF"/>
                                                 <constraint firstAttribute="trailing" secondItem="aVX-gr-iv0" secondAttribute="trailing" id="UF4-SP-1ga"/>
                                                 <constraint firstAttribute="trailing" secondItem="25Q-Oy-35H" secondAttribute="trailing" id="bXl-FZ-0gn"/>
-                                                <constraint firstAttribute="bottom" secondItem="FfY-DU-8Xe" secondAttribute="bottom" id="jLM-HL-Usg"/>
+                                                <constraint firstAttribute="bottom" secondItem="FfY-DU-8Xe" secondAttribute="bottom" constant="1" id="jLM-HL-Usg"/>
                                                 <constraint firstItem="FfY-DU-8Xe" firstAttribute="top" secondItem="EKu-vL-igG" secondAttribute="top" id="jvN-14-flw"/>
                                                 <constraint firstItem="aVX-gr-iv0" firstAttribute="top" secondItem="25Q-Oy-35H" secondAttribute="bottom" id="xgB-HQ-DEF"/>
                                             </constraints>
@@ -527,6 +527,9 @@
                                                     <state key="highlighted" backgroundImage="FollowBtnClickBg">
                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="clickToFollow" destination="GLv-Gl-FPm" eventType="touchUpInside" id="NRK-qo-CCO"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5DY-d8-3df">
                                                     <rect key="frame" x="68" y="19" width="44" height="22"/>
@@ -557,6 +560,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
+                                    <outlet property="FollowBtn" destination="AtW-Lc-1ii" id="u3a-nO-XAD"/>
                                     <outlet property="headerImageView" destination="TQr-3g-OSt" id="yvh-34-oeY"/>
                                     <outlet property="nameLb" destination="5DY-d8-3df" id="rAy-La-Gt9"/>
                                     <outlet property="numLb" destination="Qs1-A3-VmE" id="vTm-Kz-IVT"/>
@@ -701,7 +705,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="pHo-ts-WiM">
             <objects>
-                <tabBarController id="JJ9-MG-6VZ" customClass="SDTabBarController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="SDTabBarController" id="JJ9-MG-6VZ" customClass="SDTabBarController" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="IFE-V8-9dg" customClass="SDTabBar">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

@@ -18,9 +18,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self loadSubTagsData];
+//    [self loadHeaderAdData];
+}
+
+- (void)loadSubTagsData {
     [SVProgressHUD setDefaultStyle:(SVProgressHUDStyleDark)];
-    CGFloat hudW = SCREENWIDTH * 0.25;
+    CGFloat hudW = SDScreenW * 0.25;
     [SVProgressHUD setMinimumSize:CGSizeMake(hudW, hudW)];
     [SVProgressHUD show];
     
@@ -37,8 +41,28 @@
         // 如果是取消任务, 就直接返回
         if (error.code == NSURLErrorCancelled) return;
         
-        NSLog(@"error = %ld", error.code);
+        SDLog(@"error = %ld", error.code);
         [SVProgressHUD showErrorWithStatus:@"加载失败"];
+    }];
+}
+
+- (void)loadHeaderAdData {
+//    [SDNetworkHelper setResponseSerializer:(SDResponseSerializerHTTP)];
+    
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"a"] = @"get_top_promotion";
+    parameters[@"c"] = @"topic";
+    
+    [SDNetworkHelper GET:@"http://api.budejie.com/api/api_open.php" parameters:parameters success:^(id responseObject) {
+        
+        SDLog(@"%@", responseObject);
+        
+    } failure:^(NSError *error) {
+        // 如果是取消任务, 就直接返回
+        if (error.code == NSURLErrorCancelled) return;
+        
+        SDLog(@"error = %ld", error.code);
+        [SVProgressHUD showErrorWithStatus:@"图片加载失败"];
     }];
 }
 
@@ -60,10 +84,9 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [SVProgressHUD dismiss];
-    [SDNetworkHelper cancelAllRequest];
 }
 
 - (void)dealloc {
-    NSLog(@"控制器已销毁");
+    SDLog(@"控制器已销毁");
 }
 @end

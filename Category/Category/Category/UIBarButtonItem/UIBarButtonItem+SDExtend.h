@@ -24,9 +24,14 @@ typedef NS_ENUM(NSInteger, ContentInstes) {
 @interface UIBarButtonItem (SDExtend)
 
 /**
- *创建UIBarButtonItem
+ *创建UIBarButtonItem，高亮图片
  */
 + (UIBarButtonItem *)sd_itemWithTarget:(id)target action:(SEL)action image:(NSString *)image highImage:(NSString *)highImage insets:(ContentInstes)insets;
+
+/**
+ *创建UIBarButtonItem，高亮图片
+ */
++ (UIBarButtonItem *)sd_itemWithTarget:(id)target action:(SEL)action image:(NSString *)image selectedImage:(NSString *)selectedImage insets:(ContentInstes)insets;
 
 /**
  *创建UIBarButtonItem With Title

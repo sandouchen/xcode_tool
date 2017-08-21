@@ -16,7 +16,7 @@
     // 遍历字典
     [dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull propertyName, id  _Nonnull value, BOOL * _Nonnull stop) {
         
-        NSLog(@"%@ - %@", propertyName, [value class]);
+        SDLog(@"%@ - %@", propertyName, [value class]);
         
         NSString *code;
         
@@ -49,7 +49,7 @@
         [strM appendFormat:@"\n%@\n",code];
     }];
     
-    NSLog(@"%@",strM);
+    SDLog(@"%@",strM);
 }
 
 @end

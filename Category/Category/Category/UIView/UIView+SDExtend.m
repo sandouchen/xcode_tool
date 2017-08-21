@@ -123,6 +123,24 @@ float radiansForDegrees(int degrees) {
     return 0;
 }
 
+/**
+ *  @brief  找到当前view所在的viewcontroler
+ */
+- (UIViewController *)currentViewController {
+    UIResponder *responder = self.nextResponder;
+    
+    do {
+        if ([responder isKindOfClass:[UIViewController class]]) {
+            return (UIViewController *)responder;
+        }
+        
+        responder = responder.nextResponder;
+        
+    } while (responder);
+    
+    return nil;
+}
+
 /** 判断一个控件是否真正显示在主窗口 */
 - (BOOL)isShowingOnKeyWindow {
     // 主窗口
@@ -145,7 +163,7 @@ float radiansForDegrees(int degrees) {
     UIView *xibView = [[[NSBundle mainBundle] loadNibNamed:name owner:nil options:nil] firstObject];
     
     if(xibView == nil){
-        NSLog(@"CoreXibView：从xib创建视图失败，当前类是：%@",name);
+        SDLog(@"CoreXibView：从xib创建视图失败，当前类是：%@",name);
     }
     
     return xibView;

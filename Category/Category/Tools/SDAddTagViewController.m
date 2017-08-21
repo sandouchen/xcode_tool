@@ -35,7 +35,7 @@
         addBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         addBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         addBtn.contentEdgeInsets = UIEdgeInsetsMake(0, SDLayoutMargin_5, 0, SDLayoutMargin_5);
-        addBtn.backgroundColor = RGBCOLOR(74, 139, 209);
+        addBtn.backgroundColor = SDRGB(74, 139, 209);
         [addBtn addTarget:self action:@selector(addButtonClick) forControlEvents:(UIControlEventTouchUpInside)];
         [self.contentView addSubview:addBtn];
         
@@ -135,7 +135,7 @@
     _tagButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
     [_tagButton setTitle:self.textField.text forState:(UIControlStateNormal)];
     [_tagButton setImage:[UIImage imageNamed:@"chose_tag_close_icon"] forState:UIControlStateNormal];
-    _tagButton.backgroundColor = RGBCOLOR(74, 139, 209);
+    _tagButton.backgroundColor = SDRGB(74, 139, 209);
     _tagButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [_tagButton addTarget:self action:@selector(tagButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
     [_tagButton sd_setImagePosition:(SDImagePositionRight) spacing:5];

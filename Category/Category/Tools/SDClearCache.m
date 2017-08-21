@@ -8,19 +8,17 @@
 
 #import "SDClearCache.h"
 
-#define SDFileManager [NSFileManager defaultManager]
-
 @implementation SDClearCache
 + (NSString *)getCacheSize {
     // 获取 cache 文件夹下的所有文件
-    NSArray *subPathArr = [SDFileManager subpathsAtPath:CACHEPATH];
+    NSArray *subPathArr = [SDFileManager subpathsAtPath:SDCachePath];
     
     NSString *filePath  = nil;
     NSInteger totleSize = 0;
     
     for (NSString *subPath in subPathArr) {
         // 1. 拼接每一个文件的全路径
-        filePath = [CACHEPATH stringByAppendingPathComponent:subPath];
+        filePath = [SDCachePath stringByAppendingPathComponent:subPath];
         // 2. 是否是文件夹，默认不是
         BOOL isDirectory = NO;
         // 3. 判断文件是否存在
@@ -69,14 +67,14 @@
 #pragma mark - 清除path文件夹下缓存大小
 + (BOOL)clearCache {
     // 拿到 cache 路径的下一级目录的子文件夹
-    NSArray *subPathArr = [SDFileManager contentsOfDirectoryAtPath:CACHEPATH error:nil];
+    NSArray *subPathArr = [SDFileManager contentsOfDirectoryAtPath:SDCachePath error:nil];
     
     NSString *filePath = nil;
     
     NSError *error = nil;
     
     for (NSString *subPath in subPathArr) {
-        filePath = [CACHEPATH stringByAppendingPathComponent:subPath];
+        filePath = [SDCachePath stringByAppendingPathComponent:subPath];
         
         // 删除子文件夹
         [SDFileManager removeItemAtPath:filePath error:&error];

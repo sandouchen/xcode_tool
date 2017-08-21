@@ -28,15 +28,15 @@
     [self.imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(back)]];
     [self.scrollView addSubview:self.imageView];
     
-    CGFloat pictureW = SCREENWIDTH;
+    CGFloat pictureW = SDScreenW;
     CGFloat pictureH = pictureW * self.topics.height / self.topics.width;
     
-    if (pictureH > SCREENHEIGHT) {
+    if (pictureH > SDScreenH) {
         self.imageView.frame = CGRectMake(0, 0, pictureW, pictureH);
         self.scrollView.contentSize = CGSizeMake(0, pictureH);
     } else {
         self.imageView.sd_size = CGSizeMake(pictureW, pictureH);
-        self.imageView.sd_centerY = SCREENHEIGHT * 0.5;
+        self.imageView.sd_centerY = SDScreenH * 0.5;
     }
     
     // 缩放比例
@@ -70,22 +70,22 @@
     
     [actionSheet addAction:[UIAlertAction actionWithTitle:@"朋友圈" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
         
-        NSLog(@"转发到朋友圈");
+        SDLog(@"转发到朋友圈");
     }]];
     
     [actionSheet addAction:[UIAlertAction actionWithTitle:@"微信" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
         
-        NSLog(@"转发到微信");
+        SDLog(@"转发到微信");
     }]];
     
     [actionSheet addAction:[UIAlertAction actionWithTitle:@"微博" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
         
-        NSLog(@"转发到微博");
+        SDLog(@"转发到微博");
     }]];
     
     [actionSheet addAction:[UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
         
-        NSLog(@"点击了[取消]按钮");
+        SDLog(@"点击了[取消]按钮");
     }]];
     
     [self presentViewController:actionSheet animated:YES completion:nil];
@@ -100,7 +100,7 @@
     } else if (status == PHAuthorizationStatusDenied) {
         // 用户拒绝当前应用访问相册(用户当初点击了"不允许")
         //直接跳转到 【设置-隐私-照片】
-        UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"提示" message:SDStringFormat(@"如需重新获取相册访问权可前往[设置-隐私-照片-%@]打开开关", APPNAME) preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"提示" message:[NSString stringWithFormat:@"如需重新获取相册访问权可前往[设置-隐私-照片-%@]打开开关", SDAppName] preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
         
@@ -108,7 +108,7 @@
             NSString *urlString = @"App-Prefs:root=Privacy&path=PHOTOS";
             
             if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:urlString]]) {
-                if (SYSTEMVERSION >= 10.0) {
+                if (SDSystemVer >= 10.0) {
                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString] options:@{} completionHandler:nil];
                 } else {
                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
@@ -189,7 +189,7 @@
     PHFetchResult<PHAssetCollection *> *assetCollections = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
     
     for (PHAssetCollection *assetCollection in assetCollections) {
-        if ([assetCollection.localizedTitle isEqualToString:APPNAME]) {
+        if ([assetCollection.localizedTitle isEqualToString:SDAppName]) {
             return assetCollection;
         }
     }
@@ -204,7 +204,7 @@
     
     [[PHPhotoLibrary sharedPhotoLibrary] performChangesAndWait:^{
         // 创建相簿的请求
-        assetCollectionLocalIdentifier = [PHAssetCollectionChangeRequest creationRequestForAssetCollectionWithTitle:APPNAME].placeholderForCreatedAssetCollection.localIdentifier;
+        assetCollectionLocalIdentifier = [PHAssetCollectionChangeRequest creationRequestForAssetCollectionWithTitle:SDAppName].placeholderForCreatedAssetCollection.localIdentifier;
     } error:&error];
     
     // 如果有错误信息
@@ -215,7 +215,7 @@
 }
 
 - (IBAction)writeComment {
-    ALERTVIEW(@"comming son");
+    SDAlertView(@"comming son");
 }
 
 #pragma mark - <UIScrollViewDelegate>

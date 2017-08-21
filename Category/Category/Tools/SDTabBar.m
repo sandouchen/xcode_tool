@@ -50,7 +50,7 @@
 - (void)publishClick {
 //    [[UIApplication sharedApplication].keyWindow.rootViewController performSegueWithIdentifier:@"toPublishVC" sender:nil];
     
-    SDPublishView *publishView = [[SDPublishView alloc] initWithFrame:SCREENBOUNDS];
+    SDPublishView *publishView = [[SDPublishView alloc] initWithFrame:SDScreenB];
     [[UIApplication sharedApplication].keyWindow.rootViewController.view addSubview:publishView];
     [publishView fadeInWithTime:0.2f];
 }

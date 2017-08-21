@@ -29,6 +29,36 @@ PODS:
   - SDWebImage/Core (3.8.2)
   - SVProgressHUD (2.1.2)
   - Toast (3.1.0)
+  - UMengUShare/Core (6.4.5):
+    - UMengUShare/Network
+  - UMengUShare/Network (6.4.5)
+  - UMengUShare/Plugin/IDFA (6.4.5):
+    - UMengUShare/Core
+  - UMengUShare/Social/AlipayShare (6.4.5):
+    - UMengUShare/Core
+  - UMengUShare/Social/Email (6.4.5):
+    - UMengUShare/Core
+  - UMengUShare/Social/QQ (6.4.5):
+    - UMengUShare/Core
+    - UMengUShare/Social/ReducedQQ
+  - UMengUShare/Social/ReducedQQ (6.4.5):
+    - UMengUShare/Core
+  - UMengUShare/Social/ReducedSina (6.4.5):
+    - UMengUShare/Core
+  - UMengUShare/Social/ReducedWeChat (6.4.5):
+    - UMengUShare/Core
+  - UMengUShare/Social/Sina (6.4.5):
+    - UMengUShare/Core
+    - UMengUShare/Social/ReducedSina
+  - UMengUShare/Social/SMS (6.4.5):
+    - UMengUShare/Core
+  - UMengUShare/Social/TencentWeibo (6.4.5):
+    - UMengUShare/Core
+  - UMengUShare/Social/WeChat (6.4.5):
+    - UMengUShare/Core
+    - UMengUShare/Social/ReducedWeChat
+  - UMengUShare/UI (6.4.5):
+    - UMengUShare/Core
   - YYCache (1.0.4)
   - YYText (1.0.7)
 
@@ -46,6 +76,15 @@ DEPENDENCIES:
   - SDWebImage (~> 3.8.2)
   - SVProgressHUD
   - Toast
+  - UMengUShare/Plugin/IDFA
+  - UMengUShare/Social/AlipayShare
+  - UMengUShare/Social/Email
+  - UMengUShare/Social/QQ
+  - UMengUShare/Social/Sina
+  - UMengUShare/Social/SMS
+  - UMengUShare/Social/TencentWeibo
+  - UMengUShare/Social/WeChat
+  - UMengUShare/UI
   - YYCache
   - YYText
 
@@ -63,9 +102,10 @@ SPEC CHECKSUMS:
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   Toast: 14a93686d6c8bfe2727afd342414e35660a8a1f3
+  UMengUShare: a5711c54e640b04e3048e931d2b88d50f9cfa55c
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: 774df9b95615fb43892d3173bc156291428941f8
+PODFILE CHECKSUM: ca1743fc09b49bbd4bb2222e9157b889a9d8f647
 
 COCOAPODS: 1.2.1.beta.1

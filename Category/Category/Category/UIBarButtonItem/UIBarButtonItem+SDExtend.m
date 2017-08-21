@@ -34,6 +34,30 @@
 }
 
 /**
+ *创建UIBarButtonItem，高亮图片
+ */
++ (UIBarButtonItem *)sd_itemWithTarget:(id)target action:(SEL)action image:(NSString *)image selectedImage:(NSString *)selectedImage insets:(ContentInstes)insets {
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [btn addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    
+    // 设置图片
+    [btn setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
+    [btn setImage:[UIImage imageNamed:selectedImage] forState:UIControlStateSelected];
+    
+    // 设置尺寸
+    [btn sizeToFit];
+    
+    if (ContentInstesZero == insets) [btn setContentEdgeInsets:UIEdgeInsetsZero];
+    
+    if (ContentInstesLeft == insets) [btn setContentEdgeInsets:UIEdgeInsetsMake(0, -15, 0, 0)];
+    
+    if (ContentInstesRight == insets) [btn setContentEdgeInsets:UIEdgeInsetsMake(0, 0, 0, -15)];
+    
+    return [[UIBarButtonItem alloc] initWithCustomView:btn];
+}
+
+/**
  *创建UIBarButtonItem With Title
  */
 + (UIBarButtonItem *)sd_itemWithTitle:(NSString *)title titleColor:(UIColor *)titleColor Target:(id)target action:(SEL)action image:(NSString *)image highImage:(NSString *)highImage insets:(ContentInstes)insets {

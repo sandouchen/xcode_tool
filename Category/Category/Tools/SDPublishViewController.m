@@ -53,11 +53,11 @@ static const CGFloat SDSpringFactor = 7;
 }
 
 - (void)setupsloganImageView {
-    CGFloat sloganY = SCREENHEIGHT * 0.2;
+    CGFloat sloganY = SDScreenH * 0.2;
     
     UIImageView *sloganView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"app_slogan"]];
     sloganView.sd_bottom = self.view.sd_top;
-    sloganView.sd_centerX = SCREENWIDTH * 0.5;
+    sloganView.sd_centerX = SDScreenW * 0.5;
     [self.view addSubview:sloganView];
     self.sloganImageView = sloganView;
     
@@ -102,11 +102,11 @@ static const CGFloat SDSpringFactor = 7;
         [button sizeToFit];
         
         // 按钮尺寸
-        CGFloat buttonW = SCREENWIDTH / maxColsCount;
+        CGFloat buttonW = SDScreenW / maxColsCount;
         CGFloat buttonH = button.sd_height + SDLayoutMargin_10;
         CGFloat buttonX = (i % maxColsCount) * buttonW;
         // 取出2个按钮的高度，在屏幕中点的位置
-        CGFloat centerY = (SCREENHEIGHT - rowsCount * buttonH) * 0.5;
+        CGFloat centerY = (SDScreenH - rowsCount * buttonH) * 0.5;
         CGFloat buttonY = centerY + (i / maxColsCount) * buttonH;
         
         button.sd_bottom = self.view.sd_top;
@@ -145,7 +145,7 @@ static const CGFloat SDSpringFactor = 7;
     for (int i = 0; i < self.buttons.count; i++) {
         UIButton *button = self.buttons[i];
         POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPositionY];
-        anim.toValue = @(button.layer.position.y + SCREENHEIGHT);
+        anim.toValue = @(button.layer.position.y + SDScreenH);
         anim.beginTime = CACurrentMediaTime() + [self.times[i] doubleValue];
         [button.layer pop_addAnimation:anim forKey:nil];
     }
@@ -153,7 +153,7 @@ static const CGFloat SDSpringFactor = 7;
     // 标题执行退出动画
     __weak __typeof(&*self) weakSelf = self;
     POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPositionY];
-    anim.toValue = @(self.sloganImageView.layer.position.y + SCREENHEIGHT);
+    anim.toValue = @(self.sloganImageView.layer.position.y + SDScreenH);
     anim.beginTime = CACurrentMediaTime() + [self.times.lastObject doubleValue];
     [anim setCompletionBlock:^(POPAnimation *anim, BOOL finished) {
         [weakSelf dismissViewControllerAnimated:NO completion:nil];

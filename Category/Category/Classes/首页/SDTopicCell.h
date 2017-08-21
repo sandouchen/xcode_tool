@@ -10,6 +10,14 @@
 
 @class SDTopic;
 
+@protocol ShareButtonDelegate <NSObject>
+
+@optional
+- (void)didClickShareButton;
+
+@end
+
 @interface SDTopicCell : UITableViewCell
 @property (nonatomic, strong) SDTopic *topics;
+@property (nonatomic, weak) id<ShareButtonDelegate> delegate;
 @end

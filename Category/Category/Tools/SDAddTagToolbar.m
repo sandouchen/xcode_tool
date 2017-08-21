@@ -60,7 +60,7 @@
     for (int i = 0; i < tags.count; i++) {
         UILabel *tagLabel = [[UILabel alloc] init];
         [self.tagLabels addObject:tagLabel];
-        tagLabel.backgroundColor = RGBCOLOR(74, 139, 209);
+        tagLabel.backgroundColor = SDRGB(74, 139, 209);
         tagLabel.textAlignment = NSTextAlignmentCenter;
         tagLabel.text = tags[i];
         tagLabel.font = [UIFont systemFontOfSize:14];

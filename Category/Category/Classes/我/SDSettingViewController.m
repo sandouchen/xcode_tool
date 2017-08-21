@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.versionLabel.text = CURRENTVERSION;
+    self.versionLabel.text = SDCurrentVer;
 }
 
 - (IBAction)segmentAction:(UISegmentedControl *)sender {
@@ -32,13 +32,13 @@
     
     switch (index) {
         case 0:
-            NSLog(@"选择 小");
+            SDLog(@"选择 小");
             break;
         case 1:
-            NSLog(@"选择 中");
+            SDLog(@"选择 中");
             break;
         case 2:
-            NSLog(@"选择 大");
+            SDLog(@"选择 大");
             break;
             
         default:
@@ -49,20 +49,20 @@
 - (IBAction)forwardingSwitchAction:(UISwitch *)sender {
     if (sender.isOn) {
         [sender setOn:YES animated:YES];
-        NSLog(@"选择 YES");
+        SDLog(@"选择 YES");
     } else {
         [sender setOn:NO animated:YES];
-        NSLog(@"选择 NO");
+        SDLog(@"选择 NO");
     }
 }
 
 - (IBAction)moonSwitchAction:(UISwitch *)sender {
     if (sender.isOn) {
         [sender setOn:YES animated:YES];
-        NSLog(@"夜间");
+        SDLog(@"夜间");
     } else {
         [sender setOn:NO animated:YES];
-        NSLog(@"白天");
+        SDLog(@"白天");
     }
 }
 
@@ -77,10 +77,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath == [NSIndexPath indexPathForRow:0 inSection:1]) {
-        NSLog(@"离线下载");
+        SDLog(@"离线下载");
         
     } else if (indexPath == [NSIndexPath indexPathForRow:2 inSection:1]) {
-        NSLog(@"当前版本");
+        SDLog(@"当前版本");
         
     } else if (indexPath == [NSIndexPath indexPathForRow:3 inSection:1]) {
         NSURL *url = [NSURL URLWithString:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=1093382986&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8"];
@@ -88,7 +88,7 @@
         if ([[UIApplication sharedApplication] canOpenURL:url]) {
             [[UIApplication sharedApplication] openURL:url];
         } else {
-            NSLog(@"can not open");
+            SDLog(@"can not open");
         }
     } else if (indexPath == [NSIndexPath indexPathForRow:4 inSection:1]) {
         // A跳转到应用B,项目App-B -> TARGETS -> Info -> URL Types -> URL Schemes，设置App-B的URL Schemes为AppB
@@ -102,7 +102,7 @@
             // 3. 打开应用程序App-B
             [[UIApplication sharedApplication] openURL:url];
         } else {
-            NSLog(@"can not open");
+            SDLog(@"can not open");
         }
     }
 }

@@ -15,131 +15,111 @@
 
 
 #pragma mark - 通用宏
-#define SDLogFunc NSLog(@"%s", __func__);
-
-// 将服务器返回的数据写入plist
-#define SDWriteToPlist(data, filename) [data writeToFile:[NSString stringWithFormat:@"/Users/fqq3/Desktop/%@.plist", filename] atomically:YES];
-
-// 获取主屏幕
-#define KEYWINDOW [UIApplication sharedApplication].keyWindow
-
-// 屏幕宽度
-#define SCREENWIDTH [UIScreen mainScreen].bounds.size.width
-
-// 屏幕高度
-#define SCREENHEIGHT [UIScreen mainScreen].bounds.size.height
-
-// 屏幕尺寸
-#define SCREENBOUNDS [UIScreen mainScreen].bounds
-
-// 获取系统版本
-#define SYSTEMVERSION [[[UIDevice currentDevice] systemVersion] doubleValue]
-
-// 获取当前版本号
-#define CURRENTVERSION [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"]
-
-// 获取程序名称
-#define APPNAME [NSBundle mainBundle].infoDictionary[@"CFBundleDisplayName"]
-
-// 获取程序图标图片
-#define APPICONIMAGE [UIImage imageNamed:[[[NSBundle mainBundle].infoDictionary valueForKeyPath:@"CFBundleIcons.CFBundlePrimaryIcon.CFBundleIconFiles"] lastObject]]
-
-// 获取沙盒 Document
-#define DOCUMENTPATH [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
-
-// 获取沙盒 Cache
-#define CACHEPATH [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject]
-
 // 由角度转换弧度 由弧度转换角度
-#define ANGLETORADIAN(ANGLE) (M_PI * (ANGLE) / 180.0)
-#define RADIANTOANGLE(radian) (radian * 180.0)/(M_PI)
+#define SDDegreesToRadian(ANGLE) (M_PI * (ANGLE) / 180.0)
+#define SDRadianToDegrees(radian) (radian * 180.0)/(M_PI)
 
 // 读取本地图片
-#define LOADIMAGE(file, ext) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@#file ofType:@#ext]]
+#define SDLoadImage(file, ext) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@#file ofType:@#ext]]
 
-// 定义UIImage对象
-#define IMAGENAME(imageName) [UIImage imageNamed:@#imageName]
+// 将服务器返回的数据写入plist
+#define SDWriteToPlist(data, filename) [data writeToFile:[NSString stringWithFormat:@"/Users/fqq3/Desktop/%@.plist", @#filename] atomically:YES];
 
-// 转换字符串
-#define SDStringFormat(format,...) [NSString stringWithFormat:format,##__VA_ARGS__]
-
-// 自定义颜色
-#define RGBCOLOR(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
-#define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
-
-#define HEXCOLOR(rgbValue) [UIColor colorWithRed:((float)((0x##rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((0x##rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(0x##rgbValue & 0xFF))/255.0 alpha:1.0]
-
-#define HEXACOLOR(rgbValue, a) [UIColor colorWithRed:((float)((0x##rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((0x##rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(0x##rgbValue & 0xFF))/255.0 alpha:(a)]
-
-// 随机色
-#define RANDOMCOLOR RGBCOLOR(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
-
-
-// NSUserDefaults
-#define USERDEFAULTS [NSUserDefaults standardUserDefaults]
-#define USERDEFAULTSSYN [[NSUserDefaults standardUserDefaults] synchronize]
-
-// 使用__weak避免循环保留
-#define WeakSelf(weakSelf) __weak __typeof(&*self) weakSelf = self;
-#define StrongSelf(strongSelf) __strong __typeof(&*self) strongSelf = weakSelf;
-
-#define kWeakSelf(type)  __weak typeof(type) weak##type = type;
-#define kStrongSelf(type)  __strong typeof(type) type = weak##type;
-
-// View 圆角和加边框
-#define VIEWBORDERRADIUS(View, Radius, Width, Color)\
-[View.layer setCornerRadius:(Radius)];\
-[View.layer setMasksToBounds:YES];\
-[View.layer setBorderWidth:(Width)];\
-[View.layer setBorderColor:[Color CGColor]];
-
-// View 圆角
-#define VIEWRADIUS(View, Radius)\
-[View.layer setCornerRadius:(Radius)];\
-[View.layer setMasksToBounds:YES];
-
-// View 坐标(x,y)和宽高(width,height)
-#define FRAMEX(v)   (v).frame.origin.x
-#define FRAMEY(v)   (v).frame.origin.y
-
-#define WIDTH(v)    (v).frame.size.width
-#define HEIGHT(v)   (v).frame.size.height
-
-#define MinX(v)     CGRectGetMinX((v).frame)
-#define MinY(v)     CGRectGetMinY((v).frame)
-
-#define MidX(v)     CGRectGetMidX((v).frame)
-#define MidY(v)     CGRectGetMidY((v).frame)
-
-#define MaxX(v)     CGRectGetMaxX((v).frame)
-#define MaxY(v)     CGRectGetMaxY((v).frame)
-
+#define SDUserDefaults [NSUserDefaults standardUserDefaults]
+#define SDNotificationCenter [NSNotificationCenter defaultCenter]
+#define SDFileManager [NSFileManager defaultManager]
 
 // 提示框
-#define ALERTVIEW(_S_, ...) [[[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:(_S_), ##__VA_ARGS__] delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil] show];
+#define SDAlertView(_S_, ...) [[[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:(_S_), ##__VA_ARGS__] delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil] show];
 
+
+/*************** 打印宏 ***************/
 // 调试状态判断
-/*
- #ifndef __OPTIMIZE__
- #define NSLog(...) NSLog(__VA_ARGS__)
- #else
- #define NSLog(...) {}
- #endif
- */
-
 #ifdef DEBUG
-#define NSLog(format, ...) printf("[%s] %s [第%d行] %s\n", __TIME__, __FUNCTION__, __LINE__, [[NSString stringWithFormat:format, ## __VA_ARGS__] UTF8String]);
+#define SDLog(format, ...) printf("[%s] %s [第%d行] %s\n", __TIME__, __FUNCTION__, __LINE__, [[NSString stringWithFormat:format, ## __VA_ARGS__] UTF8String]);
 #else
-#define NSLog(format, ...);
+#define SDLog(format, ...)
 #endif
 
 // 打印rect
 #ifdef DEBUG
-#define LOGRECT(rect) NSLog(@"%s = { x:%.f, y:%.f, w:%.f, h:%.f }", #rect, rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
+#define  SDLogRect(rect) NSLog(@"%s = { x:%.f, y:%.f, w:%.f, h:%.f }", #rect, rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
+#else
+#define SDLogRect(rect)
 #endif
 
+/** 打印当前方法 */
+#ifdef DEBUG
+#define SDLogFunc NSLog(@"%s", __func__);
+#else
+#define SDLogFunc
+#endif
+/*************** 打印宏 ***************/
 
-// 单例宏
+
+/*************** 屏幕信息 ***************/
+// 获取主屏幕
+#define SDKeyWindow [UIApplication sharedApplication].keyWindow
+
+// 获取主屏幕控制器
+#define SDWindowRootVc SDKeyWindow.rootViewController
+
+// 屏幕宽度
+#define SDScreenW ([UIScreen mainScreen].bounds.size.width)
+
+// 屏幕高度
+#define SDScreenH ([UIScreen mainScreen].bounds.size.height)
+
+// 屏幕尺寸
+#define SDScreenB [UIScreen mainScreen].bounds
+
+#define iphone6P (SDScreenH == 736)
+#define iphone6 (SDScreenH == 667)
+#define iphone5 (SDScreenH == 568)
+#define iphone4 (SDScreenH == 480)
+/*************** 屏幕信息 ***************/
+
+
+/*************** 系统信息 ***************/
+// 获取系统版本
+#define SDSystemVer [[[UIDevice currentDevice] systemVersion] doubleValue]
+
+// 获取当前版本号
+#define SDCurrentVer [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"]
+
+// 获取程序名称
+#define SDAppName [NSBundle mainBundle].infoDictionary[@"CFBundleDisplayName"]
+
+// 获取程序图标图片
+#define SDAppIconImage [UIImage imageNamed:[[[NSBundle mainBundle].infoDictionary valueForKeyPath:@"CFBundleIcons.CFBundlePrimaryIcon.CFBundleIconFiles"] lastObject]]
+/*************** 系统信息 ***************/
+
+
+/*************** 路径信息 ***************/
+// 获取沙盒 Document
+#define SDDocumentPath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
+
+// 获取沙盒 Cache
+#define SDCachePath [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject]
+/*************** 路径信息 ***************/
+
+
+/*************** 颜色宏 ***************/
+// 自定义颜色
+#define SDRGB(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+
+#define SDRGBA(r,g,b,a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
+
+// 随机色
+#define RANDOMCOLOR SDRGB(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
+
+#define HEXCOLOR(rgbValue) [UIColor colorWithRed:((float)((0x##rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((0x##rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(0x##rgbValue & 0xFF))/255.0 alpha:1.0]
+
+#define HEXACOLOR(rgbValue, a) [UIColor colorWithRed:((float)((0x##rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((0x##rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(0x##rgbValue & 0xFF))/255.0 alpha:(a)]
+/*************** 颜色宏 ***************/
+
+
+/*************** 单例宏 ***************/
 // 1.h头文件中的单例宏
 #define singletonInterface(className) \
 + (instancetype)shared##className;
@@ -199,7 +179,7 @@ static id _instance; \
 - (instancetype)autorelease {return self;} \
 - (NSUInteger)retainCount {return NSUIntegerMax;}
 #endif
-
+/*************** 单例宏 ***************/
 
 
 #endif /* SDMacro_h */

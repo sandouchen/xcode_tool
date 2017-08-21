@@ -18,7 +18,7 @@ static NSString *const sectionHeaderlID = @"SectionHeader";
 static const CGFloat duration = 0.25;
 static const CGFloat alpha = 0.5;
 
-@interface SDCommentViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface SDCommentViewController () <UITableViewDelegate, UITableViewDataSource, ShareButtonDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSapce;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
@@ -115,7 +115,7 @@ static const CGFloat alpha = 0.5;
             weakSelf.tableView.mj_footer.hidden = YES;
         }
     } failure:^(NSError *error) {
-        NSLog(@"error = %ld", error.code);
+        SDLog(@"error = %ld", error.code);
         [SVProgressHUD showErrorWithStatus:@"加载失败"];
         [weakSelf.tableView.mj_header endRefreshing];
     }];
@@ -156,7 +156,7 @@ static const CGFloat alpha = 0.5;
             [weakSelf.tableView.mj_footer endRefreshing];
         }
     } failure:^(NSError *error) {
-        NSLog(@"error = %ld", error.code);
+        SDLog(@"error = %ld", error.code);
         [SVProgressHUD showErrorWithStatus:@"加载失败"];
         [weakSelf.tableView.mj_header endRefreshing];
     }];
@@ -187,11 +187,11 @@ static const CGFloat alpha = 0.5;
 }
 
 - (IBAction)startTheRecording {
-    ALERTVIEW(@"用户等级需要3级才可以使用哦~");
+    SDAlertView(@"用户等级需要3级才可以使用哦~");
 }
 
 - (void)setupMaskView {
-    self.maskView = [[UIView alloc] initWithFrame:SCREENBOUNDS];
+    self.maskView = [[UIView alloc] initWithFrame:SDScreenB];
     self.maskView.backgroundColor = [UIColor blackColor];
     
     [self.view insertSubview:self.maskView belowSubview:self.bottomView];
@@ -216,7 +216,7 @@ static const CGFloat alpha = 0.5;
     CGRect frame = [note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
     // 控制器由 xib/storyboard 创建
-    self.bottomSapce.constant = SCREENHEIGHT - frame.origin.y;
+    self.bottomSapce.constant = SDScreenH - frame.origin.y;
     
     CGFloat duration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     
@@ -240,13 +240,18 @@ static const CGFloat alpha = 0.5;
     
     SDTopicCell *headerView = [SDTopicCell sd_viewFromXib];
     headerView.topics = self.topics;
-    headerView.frame = CGRectMake(0, 0, SCREENWIDTH, self.topics.cellHeight);
+    headerView.delegate = self;
+    headerView.frame = CGRectMake(0, 0, SDScreenW, self.topics.cellHeight);
     [header addSubview:headerView];
     
     header.backgroundColor = [UIColor clearColor];
     header.sd_height = headerView.sd_height + SDLayoutMargin_10 * 2;
     
     self.tableView.tableHeaderView = header;
+}
+
+- (void)didClickShareButton {
+    SDLogFunc
 }
 
 #pragma mark - UITableView Datasource

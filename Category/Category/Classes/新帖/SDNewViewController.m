@@ -21,7 +21,7 @@
 }
 
 - (void)toNextVC {
-    ALERTVIEW(@"coming soon");
+    SDAlertView(@"coming soon");
 }
 
 @end

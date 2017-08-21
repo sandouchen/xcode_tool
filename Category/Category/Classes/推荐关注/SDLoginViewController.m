@@ -21,6 +21,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupQuickloginButton];
+    
+    // 下滑退出手势
+    UISwipeGestureRecognizer *pan = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(cancel)];
+    pan.direction = UISwipeGestureRecognizerDirectionDown;
+    
+    [self.view addGestureRecognizer:pan];
 }
 
 - (void)setupQuickloginButton {
@@ -34,19 +40,15 @@
 }
 
 - (IBAction)loginClick {
-    NSLog(@"登录");
+    SDLog(@"登录");
 }
 
 - (IBAction)registeredAccount:(UIButton *)button {
     [self.view endEditing:YES];
     
-    if (self.rightMargin.constant) {
-        self.rightMargin.constant = 0;
-        button.selected = NO;
-    } else {
-        self.rightMargin.constant = self.view.sd_width;
-        button.selected = YES;
-    }
+    button.selected = !button.selected;
+    
+    self.rightMargin.constant = self.rightMargin.constant == 0 ? self.view.sd_width : 0;
     
     [UIView animateWithDuration:0.25f animations:^{
         [self.view layoutIfNeeded];
@@ -58,20 +60,20 @@
 }
 
 - (IBAction)registeredClick {
-    NSLog(@"注册");
+    SDLog(@"注册");
 }
 
 - (IBAction)forgotPassword {
-    NSLog(@"忘记密码");
+    SDLog(@"忘记密码");
 }
 
 - (IBAction)quicklogin:(UIButton *)sender {
     if (sender == self.tencentBtn) {
-        NSLog(@"腾讯");
+        SDLog(@"腾讯");
     } else if (sender == self.weiboBtn) {
-        NSLog(@"微博");
+        SDLog(@"微博");
     } else {
-        NSLog(@"QQ");
+        SDLog(@"QQ");
     }
 }
 
@@ -81,7 +83,6 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [super touchesBegan:touches withEvent:event];
     [self.view endEditing:YES];
 }
 

@@ -35,7 +35,7 @@
 - (void)showPicture {
     SDShowPictureViewController *showPictureView = [[SDShowPictureViewController alloc] init];
     showPictureView.topics = self.topic;
-    [KEYWINDOW.rootViewController presentViewController:showPictureView animated:YES completion:nil];
+    [SDWindowRootVc presentViewController:showPictureView animated:YES completion:nil];
 }
 
 - (void)setTopic:(SDTopic *)topic {
@@ -47,10 +47,10 @@
     
     if ([SDNetworkHelper isWWANNetwork]) {
         imageUrl = [NSURL URLWithString:topic.small_image];
-        NSLog(@"小图");
+        SDLog(@"小图");
     } else if ([SDNetworkHelper isWiFiNetwork]) {
         imageUrl = [NSURL URLWithString:topic.large_image];
-        NSLog(@"大图");
+        SDLog(@"大图");
     }
     
     [self.imageView sd_setImageWithURL:imageUrl placeholderImage:nil options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {

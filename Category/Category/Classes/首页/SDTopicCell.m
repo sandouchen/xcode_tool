@@ -15,8 +15,6 @@
 #import "SDTopicVideoView.h"
 #import "SDTopicVoiceView.h"
 #import "SDUserListViewController.h"
-#import "SDNavigationController.h"
-#import <Social/Social.h>
 
 @interface SDTopicCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
@@ -106,7 +104,7 @@
         [attrString yy_setTextHighlightRange:NSMakeRange(0, username.length) color:[UIColor blueColor] backgroundColor:[UIColor clearColor] tapAction:^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
             SDUserListViewController *userListVC = [[SDUserListViewController alloc] init];
             
-            [[UIViewController currentView:self].navigationController pushViewController:userListVC animated:YES];
+            [self.currentViewController.navigationController pushViewController:userListVC animated:YES];
         }];
         
         [self.topCmtLabel setAttributedText:attrString];
@@ -149,40 +147,9 @@
 }
 
 - (IBAction)moreClick {
-    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:(UIAlertControllerStyleActionSheet)];
-    
-    [actionSheet addAction:[UIAlertAction actionWithTitle:@"系统分享" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
-        
-        if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
-            SLComposeViewController *comVC = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-            
-            comVC.completionHandler = ^(SLComposeViewControllerResult result) {
-                if (result == SLComposeViewControllerResultCancelled) {
-                    [KEYWINDOW.rootViewController.view makeToast:@"取消分享" duration:2.0 position:CSToastPositionCenter];
-                } else {
-                    [KEYWINDOW.rootViewController.view makeToast:@"分享成功" duration:2.0 position:CSToastPositionCenter];
-                }
-            };
-            
-            [KEYWINDOW.rootViewController presentViewController:comVC animated:YES completion:nil];
-            
-        } else {
-            [KEYWINDOW.rootViewController.view makeToast:@"还没有对应账号" duration:2.0 position:CSToastPositionCenter];
-        }
-        NSLog(@"点击了[收藏]按钮");
-    }]];
-    
-    [actionSheet addAction:[UIAlertAction actionWithTitle:@"友盟分享" style:(UIAlertActionStyleDestructive) handler:^(UIAlertAction * _Nonnull action) {
-        
-        NSLog(@"点击了[举报]按钮");
-    }]];
-    
-    [actionSheet addAction:[UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
-        
-        NSLog(@"点击了[取消]按钮");
-    }]];
-    
-    [KEYWINDOW.rootViewController presentViewController:actionSheet animated:YES completion:nil];
+    if ([self.delegate respondsToSelector:@selector(didClickShareButton)]) {
+        [self.delegate didClickShareButton];
+    }
 }
 
 - (void)setFrame:(CGRect)frame {
