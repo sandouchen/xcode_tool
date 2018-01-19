@@ -11,6 +11,7 @@
 #import "SDSqaureButton.h"
 #import "SDWebViewController.h"
 #import <SafariServices/SafariServices.h>
+#import "WKWebViewController.h"
 
 @implementation SDMeFooterView
 - (void)setup {
@@ -29,7 +30,7 @@
         [self createSquares:sqaures];
         
     } failure:^(NSError *error) {
-        SDLog(@"error = %ld", error.code);
+        SDLog(@"error = %zd", (long)error.code);
     }];
 }
 
@@ -88,6 +89,14 @@
     NSString *url = button.square.url;
     
     if ([url hasPrefix:@"http"]) {
+        // wkWebView 浏览器
+        WKWebViewController *wkWebView = [[WKWebViewController alloc] init];
+        wkWebView.url = url;
+        wkWebView.title = button.currentTitle;
+        [self.currentViewController.navigationController pushViewController:wkWebView animated:YES];
+        
+        /*
+        // webView 浏览器
         UITabBarController *tabBarVC = (UITabBarController *)self.window.rootViewController;
         
         UINavigationController *navVC = tabBarVC.selectedViewController;
@@ -96,6 +105,7 @@
         webView.url = url;
         webView.navigationItem.title = button.currentTitle;
         [navVC pushViewController:webView animated:YES];
+        */
         
         /*
         // safari 浏览器

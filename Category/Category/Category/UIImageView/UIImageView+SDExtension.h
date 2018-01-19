@@ -17,4 +17,10 @@
  */
 - (void)sd_setHeaderViewWithURL:(NSString *)imageURL placeholder:(NSString *)placeholder;
 
+
+/**
+ 图片倒影
+ */
+- (void)sd_imageViewReflect;
+
 @end

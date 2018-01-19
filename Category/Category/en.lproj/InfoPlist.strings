@@ -1,0 +1,8 @@
+/** info.plist的国际化都在这里翻译 */
+/** find ./ -name \*.m -print0 | xargs -0 genstrings -o en.lproj */
+
+/** APP 名称 */
+CFBundleDisplayName = "Tool Set";
+
+/** 系统相册 */
+NSPhotoLibraryUsageDescription = "Are you allowed to use photo albums?";

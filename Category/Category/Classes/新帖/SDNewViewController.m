@@ -21,7 +21,7 @@
 }
 
 - (void)toNextVC {
-    SDAlertView(@"coming soon");
+    [MBProgressHUD showWarn:NSLocalizedString(@"建设中...", nil) toView:nil];
 }
 
 @end

@@ -14,7 +14,7 @@
 static NSString *const serverPrefix = @"http://api.budejie.com/api/api_open.php";
 #else
 // 正式环境
-static NSString *const serverPrefix;
+static NSString *const serverPrefix = @"http://api.budejie.com/api/api_open.php";
 #endif
 
 @implementation SDHTTPRequest

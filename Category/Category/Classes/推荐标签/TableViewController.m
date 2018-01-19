@@ -23,15 +23,12 @@
 }
 
 - (void)loadSubTagsData {
-    [SVProgressHUD setDefaultStyle:(SVProgressHUDStyleDark)];
-    CGFloat hudW = SDScreenW * 0.25;
-    [SVProgressHUD setMinimumSize:CGSizeMake(hudW, hudW)];
-    [SVProgressHUD show];
+    [MBProgressHUD showLoadingToView:nil];
     
     __weak __typeof(&*self) weakSelf = self;
     
     [SDHTTPRequest recommendTagWithSuccess:^(id responseObject) {
-        [SVProgressHUD dismiss];
+        [MBProgressHUD hideHUD];
         
         weakSelf.listArray = [SDNewListModel mj_objectArrayWithKeyValuesArray:responseObject];
         
@@ -41,8 +38,7 @@
         // 如果是取消任务, 就直接返回
         if (error.code == NSURLErrorCancelled) return;
         
-        SDLog(@"error = %ld", error.code);
-        [SVProgressHUD showErrorWithStatus:@"加载失败"];
+        [MBProgressHUD showError:[NSString stringWithFormat:@"error = %zd", (long)error.code] toView:nil];
     }];
 }
 
@@ -61,8 +57,7 @@
         // 如果是取消任务, 就直接返回
         if (error.code == NSURLErrorCancelled) return;
         
-        SDLog(@"error = %ld", error.code);
-        [SVProgressHUD showErrorWithStatus:@"图片加载失败"];
+        [MBProgressHUD showError:[NSString stringWithFormat:@"error = %zd", (long)error.code] toView:nil];
     }];
 }
 
@@ -83,7 +78,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [SVProgressHUD dismiss];
+    [MBProgressHUD hideHUD];
 }
 
 - (void)dealloc {

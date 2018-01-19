@@ -205,7 +205,7 @@
                                 </state>
                                 <connections>
                                     <action selector="loginRegister" destination="kLH-8p-ops" eventType="touchUpInside" id="bqm-a2-K5L"/>
-                                    <segue destination="Ifm-4b-X3k" kind="modal" id="YhN-6o-7Wr"/>
+                                    <segue destination="Ifm-4b-X3k" kind="presentation" id="YhN-6o-7Wr"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yIv-BF-Ah2">
@@ -234,7 +234,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="我的关注" id="LMq-gL-L9V"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="push" identifier="toVC" id="sq2-np-pKk"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="toVC" id="sq2-np-pKk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NsJ-A9-5wh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -521,7 +521,7 @@
                                                         <constraint firstAttribute="height" constant="25" id="6NH-98-HdU"/>
                                                         <constraint firstAttribute="width" constant="51" id="cc8-a7-4zK"/>
                                                     </constraints>
-                                                    <state key="normal" title="+ 关注" backgroundImage="FollowBtnBg">
+                                                    <state key="normal" title="+ 关注">
                                                         <color key="titleColor" red="0.93333333330000001" green="0.52156862749999999" blue="0.031372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <state key="highlighted" backgroundImage="FollowBtnClickBg">
@@ -612,7 +612,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="H5q-2x-xO5"/>
                     <connections>
-                        <segue destination="iRd-Dm-ZdS" kind="push" identifier="toNextVC" id="HXZ-ZJ-HRh"/>
+                        <segue destination="iRd-Dm-ZdS" kind="show" identifier="toNextVC" id="HXZ-ZJ-HRh"/>
                         <segue destination="hyw-kj-tos" kind="show" identifier="sandou" id="8hF-en-P2s"/>
                     </connections>
                 </viewController>
@@ -695,7 +695,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="我的" id="bSq-LC-f9P"/>
                     <connections>
-                        <segue destination="Kef-R7-TwJ" kind="push" identifier="toSettingVC" id="IyW-EX-M6q"/>
+                        <segue destination="Kef-R7-TwJ" kind="show" identifier="toSettingVC" id="IyW-EX-M6q"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Zt-Wv-eaF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -716,7 +716,7 @@
                         <segue destination="A4H-11-pZE" kind="relationship" relationship="viewControllers" id="bbb-AL-gCc"/>
                         <segue destination="yyG-QK-peL" kind="relationship" relationship="viewControllers" id="sQ5-0H-wtG"/>
                         <segue destination="oYt-Xu-7g1" kind="relationship" relationship="viewControllers" id="9mc-Dq-Gzf"/>
-                        <segue destination="fK3-LV-MtC" kind="modal" identifier="toPublishVC" animates="NO" id="gqM-VQ-cWk"/>
+                        <segue destination="fK3-LV-MtC" kind="presentation" identifier="toPublishVC" animates="NO" id="gqM-VQ-cWk"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BgM-YO-dAy" userLabel="First Responder" sceneMemberID="firstResponder"/>

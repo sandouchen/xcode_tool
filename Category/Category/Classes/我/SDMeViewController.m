@@ -36,9 +36,9 @@
     item.selected = !item.selected;
     
     if (item.isSelected) {
-        [self.navigationController.view makeToast:@"开启夜间模式" duration:1.0f position:CSToastPositionTop];
+        [MBProgressHUD showSuccess:NSLocalizedString(@"开启夜间模式", nil) toView:nil];
     } else {
-        [self.navigationController.view makeToast:@"关闭夜间模式" duration:1.0f position:CSToastPositionTop];
+        [MBProgressHUD showSuccess:NSLocalizedString(@"关闭夜间模式", nil) toView:nil];
     }
 }
 

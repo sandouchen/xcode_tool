@@ -47,10 +47,9 @@
     
     if ([SDNetworkHelper isWWANNetwork]) {
         imageUrl = [NSURL URLWithString:topic.small_image];
-        SDLog(@"小图");
+        
     } else if ([SDNetworkHelper isWiFiNetwork]) {
         imageUrl = [NSURL URLWithString:topic.large_image];
-        SDLog(@"大图");
     }
     
     [self.imageView sd_setImageWithURL:imageUrl placeholderImage:nil options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {

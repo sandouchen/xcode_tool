@@ -44,7 +44,40 @@ static NSString *const topicCell = @"topicCell";
     [self setupRefresh];
 }
 
-
+- (void)showNewStatusesCount:(NSInteger)count {
+    UILabel *newLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, -SDTitlesViewH, self.view.sd_width, SDTitlesViewH)];
+    newLabel.font = [UIFont systemFontOfSize:15];
+    newLabel.textColor = [UIColor whiteColor];
+    newLabel.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:0.7];
+    newLabel.textAlignment = NSTextAlignmentCenter;
+    
+    if (count > 0) {
+        newLabel.text = [NSString stringWithFormat:@"又获得%zd条新消息", count];
+    } else {
+        newLabel.text = @"没有最新的数据";
+    }
+    
+    [self.view addSubview:newLabel];
+    
+    CGFloat duration = 0.75;
+    CGFloat delay = 1.0;
+    
+    newLabel.alpha = 0;
+    
+    [UIView animateWithDuration:duration animations:^{
+        newLabel.transform = CGAffineTransformMakeTranslation(0, SDTitlesViewH);
+        newLabel.alpha = 1;
+        
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:duration delay:delay options:(UIViewAnimationOptionCurveEaseInOut) animations:^{
+            newLabel.transform = CGAffineTransformIdentity;
+            newLabel.alpha = 0;
+            
+        } completion:^(BOOL finished) {
+            [newLabel removeFromSuperview];
+        }];
+    }];
+}
 
 - (void)setupTableView {
     // xib自定义cell-注册
@@ -53,8 +86,12 @@ static NSString *const topicCell = @"topicCell";
     
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.contentInset = UIEdgeInsetsMake(SDTitlesViewH + SDNavigationBarH, 0, 0, 0);
-    self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
+    
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        self.tableView.contentInset = UIEdgeInsetsMake(SDTitlesViewH + SDNavigationBarH, 0, 0, 0);
+        self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
+    }
     
     // 监听tabbar点击的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabBarSelect) name:SDTabBarDidSelectNotification object:nil];
@@ -99,9 +136,14 @@ static NSString *const topicCell = @"topicCell";
         
         [self.tableView.mj_header endRefreshing];
         
+        [self showNewStatusesCount:self.topics.count];
+        
     } failure:^(NSError *error) {
-        SDLog(@"error = %ld", error.code);
-        [SVProgressHUD showErrorWithStatus:@"加载失败"];
+        // 如果是取消任务, 就直接返回
+        if (error.code == NSURLErrorCancelled) return;
+        
+        [MBProgressHUD showError:[NSString stringWithFormat:@"error = %zd", (long)error.code] toView:nil];
+        
         [self.tableView.mj_header endRefreshing];
     }];
 }
@@ -122,8 +164,11 @@ static NSString *const topicCell = @"topicCell";
         [self.tableView.mj_footer endRefreshing];
         
     } failure:^(NSError *error) {
-        SDLog(@"error = %ld", error.code);
-        [SVProgressHUD showErrorWithStatus:@"加载失败"];
+        // 如果是取消任务, 就直接返回
+        if (error.code == NSURLErrorCancelled) return;
+        
+        [MBProgressHUD showError:[NSString stringWithFormat:@"error = %zd", (long)error.code] toView:nil];
+        
         [self.tableView.mj_footer endRefreshing];
     }];
 }
@@ -153,16 +198,17 @@ static NSString *const topicCell = @"topicCell";
             
             comVC.completionHandler = ^(SLComposeViewControllerResult result) {
                 if (result == SLComposeViewControllerResultCancelled) {
-                    [self.navigationController.view makeToast:@"取消分享" duration:2.0 position:CSToastPositionCenter];
+                    [MBProgressHUD showWarn:NSLocalizedString(@"取消分享", nil) toView:nil];
+                    
                 } else {
-                    [self.navigationController.view makeToast:@"分享成功" duration:2.0 position:CSToastPositionCenter];
+                    [MBProgressHUD showInfo:NSLocalizedString(@"分享成功", nil) toView:nil];
                 }
             };
             
             [self presentViewController:comVC animated:YES completion:nil];
             
         } else {
-            [self.navigationController.view makeToast:@"还没有对应账号" duration:2.0 position:CSToastPositionCenter];
+            [MBProgressHUD showWarn:NSLocalizedString(@"还没有对应账号", nil) toView:nil];
         }
         SDLog(@"点击了[收藏]按钮");
     }]];

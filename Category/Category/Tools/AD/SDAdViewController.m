@@ -70,7 +70,7 @@ static NSString *const code2 = @"phcqnauGuHYkFMRquANhmgN_IauBThfqmgKsUARhIWdGULP
 }
 
 - (void)dealloc {
-    SDLogFunc
+    SDLogFunc;
 }
 
 #pragma mark - 加载广告数据
@@ -93,8 +93,10 @@ static NSString *const code2 = @"phcqnauGuHYkFMRquANhmgN_IauBThfqmgKsUARhIWdGULP
         [self.adView sd_setImageWithURL:[NSURL URLWithString:self.item.w_picurl]];
         
     } failure:^(NSError *error) {
-        SDLog(@"error = %ld", error.code);
-        [SVProgressHUD showErrorWithStatus:@"加载失败"];
+        // 如果是取消任务, 就直接返回
+        if (error.code == NSURLErrorCancelled) return;
+        
+        [MBProgressHUD showError:[NSString stringWithFormat:@"error = %zd", (long)error.code] toView:nil];
     }];
 }
 
@@ -102,6 +104,7 @@ static NSString *const code2 = @"phcqnauGuHYkFMRquANhmgN_IauBThfqmgKsUARhIWdGULP
     // 跳转到界面 => safari
     NSURL *url = [NSURL URLWithString:_item.ori_curl];
     UIApplication *app = [UIApplication sharedApplication];
+    
     if ([app canOpenURL:url]) {
         [app openURL:url];
     }

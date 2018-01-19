@@ -96,9 +96,7 @@ static NSString *const clearCacheStr = @"缓存已清除";
 #pragma mark - 清除缓存
 - (void)clearCache{
     // 弹出指示器
-    [SVProgressHUD showWithStatus:@"清除缓存..." ];
-    [SVProgressHUD setDefaultStyle:(SVProgressHUDStyleDark)];
-    [SVProgressHUD setDefaultMaskType:(SVProgressHUDMaskTypeClear)];
+    [MBProgressHUD showLoadingWithMessage:NSLocalizedString(@"清除缓存...", nil) toView:nil];
     
     // 删除SDWebImage的缓存
     [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
@@ -114,8 +112,7 @@ static NSString *const clearCacheStr = @"缓存已清除";
                 [NSThread sleepForTimeInterval:1.0];
                 
                 // 隐藏指示器
-                [SVProgressHUD showSuccessWithStatus:clearCacheStr];
-                [SVProgressHUD dismissWithDelay:1.0];
+                [MBProgressHUD hideHUD];
                 
                 // 设置文字
                 self.textLabel.text = clearCacheStr;

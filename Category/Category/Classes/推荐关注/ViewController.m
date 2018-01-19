@@ -92,8 +92,10 @@
         [self checkFooterState];
         
     } andFailure:^(NSError *error) {
-        [SVProgressHUD showErrorWithStatus:@"加载失败"];
-        SDLog(@"error = %ld", error.code);
+        // 如果是取消任务, 就直接返回
+        if (error.code == NSURLErrorCancelled) return;
+        
+        [MBProgressHUD showError:[NSString stringWithFormat:@"error = %zd", (long)error.code] toView:nil];
         
         // 结束刷新
         [self.rightTableView.mj_header endRefreshing];
@@ -115,8 +117,10 @@
         [self checkFooterState];
         
     } andFailure:^(NSError *error) {
-        [SVProgressHUD showErrorWithStatus:@"加载失败"];
-        SDLog(@"error = %ld", error.code);
+        // 如果是取消任务, 就直接返回
+        if (error.code == NSURLErrorCancelled) return;
+        
+        [MBProgressHUD showError:[NSString stringWithFormat:@"error = %zd", (long)error.code] toView:nil];
         
         [self.rightTableView.mj_footer endRefreshing];
     }];
@@ -150,23 +154,23 @@
 }
 
 - (void)loagingLeftList {
-    [SVProgressHUD setDefaultMaskType:(SVProgressHUDMaskTypeBlack)];
-    [SVProgressHUD show];
+    [MBProgressHUD showLoadingToView:nil];
     
     [SDHTTPRequest recommendListWithSuccess:^(id responseObject) {
-        [SVProgressHUD dismiss];
-//        SDLog(@"%@", responseObject);
-        
         self.leftArray = [SDRecommendLeftModel mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
         
         [self.leftTableView reloadData];
         [self.leftTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:(UITableViewScrollPositionTop)];
         
+        [MBProgressHUD hideHUD];
+        
         [self.rightTableView.mj_header beginRefreshing];
         
     } andFailure:^(NSError *error) {
-        [SVProgressHUD showErrorWithStatus:@"加载失败"];
-        SDLog(@"error = %ld", error.code);
+        // 如果是取消任务, 就直接返回
+        if (error.code == NSURLErrorCancelled) return;
+        
+        [MBProgressHUD showError:[NSString stringWithFormat:@"error = %zd", (long)error.code] toView:nil];
     }];
 }
 

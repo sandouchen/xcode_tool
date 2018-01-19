@@ -20,7 +20,6 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <SDWebImage/UIButton+WebCache.h>
 #import <SDWebImage/SDImageCache.h>
-#import <SVProgressHUD/SVProgressHUD.h>
 #import <MJRefresh/MJRefresh.h>
 #import <DACircularProgress/DALabeledCircularProgressView.h>
 #import <pop/POP.h>
@@ -28,7 +27,6 @@
 #import <JHChainableAnimations/JHChainableAnimations.h>
 #import <UMSocialCore/UMSocialCore.h>
 #import <UShareUI/UShareUI.h>
-
 
 #pragma mark - Category
 #import "CALayer+SDExtend.h"
@@ -45,7 +43,7 @@
 #import "NSString+SDExtend.h"
 #import "WRNavigationBar.h"
 #import "NSDate+Escort.h"
-#import "UIView+Toast.h"
+#import "MBProgressHUD+SD.h"
 
 
 #pragma mark - Custom Tool

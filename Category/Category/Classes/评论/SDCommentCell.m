@@ -109,6 +109,7 @@
         // 加入数组
         [imageArr addObject:image];
     }
+    
     // 设置动画图片
     self.playVoiceImage.animationImages = imageArr;
     
@@ -123,8 +124,7 @@
 }
 
 - (IBAction)toUserListView {
-    SDLogFunc
-    
+    SDLogFunc;
 }
 
 @end

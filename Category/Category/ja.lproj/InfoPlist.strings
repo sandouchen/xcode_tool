@@ -1,0 +1,5 @@
+/** APP 名称 */
+CFBundleDisplayName = "ツール集合";
+
+/** 系统相册 */
+NSPhotoLibraryUsageDescription = "写真を使って、写真を使うことを許可するかどうか？";

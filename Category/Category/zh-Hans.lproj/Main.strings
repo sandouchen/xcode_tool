@@ -1,0 +1,179 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "25Q-Oy-35H"; */
+"25Q-Oy-35H.text" = "Label";
+
+/* Class = "UILabel"; text = "离线下载"; ObjectID = "2kA-6A-xZu"; */
+"2kA-6A-xZu.text" = "离线下载";
+
+/* Class = "UIButton"; normalTitle = "取消"; ObjectID = "3r3-9f-keE"; */
+"3r3-9f-keE.normalTitle" = "取消";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "5DY-d8-3df"; */
+"5DY-d8-3df.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "设置"; ObjectID = "5Jt-bo-qNC"; */
+"5Jt-bo-qNC.title" = "设置";
+
+/* Class = "UIButton"; normalTitle = "+ 关注"; ObjectID = "AtW-Lc-1ii"; */
+"AtW-Lc-1ii.normalTitle" = "+ 关注";
+
+/* Class = "UILabel"; text = "摇一摇夜间模式"; ObjectID = "C3N-gw-4dT"; */
+"C3N-gw-4dT.text" = "摇一摇夜间模式";
+
+/* Class = "UILabel"; text = "快速登录"; ObjectID = "DGE-wM-eK5"; */
+"DGE-wM-eK5.text" = "快速登录";
+
+/* Class = "UILabel"; text = "字体大小"; ObjectID = "F5Z-pu-XcA"; */
+"F5Z-pu-XcA.text" = "字体大小";
+
+/* Class = "UITabBarItem"; title = "关注"; ObjectID = "H61-x6-MqC"; */
+"H61-x6-MqC.title" = "关注";
+
+/* Class = "UITextField"; placeholder = "手机号"; ObjectID = "I34-rc-KUU"; */
+"I34-rc-KUU.placeholder" = "手机号";
+
+/* Class = "UINavigationItem"; title = "我的关注"; ObjectID = "LMq-gL-L9V"; */
+"LMq-gL-L9V.title" = "我的关注";
+
+/* Class = "UIButton"; normalTitle = "登录"; ObjectID = "LTS-G1-Wgy"; */
+"LTS-G1-Wgy.normalTitle" = "登录";
+
+/* Class = "UILabel"; text = "登录/注册"; ObjectID = "NAR-Yk-BJd"; */
+"NAR-Yk-BJd.text" = "登录/注册";
+
+/* Class = "UILabel"; text = "打分支持不得姐！"; ObjectID = "NXb-2v-5bk"; */
+"NXb-2v-5bk.text" = "打分支持不得姐！";
+
+/* Class = "UILabel"; text = "离线下载"; ObjectID = "OHr-4P-eGF"; */
+"OHr-4P-eGF.text" = "离线下载";
+
+/* Class = "UILabel"; text = "1.0"; ObjectID = "PJf-4i-uMC"; */
+"PJf-4i-uMC.text" = "1.0";
+
+/* Class = "UILabel"; text = "转发时收藏"; ObjectID = "PXW-13-Ny3"; */
+"PXW-13-Ny3.text" = "转发时收藏";
+
+/* Class = "UITabBarItem"; title = "新帖"; ObjectID = "Pgd-ee-8hM"; */
+"Pgd-ee-8hM.title" = "新帖";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "QMI-Hd-fx9"; */
+"QMI-Hd-fx9.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Qs1-A3-VmE"; */
+"Qs1-A3-VmE.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "精华"; ObjectID = "R0p-H3-DLG"; */
+"R0p-H3-DLG.title" = "精华";
+
+/* Class = "UIButton"; normalTitle = "立即登录注册"; ObjectID = "Taf-Xv-Udj"; */
+"Taf-Xv-Udj.normalTitle" = "立即登录注册";
+
+/* Class = "UINavigationItem"; title = "我的"; ObjectID = "bSq-LC-f9P"; */
+"bSq-LC-f9P.title" = "我的";
+
+/* Class = "UILabel"; text = "清除缓存"; ObjectID = "bdR-gr-2dY"; */
+"bdR-gr-2dY.text" = "清除缓存";
+
+/* Class = "UITableViewSection"; footerTitle = " "; ObjectID = "cnF-Dp-iCg"; */
+"cnF-Dp-iCg.footerTitle" = " ";
+
+/* Class = "UITableViewSection"; headerTitle = "功能设置"; ObjectID = "cnF-Dp-iCg"; */
+"cnF-Dp-iCg.headerTitle" = "功能设置";
+
+/* Class = "UILabel"; text = "体验其他应用"; ObjectID = "eA9-XO-AMb"; */
+"eA9-XO-AMb.text" = "体验其他应用";
+
+/* Class = "UIButton"; normalTitle = "注册"; ObjectID = "fkG-YU-vEs"; */
+"fkG-YU-vEs.normalTitle" = "注册";
+
+/* Class = "UINavigationItem"; title = "推荐标签"; ObjectID = "hXb-U0-UCX"; */
+"hXb-U0-UCX.title" = "推荐标签";
+
+/* Class = "UIButton"; normalTitle = "腾讯登录"; ObjectID = "ifK-6J-OCk"; */
+"ifK-6J-OCk.normalTitle" = "腾讯登录";
+
+/* Class = "UISegmentedControl"; jKl-dA-ew2.segmentTitles[0] = "小"; ObjectID = "jKl-dA-ew2"; */
+"jKl-dA-ew2.segmentTitles[0]" = "小";
+
+/* Class = "UISegmentedControl"; jKl-dA-ew2.segmentTitles[1] = "中"; ObjectID = "jKl-dA-ew2"; */
+"jKl-dA-ew2.segmentTitles[1]" = "中";
+
+/* Class = "UISegmentedControl"; jKl-dA-ew2.segmentTitles[2] = "大"; ObjectID = "jKl-dA-ew2"; */
+"jKl-dA-ew2.segmentTitles[2]" = "大";
+
+/* Class = "UITextField"; placeholder = "密码"; ObjectID = "jaT-P7-s8K"; */
+"jaT-P7-s8K.placeholder" = "密码";
+
+/* Class = "UITextField"; placeholder = "请输入手机号"; ObjectID = "mp9-Rh-Ulj"; */
+"mp9-Rh-Ulj.placeholder" = "请输入手机号";
+
+/* Class = "UIButton"; normalTitle = "注册账号"; ObjectID = "msE-2m-waU"; */
+"msE-2m-waU.normalTitle" = "注册账号";
+
+/* Class = "UIButton"; selectedTitle = "已有账号？"; ObjectID = "msE-2m-waU"; */
+"msE-2m-waU.selectedTitle" = "已有账号？";
+
+/* Class = "UIButton"; normalTitle = "忘记密码？"; ObjectID = "nPe-wB-d9G"; */
+"nPe-wB-d9G.normalTitle" = "忘记密码？";
+
+/* Class = "UILabel"; text = "当前版本："; ObjectID = "oET-8g-0W9"; */
+"oET-8g-0W9.text" = "当前版本：";
+
+/* Class = "UITableViewSection"; headerTitle = "其他"; ObjectID = "oZp-z6-zaw"; */
+"oZp-z6-zaw.headerTitle" = "其他";
+
+/* Class = "UINavigationItem"; title = "推荐关注"; ObjectID = "r2I-MD-dj7"; */
+"r2I-MD-dj7.title" = "推荐关注";
+
+/* Class = "UITabBarItem"; title = "我"; ObjectID = "tP3-Wp-q44"; */
+"tP3-Wp-q44.title" = "我";
+
+/* Class = "UILabel"; text = "点击录音"; ObjectID = "tUJ-le-HMK"; */
+"tUJ-le-HMK.text" = "点击录音";
+
+/* Class = "UIButton"; normalTitle = "QQ登录"; ObjectID = "u34-6M-5Be"; */
+"u34-6M-5Be.normalTitle" = "QQ登录";
+
+/* Class = "UIButton"; normalTitle = "微博登录"; ObjectID = "vDB-rs-T2U"; */
+"vDB-rs-T2U.normalTitle" = "微博登录";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "wcf-Zt-x7j"; */
+"wcf-Zt-x7j.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "+ 关注"; ObjectID = "xXe-qg-BUw"; */
+"xXe-qg-BUw.normalTitle" = "+ 关注";
+
+/* Class = "UITextField"; placeholder = "设置密码"; ObjectID = "xXt-Qe-kHn"; */
+"xXt-Qe-kHn.placeholder" = "设置密码";
+
+/* Class = "UILabel"; text = "快快登录吧, 关注百思最in牛人\n好友动态让你过把瘾儿~\n欧耶~~~~!"; ObjectID = "yIv-BF-Ah2"; */
+"yIv-BF-Ah2.text" = "快快登录吧, 关注百思最in牛人\n好友动态让你过把瘾儿~\n欧耶~~~~!";
+
+/* Class = "UIButton"; normalTitle = "写评论..."; ObjectID = "yZL-dk-0kq"; */
+"yZL-dk-0kq.normalTitle" = "写评论...";
+
+//##################################################################################
+//#           AutoGenStrings            2017-08-21 16:32:14
+//##################################################################################
+
+/* Class = "UIButton"; normalTitle = "测试按钮"; ObjectID = "sNW-Zm-JFY"; */
+//"sNW-Zm-JFY.normalTitle" = "测试按钮";
+
+/***** NewLocalizableStrings  2017-08-21 16:45:00 *****/
+
+/* Class = "UIButton"; normalTitle = "我的"; ObjectID = "Vhk-F0-V1d"; */
+//"Vhk-F0-V1d.normalTitle" = "我的";
+
+/************************************************************/
+/*** NewLocalizableStrings 2017-08-21 16:53:29 ***/
+/************************************************************/
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "QW6-Xh-1b0"; */
+//"QW6-Xh-1b0.normalTitle" = "Button";
+
+/************************************************************/
+/******** NewLocalizableStrings  2017-08-21 16:55:49 ********/
+/************************************************************/
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "dcf-aS-erI"; */
+//"dcf-aS-erI.normalTitle" = "Button";

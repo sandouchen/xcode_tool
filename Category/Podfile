@@ -7,7 +7,6 @@ pod 'AFNetworking'
 pod 'YYCache'
 pod 'SDAutoLayout'
 pod 'MJExtension'
-pod 'SVProgressHUD'
 pod 'MJRefresh'
 pod 'pop'
 pod 'SDCycleScrollView'
@@ -15,10 +14,9 @@ pod 'Masonry'
 pod 'DACircularProgress'
 pod 'SDWebImage', '~> 3.8.2'
 pod 'YYText'
-pod 'Toast'
 pod 'NSDate-Escort'
 pod 'JHChainableAnimations'
-
+pod 'MBProgressHUD'
 
 # U-Share SDK UI模块（分享面板，建议添加）
 pod ‘UMengUShare/UI’

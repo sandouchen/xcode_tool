@@ -96,7 +96,8 @@
     
     if (status == PHAuthorizationStatusRestricted) {
         // 因为家长控制, 导致应用无法方法相册(跟用户的选择没有关系)
-        [SVProgressHUD showErrorWithStatus:@"因为系统原因, 无法访问相册"];
+        [MBProgressHUD showError:NSLocalizedString(@"因为系统原因, 无法访问相册", nil) toView:nil];
+        
     } else if (status == PHAuthorizationStatusDenied) {
         // 用户拒绝当前应用访问相册(用户当初点击了"不允许")
         //直接跳转到 【设置-隐私-照片】
@@ -215,7 +216,7 @@
 }
 
 - (IBAction)writeComment {
-    SDAlertView(@"comming son");
+    [MBProgressHUD showWarn:NSLocalizedString(@"建设中...", nil) toView:nil];
 }
 
 #pragma mark - <UIScrollViewDelegate>
@@ -236,13 +237,13 @@
 
 - (void)showSuccess:(NSString *)text {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [SVProgressHUD showSuccessWithStatus:text];
+        [MBProgressHUD showSuccess:text toView:nil];
     });
 }
 
 - (void)showError:(NSString *)text {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [SVProgressHUD showErrorWithStatus:text];
+        [MBProgressHUD showError:text toView:nil];
     });
 }
 @end

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>sdlog</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>TopLevel</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>/*
+ 自定义Log：
+ Log在Debug下打印,在release下不打印
+ 定义标记项 —&gt; buildSettings —&gt; 搜索swift flag —&gt; Debug -&gt; -D DEBUG
+ */
+func SDLog&lt;T&gt;(_ messsage : T, file : String = #file, funcName : String = #function, lineNum : Int = #line) {
+
+    #if DEBUG
+        
+        let fileName = (file as NSString).lastPathComponent
+        
+        print("\(fileName) : [\(lineNum)] - \(messsage)")
+        
+    #endif
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>45EE4950-86E5-4479-B47A-0D09DD3C7002</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>sdlog</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>swif 打印 SDLog</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

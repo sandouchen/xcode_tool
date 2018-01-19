@@ -23,37 +23,26 @@
 #define SDLoadImage(file, ext) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@#file ofType:@#ext]]
 
 // 将服务器返回的数据写入plist
-#define SDWriteToPlist(data, filename) [data writeToFile:[NSString stringWithFormat:@"/Users/fqq3/Desktop/%@.plist", @#filename] atomically:YES];
+#define SDWriteToPlist(data, filename) [data writeToFile:[NSString stringWithFormat:@"/Users/fqq3/Desktop/%@.plist", @#filename] atomically:YES]
 
 #define SDUserDefaults [NSUserDefaults standardUserDefaults]
 #define SDNotificationCenter [NSNotificationCenter defaultCenter]
 #define SDFileManager [NSFileManager defaultManager]
 
 // 提示框
-#define SDAlertView(_S_, ...) [[[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:(_S_), ##__VA_ARGS__] delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil] show];
+#define SDAlertView(_S_, ...) [[[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:(_S_), ##__VA_ARGS__] delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil] show]
 
 
 /*************** 打印宏 ***************/
 // 调试状态判断
 #ifdef DEBUG
-#define SDLog(format, ...) printf("[%s] %s [第%d行] %s\n", __TIME__, __FUNCTION__, __LINE__, [[NSString stringWithFormat:format, ## __VA_ARGS__] UTF8String]);
+#define SDLog(format, ...) printf("[%s] %s [第%zd行] %s\n", __TIME__, __FUNCTION__, __LINE__, [[NSString stringWithFormat:format, ## __VA_ARGS__] UTF8String])
 #else
 #define SDLog(format, ...)
 #endif
 
-// 打印rect
-#ifdef DEBUG
-#define  SDLogRect(rect) NSLog(@"%s = { x:%.f, y:%.f, w:%.f, h:%.f }", #rect, rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
-#else
-#define SDLogRect(rect)
-#endif
-
-/** 打印当前方法 */
-#ifdef DEBUG
-#define SDLogFunc NSLog(@"%s", __func__);
-#else
-#define SDLogFunc
-#endif
+#define SDLogFunc SDLog(@"---")
+#define SDLogRect(rect) SDLog(@"%s = { x:%.f, y:%.f, w:%.f, h:%.f }", #rect, rect.origin.x, rect.origin.y, rect.size.width, rect.size.height)
 /*************** 打印宏 ***************/
 
 

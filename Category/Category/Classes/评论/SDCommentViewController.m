@@ -115,8 +115,11 @@ static const CGFloat alpha = 0.5;
             weakSelf.tableView.mj_footer.hidden = YES;
         }
     } failure:^(NSError *error) {
-        SDLog(@"error = %ld", error.code);
-        [SVProgressHUD showErrorWithStatus:@"加载失败"];
+        // 如果是取消任务, 就直接返回
+        if (error.code == NSURLErrorCancelled) return;
+        
+        [MBProgressHUD showError:[NSString stringWithFormat:@"error = %zd", (long)error.code] toView:nil];
+        
         [weakSelf.tableView.mj_header endRefreshing];
     }];
 }
@@ -156,8 +159,11 @@ static const CGFloat alpha = 0.5;
             [weakSelf.tableView.mj_footer endRefreshing];
         }
     } failure:^(NSError *error) {
-        SDLog(@"error = %ld", error.code);
-        [SVProgressHUD showErrorWithStatus:@"加载失败"];
+        // 如果是取消任务, 就直接返回
+        if (error.code == NSURLErrorCancelled) return;
+        
+        [MBProgressHUD showError:[NSString stringWithFormat:@"error = %zd", (long)error.code] toView:nil];
+        
         [weakSelf.tableView.mj_header endRefreshing];
     }];
 }
@@ -183,11 +189,11 @@ static const CGFloat alpha = 0.5;
 }
 
 - (IBAction)writeComment {
-    SDLogFunc
+    SDLogFunc;
 }
 
 - (IBAction)startTheRecording {
-    SDAlertView(@"用户等级需要3级才可以使用哦~");
+    [MBProgressHUD showWarn:NSLocalizedString(@"用户等级需要3级才可以使用哦~", nil) toView:nil];
 }
 
 - (void)setupMaskView {
@@ -251,7 +257,7 @@ static const CGFloat alpha = 0.5;
 }
 
 - (void)didClickShareButton {
-    SDLogFunc
+    SDLogFunc;
 }
 
 #pragma mark - UITableView Datasource

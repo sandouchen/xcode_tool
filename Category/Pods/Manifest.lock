@@ -17,6 +17,7 @@ PODS:
   - DACircularProgress (2.3.1)
   - JHChainableAnimations (2.0.2)
   - Masonry (1.0.2)
+  - MBProgressHUD (1.0.0)
   - MJExtension (3.0.13)
   - MJRefresh (3.1.12)
   - NSDate-Escort (1.8.2)
@@ -27,8 +28,6 @@ PODS:
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
-  - SVProgressHUD (2.1.2)
-  - Toast (3.1.0)
   - UMengUShare/Core (6.4.5):
     - UMengUShare/Network
   - UMengUShare/Network (6.4.5)
@@ -67,6 +66,7 @@ DEPENDENCIES:
   - DACircularProgress
   - JHChainableAnimations
   - Masonry
+  - MBProgressHUD
   - MJExtension
   - MJRefresh
   - NSDate-Escort
@@ -74,8 +74,6 @@ DEPENDENCIES:
   - SDAutoLayout
   - SDCycleScrollView
   - SDWebImage (~> 3.8.2)
-  - SVProgressHUD
-  - Toast
   - UMengUShare/Plugin/IDFA
   - UMengUShare/Social/AlipayShare
   - UMengUShare/Social/Email
@@ -93,6 +91,7 @@ SPEC CHECKSUMS:
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   JHChainableAnimations: b6fe3fae7e728d71eaa9491bc6f77c30ee121fc4
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   NSDate-Escort: c79db277a401c0ad219acd295ec17c7b4f61266f
@@ -100,12 +99,10 @@ SPEC CHECKSUMS:
   SDAutoLayout: c5509e77ae75735d9a39f7bc83dba6d3f75d49d8
   SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
-  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
-  Toast: 14a93686d6c8bfe2727afd342414e35660a8a1f3
   UMengUShare: a5711c54e640b04e3048e931d2b88d50f9cfa55c
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: ca1743fc09b49bbd4bb2222e9157b889a9d8f647
+PODFILE CHECKSUM: 6cea3073d76e662cbcc857b6201d4a40dfc69ab4
 
 COCOAPODS: 1.2.1.beta.1
